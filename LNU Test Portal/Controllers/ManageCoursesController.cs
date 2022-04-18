@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace LNU_Test_Portal.Controllers
 {
-    public class HomeController : Controller
+    public class ManageCoursesController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ManageCoursesController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public ManageCoursesController(ILogger<ManageCoursesController> logger)
         {
             _logger = logger;
         }

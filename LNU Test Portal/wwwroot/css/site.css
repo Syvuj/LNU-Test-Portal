@@ -1,6 +1,23 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+header {
+    background-color: #79819e;
+    
+}
+a.Usname{
+    font-size:20px;
+    color:white;
+}
+a.logout {
+    font-size: 18px;
+    color: white;
+}
+
+li.nav-item {
+    font-size: 28px;
+    font-family: Arial;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;

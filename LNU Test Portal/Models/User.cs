@@ -5,7 +5,7 @@ namespace LNU_Test_Portal.Models
 {
     public class User
     {
-        public string UserId { get; set; }
+        public string id { get; set; }
         public bool IsTeacher { get; set; }
         public bool IsStudent { get; set; }
         public string Name { get; set; }
@@ -13,9 +13,9 @@ namespace LNU_Test_Portal.Models
         public string LogInUserName { get; set; }
         public string LogInPwd { get; set; }
         public User() { }
-        public User(string UserId, bool IsTeacher, bool IsStudent, string Name, string SurName, string LogInUserName, string LogInPwd)
+        public User(string id, bool IsTeacher, bool IsStudent, string Name, string SurName, string LogInUserName, string LogInPwd)
         {
-            this.UserId = UserId;
+            this.id = id;
             this.IsTeacher = IsTeacher;
             this.IsStudent = IsStudent;
             this.Name = Name;

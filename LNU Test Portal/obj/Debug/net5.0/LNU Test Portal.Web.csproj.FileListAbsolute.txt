@@ -89,5 +89,5 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\LNU Te
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\LNU Test Portal.Web.genruntimeconfig.cache
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.PeriodicBatching.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.Seq.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\ManageCourses\Index.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\ManageCourses\Privacy.cshtml.g.cs
