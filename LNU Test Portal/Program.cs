@@ -23,7 +23,7 @@ namespace LNU_Test_Portal
 
             try
             {
-                Log.Information("Starting web host");
+                Log.Information("Starting web host ---");
                 CreateHostBuilder(args).Build().Run();
                 Console.ReadKey(true);
                 return 0;
@@ -48,7 +48,7 @@ namespace LNU_Test_Portal
                 .ConfigureWebHostDefaults(webBuilder =>
 
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>().UseSerilog();
                 });
     }
 }
