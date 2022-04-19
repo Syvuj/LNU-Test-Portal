@@ -1,4 +1,6 @@
-﻿using LNU_Test_Portal.Models;
+﻿using LNU_Test_Portal.DAL.interfaces;
+using LNU_Test_Portal.Models;
+using LNU_Test_Portal.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +14,20 @@ namespace LNU_Test_Portal.Controllers
     public class ManageCoursesController : Controller
     {
         private readonly ILogger<ManageCoursesController> _logger;
+        private readonly IAllCourses _allCourses;
 
-        public ManageCoursesController(ILogger<ManageCoursesController> logger)
+        public ManageCoursesController(ILogger<ManageCoursesController> logger, IAllCourses iallCourses)
         {
             _logger = logger;
+            _allCourses = iallCourses;
+
         }
 
         public IActionResult Index()
         {
-            return View();
+            CoursesListViewModel obj = new CoursesListViewModel();
+            obj.AllCourses = _allCourses.Courses;
+            return View(obj);
         }
 
         public IActionResult Privacy()

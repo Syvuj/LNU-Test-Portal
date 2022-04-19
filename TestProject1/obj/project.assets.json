@@ -1300,7 +1300,7 @@
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
         }
       },
-      "System.Data.SqlClient/4.8.1": {
+      "System.Data.SqlClient/4.8.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "4.7.0",
@@ -5035,10 +5035,10 @@
         "version.txt"
       ]
     },
-    "System.Data.SqlClient/4.8.1": {
-      "sha512": "HKLykcv6eZLbLnSMnlQ6Os4+UAmFE+AgYm92CTvJYeTOBtOYusX3qu8OoGhFrnKZax91UcLcDo5vPrqvJUTSNQ==",
+    "System.Data.SqlClient/4.8.3": {
+      "sha512": "yERfVLXAY0QbylAgaGLByYN0hFxX28aeEQ0hUgJO+Ntn1AfmWl5HHUoYJA0Yl9HhIUUJHVaS/Sw/RLZr5aaC+A==",
       "type": "package",
-      "path": "system.data.sqlclient/4.8.1",
+      "path": "system.data.sqlclient/4.8.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5115,7 +5115,7 @@
         "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.xml",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.dll",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.xml",
-        "system.data.sqlclient.4.8.1.nupkg.sha512",
+        "system.data.sqlclient.4.8.3.nupkg.sha512",
         "system.data.sqlclient.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -8507,6 +8507,7 @@
       "Serilog.Sinks.Console >= 4.0.1",
       "Serilog.Sinks.Seq >= 5.1.1",
       "SonarAnalyzer.CSharp >= 8.37.0.45539",
+      "System.Data.SqlClient >= 4.8.3",
       "coverlet.collector >= 3.0.2"
     ]
   },
@@ -8590,6 +8591,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[8.37.0.45539, )"
+          },
+          "System.Data.SqlClient": {
+            "target": "Package",
+            "version": "[4.8.3, )"
           },
           "coverlet.collector": {
             "target": "Package",

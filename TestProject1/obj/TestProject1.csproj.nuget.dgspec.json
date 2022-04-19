@@ -82,6 +82,10 @@
               "target": "Package",
               "version": "[8.37.0.45539, )"
             },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.0.2, )"

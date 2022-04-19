@@ -1,24 +1,35 @@
-﻿@{
+﻿@using LNU_Test_Portal.ViewModels;
+@model CoursesListViewModel
+@{
     ViewData["Title"] = "Manage Courses";
     Layout = "_Layout";
+
 }
-
-
-
-
 <div class="manage course content">
-    <a href="#" class="myButton">Create</a>
-</div>
+    <a href="#" class="myButton text-white">Create</a>
+    @{
+        int num = 0;
+        foreach(var course in Model.AllCourses)
+        {
+            num++;
+ 
 <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
-        <h2 class="CourseName text-white">Course #1: Java</h2>
-        <a href="#" class="AddStudentBtn">Add student</a>
+        <h2 class="CourseName text-white">Course #@num: @course.CName</h2>
+        <a href="#" class="AddStudentBtn text-white">Add student</a>
     </div>
-    <p class="CourseDescription text-white" style="width:60%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </p>
+    <p class="CourseDescription text-white" style="width:60%"> @course.CDescription</p>
     
     <div class="d-flex align-items-start">
-        <a href="#" class="EditeCourseButton">Edite</a>
-        <a href="#" class="DeleteCourseButton">Delete</a>
+        <a href="#" class="EditeCourseButton text-white">Edite</a>
+        <a href="#" class="DeleteCourseButton text-white">Delete</a>
     </div>
+</div>
+        }
+    }
+    
+    
+    
+    
 </div>
 

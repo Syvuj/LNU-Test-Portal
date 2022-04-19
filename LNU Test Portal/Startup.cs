@@ -1,3 +1,5 @@
+using LNU_Test_Portal.DAL.interfaces;
+using LNU_Test_Portal.DAL.mocks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,7 @@ namespace LNU_Test_Portal
         {
             services.AddControllersWithViews();
             services.AddMvc();
+            services.AddTransient<IAllCourses, MockCourse>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

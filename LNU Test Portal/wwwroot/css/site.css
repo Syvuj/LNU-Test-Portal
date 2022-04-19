@@ -2,6 +2,8 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 
+
+
 .myButton {
     background-color: #4b4b4b;
     border-radius: 10px;
@@ -9,11 +11,44 @@ for details on configuring this project to bundle and minify static web assets. 
     cursor: pointer;
     color: #ffffff;
     font-family: Arial;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     padding: 5px 17px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #2f6627;
+}
+
+.CancelButton {
+    background-color: #4b4b4b;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    margin-left: 25px;
+}
+
+
+.CreateCourseForm {
+    background-color: #79819e;
+}
+.SaveCourseButton {
+    background-color: #4b4b4b;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 6px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    margin-left: 25px;
 }
 
 .EditeCourseButton {
@@ -23,12 +58,12 @@ for details on configuring this project to bundle and minify static web assets. 
     cursor: pointer;
     color: #ffffff;
     font-family: Arial;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     padding: 5px 17px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #2f6627;
-    margin-left:25px;
+    margin-left: 25px;
 }
 .DeleteCourseButton {
     background-color: #4b4b4b;
@@ -37,7 +72,7 @@ for details on configuring this project to bundle and minify static web assets. 
     cursor: pointer;
     color: #ffffff;
     font-family: Arial;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     padding: 5px 17px;
     text-decoration: none;
@@ -52,16 +87,16 @@ for details on configuring this project to bundle and minify static web assets. 
     cursor: pointer;
     color: #ffffff;
     font-family: Arial;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     padding-top:0px;
     padding-bottom:0px;
     padding-left:10px;
     padding-right:10px;
     text-decoration: none;
-    margin-right:12px;
-    margin-top:15px;
-    margin-bottom:14px;
+    margin-right:20px;
+    margin-top:25px;
+    margin-bottom:5px;
 }
 
 h2.CourseName {
@@ -77,8 +112,9 @@ p.CourseDescription {
     font-size: 15px;
 }
 
-.rectangle {
-}
+
+
+
 
 .courseDetails {
     height: auto;

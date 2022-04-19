@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QcXzTzyBI9CDIKJD/HjSEcWr8SFDdm5mHeuLwKL2D/hveA8qu+Dbcv/kkbTYjwYbS5D8TQWNkXV9GVFvzxxv0g==",
+  "dgSpecHash": "Kk1hF0UNiOmaq1zPH5Hn3ZJCDtLxAy3HESZTZSxuspyuabFYGoO5bQ8PEoNVGUDwk3usgq4f6vkJMI972FphJg==",
   "success": true,
   "projectFilePath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal\\LNU Test Portal.Web.csproj",
   "expectedPackageFiles": [
@@ -68,7 +68,7 @@
     "C:\\Users\\User\\.nuget\\packages\\system.componentmodel.primitives\\4.3.0\\system.componentmodel.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.componentmodel.typeconverter\\4.3.0\\system.componentmodel.typeconverter.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\system.data.sqlclient\\4.8.1\\system.data.sqlclient.4.8.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
