@@ -1,9 +1,10 @@
+@model LNU_Test_Portal.Models.Course;
 @{
     ViewData["Title"] = "Create Courses";
     Layout = "_Layout";
 
 }
-@model LNU_Test_Portal.Models.Course;
+
 <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -12,27 +13,23 @@
                     <div class="card-body p-5">
                         <h2 class="text-uppercase text-center text-white mb-4">Create course</h2>
 
-                        <form>
-
+                        <form asp-controller="Course" asp-action="Create">
+                            @Html.AntiForgeryToken()
                             <div class="form-outline mb-4">
                                 <label class="form-label text-white" for="form3Example1cg">Course Name</label>
-                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="name" />
 
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label text-white" for="exampleFormControlTextarea1">Description</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" asp-for="description"></textarea>
                             </div>
-
-                            
 
                             <div class="d-flex justify-content-end">
                                 <a class="CancelButton text-white" style="width:20%" asp-area="" asp-controller="ManageCourses" asp-action="Index">Cancel</a>
-                                <a class="SaveCourseButton text-white" asp-area="" asp-controller="ManageCourses" asp-action="SaveCourse" style="width:20%">Save</a>
+                                <a class="SaveCourseButton text-white" style="width:20%" asp-controller="Course" asp-action="Create">Save</a>
                             </div>
-
-
                         </form>
 
                     </div>

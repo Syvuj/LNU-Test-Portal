@@ -7,7 +7,7 @@
 
 
 <div class="manage course content">
-    <a class="myButton text-white" asp-area="" asp-controller="ManageCourses" asp-action="CreateCourse">Create</a>
+    <a class="myButton text-white" asp-controller="Course" asp-action="Create">Create</a>
     @{
         int num = 0;
         foreach(var course in Model)
@@ -22,8 +22,8 @@
     <p class="CourseDescription text-white" style="width:60%"> @course.description</p>
     
     <div class="d-flex align-items-start">
-        <a class="EditCourseButton text-white" asp-area="" asp-controller="ManageCourses" asp-action="EditCourse">Edit</a>
-        <a class="DeleteCourseButton text-white" asp-area="" asp-controller="ManageCourses" asp-action="DeleteCourse">Delete</a>
+        <a class="EditCourseButton text-white" asp-area="" asp-controller="Course" asp-action="EditCourse">Edit</a>
+        <a class="DeleteCourseButton text-white" asp-area="" asp-controller="Course" asp-action="DeleteCourse">Delete</a>
     </div>
 </div>
         }

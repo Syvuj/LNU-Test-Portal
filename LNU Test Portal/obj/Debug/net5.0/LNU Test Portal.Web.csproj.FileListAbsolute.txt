@@ -91,5 +91,5 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilo
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.Seq.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\ManageCourses\Index.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\ManageCourses\Privacy.cshtml.g.cs
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\ManageCourses\CreateCourse.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\ManageCourses\EditCourse.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\ManageCourses\Create.cshtml.g.cs

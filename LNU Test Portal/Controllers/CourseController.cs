@@ -14,14 +14,14 @@ using LNU_Test_Portal.Data;
 
 namespace LNU_Test_Portal.Controllers
 {
-    public class ManageCoursesController : Controller
+    public class CourseController : Controller
     {
-        private readonly ILogger<ManageCoursesController> _logger;
+        private readonly ILogger<CourseController> _logger;
         private readonly IAllCourses _allCourses;
         private readonly IConfiguration configuration;
         private readonly CourseDbContext _courseDbContext;
 
-        public ManageCoursesController(ILogger<ManageCoursesController> logger, IAllCourses iallCourses, IConfiguration config, CourseDbContext context)
+        public CourseController(ILogger<CourseController> logger, IAllCourses iallCourses, IConfiguration config, CourseDbContext context)
         {
             _logger = logger;
             _allCourses = iallCourses;
@@ -39,7 +39,6 @@ namespace LNU_Test_Portal.Controllers
             /*CoursesListViewModel obj = new CoursesListViewModel();
             obj.AllCourses = _allCourses.Courses;*/
 
-
             //return View(obj);
 
             List<Course> courses = new List<Course>();
@@ -56,10 +55,33 @@ namespace LNU_Test_Portal.Controllers
 
         }
 
-        public IActionResult CreateCourse()
+        public IActionResult Create()
         {
-            return View();
+            var model = new Course();
+            return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("name,description")] Course country)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _courseDbContext.Add(country);
+                    _courseDbContext.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Unable to create country.");
+            }
+
+            return View(country);
+        }
+
         public IActionResult EditCourse()
         {
             return View();
