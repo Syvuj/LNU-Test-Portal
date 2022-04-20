@@ -6795,9 +6795,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.DAL\\LNU Test Portal.DAL.csproj",
-      "projectName": "LNU Test Portal.DAL",
-      "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.DAL\\LNU Test Portal.DAL.csproj",
+      "projectUniqueName": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.DAL\\DAL.csproj",
+      "projectName": "DAL",
+      "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.DAL\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,5 +1,3 @@
-using LNU_Test_Portal.DAL.interfaces;
-using LNU_Test_Portal.DAL.mocks;
 using LNU_Test_Portal.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +26,6 @@ namespace LNU_Test_Portal
         {
             services.AddControllersWithViews();
             services.AddMvc();
-            services.AddTransient<IAllCourses, MockCourse>();
             services.AddDbContext<CourseDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -46,7 +43,7 @@ namespace LNU_Test_Portal
                 app.UseHsts();
             }
 
-            SeedData.Initialize(app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider);
+            AddData.Initialize(app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider);
 
             app.UseStatusCodePages();
             app.UseHttpsRedirection();

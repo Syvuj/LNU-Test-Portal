@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oLReU9hwp2iM8YkOXSplFrMj08rypi5MKGNpHlzQ2sJXH6ZDJ7Nk0s6iYUfIIN3q0f81NArPh/mJdqBVwUnSCg==",
+  "dgSpecHash": "zvdlUD0GYv2OCZ0F+A1wFp5LtHkMV2jVJ6kPZKgbk9K14/ZCYyWrEOzfqOUJjdXNp2/KD+7NpS+0GQv7NST6Gg==",
   "success": true,
-  "projectFilePath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.BLL\\LNU Test Portal.BLL.csproj",
+  "projectFilePath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

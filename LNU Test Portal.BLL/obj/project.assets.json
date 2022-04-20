@@ -6767,9 +6767,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.BLL\\LNU Test Portal.BLL.csproj",
-      "projectName": "LNU Test Portal.BLL",
-      "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.BLL\\LNU Test Portal.BLL.csproj",
+      "projectUniqueName": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.BLL\\BLL.csproj",
+      "projectName": "BLL",
+      "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal.BLL\\obj\\",
       "projectStyle": "PackageReference",

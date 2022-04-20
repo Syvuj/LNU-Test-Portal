@@ -1,6 +1,4 @@
-﻿using LNU_Test_Portal.DAL.interfaces;
-using LNU_Test_Portal.Models;
-using LNU_Test_Portal.ViewModels;
+﻿using LNU_Test_Portal.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -17,42 +15,22 @@ namespace LNU_Test_Portal.Controllers
     public class CourseController : Controller
     {
         private readonly ILogger<CourseController> _logger;
-        private readonly IAllCourses _allCourses;
         private readonly IConfiguration configuration;
         private readonly CourseDbContext _courseDbContext;
 
-        public CourseController(ILogger<CourseController> logger, IAllCourses iallCourses, IConfiguration config, CourseDbContext context)
+        public CourseController(ILogger<CourseController> logger,IConfiguration config, CourseDbContext context)
         {
             _logger = logger;
-            _allCourses = iallCourses;
-            this.configuration = config;
+            configuration = config;
             _courseDbContext = context;
-            
-
         }
         
 
         public IActionResult Index()
         {
-
-
-            /*CoursesListViewModel obj = new CoursesListViewModel();
-            obj.AllCourses = _allCourses.Courses;*/
-
-            //return View(obj);
-
             List<Course> courses = new List<Course>();
             courses = _courseDbContext.Course.ToList();
-            //try
-            //{
-                
-            //}
-            //catch(Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //}
             return View(courses);
-
         }
 
         [HttpGet]
@@ -70,8 +48,9 @@ namespace LNU_Test_Portal.Controllers
             _courseDbContext.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [HttpGet]
-        public IActionResult Edit(long Id)
+        public IActionResult Edit(int Id)
         {
             try
             {
@@ -105,19 +84,16 @@ namespace LNU_Test_Portal.Controllers
                 {
                     _courseDbContext.Update(course);
                     _courseDbContext.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Index");
                 }
             }
             catch (Exception)
             {
-                ModelState.AddModelError("", "Unable to create course.");
+                return RedirectToAction("Index");
             }
 
             return View(course);
         }
-
-
-        
 
         public IActionResult Delete(long Id)
         {
@@ -142,7 +118,7 @@ namespace LNU_Test_Portal.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(long Id)
+        public IActionResult DeleteConfirmed(int Id)
         {
             try
             {
@@ -150,14 +126,14 @@ namespace LNU_Test_Portal.Controllers
                 {
                     return NotFound();
                 }
-                Course course = new Course { id = (int)Id };
+                Course course = new Course { id = Id };
                 _courseDbContext.Entry(course).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
                 _courseDbContext.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
             catch (Exception)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
         }
 

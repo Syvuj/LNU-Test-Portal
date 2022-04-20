@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LNU Test Portal.Web", "LNU 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{80CC3BB3-CE84-42CC-9C3E-AF3AAB6BA6E7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LNU Test Portal.BLL", "LNU Test Portal.BLL\LNU Test Portal.BLL.csproj", "{17AB0755-EC5A-4FB5-A04E-0997B96B9E53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "LNU Test Portal.BLL\BLL.csproj", "{17AB0755-EC5A-4FB5-A04E-0997B96B9E53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LNU Test Portal.DAL", "LNU Test Portal.DAL\LNU Test Portal.DAL.csproj", "{C8A45940-8EE5-4855-812D-745154C0F667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "LNU Test Portal.DAL\DAL.csproj", "{C8A45940-8EE5-4855-812D-745154C0F667}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

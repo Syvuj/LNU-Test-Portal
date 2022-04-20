@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LNU_Test_Portal.Data
 {
-    public class SeedData
+    public class AddData
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
