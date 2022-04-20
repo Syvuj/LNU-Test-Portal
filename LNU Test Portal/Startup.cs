@@ -1,8 +1,10 @@
 using LNU_Test_Portal.DAL.interfaces;
 using LNU_Test_Portal.DAL.mocks;
+using LNU_Test_Portal.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +29,8 @@ namespace LNU_Test_Portal
             services.AddControllersWithViews();
             services.AddMvc();
             services.AddTransient<IAllCourses, MockCourse>();
+            services.AddDbContext<CourseDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,6 +45,9 @@ namespace LNU_Test_Portal
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            SeedData.Initialize(app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider);
+
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseStaticFiles();

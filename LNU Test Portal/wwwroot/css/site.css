@@ -27,15 +27,12 @@ for details on configuring this project to bundle and minify static web assets. 
     font-family: Arial;
     font-size: 15px;
     font-weight: bold;
+    padding: 5px 17px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #2f6627;
-    margin-left: 25px;
+
 }
 
-
-.CreateCourseForm {
-    background-color: #79819e;
-}
 .SaveCourseButton {
     background-color: #4b4b4b;
     border-radius: 10px;
@@ -45,13 +42,20 @@ for details on configuring this project to bundle and minify static web assets. 
     font-family: Arial;
     font-size: 15px;
     font-weight: bold;
-    padding: 5px 6px;
+    padding: 5px 25px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #2f6627;
-    margin-left: 25px;
+    margin-left:12px;
 }
 
-.EditeCourseButton {
+
+
+.CreateCourseForm {
+    background-color: #79819e;
+}
+
+
+.EditCourseButton {
     background-color: #4b4b4b;
     border-radius: 10px;
     display: inline-block;

@@ -1,28 +1,29 @@
-﻿@using LNU_Test_Portal.ViewModels;
-@model CoursesListViewModel
+﻿@model IEnumerable<LNU_Test_Portal.Models.Course>
 @{
     ViewData["Title"] = "Manage Courses";
     Layout = "_Layout";
 
 }
+
+
 <div class="manage course content">
-    <a href="#" class="myButton text-white">Create</a>
+    <a class="myButton text-white" asp-area="" asp-controller="ManageCourses" asp-action="CreateCourse">Create</a>
     @{
         int num = 0;
-        foreach(var course in Model.AllCourses)
+        foreach(var course in Model)
         {
             num++;
  
 <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
-        <h2 class="CourseName text-white">Course #@num: @course.CName</h2>
+        <h2 class="CourseName text-white">Course #@num: @course.name</h2>
         <a href="#" class="AddStudentBtn text-white">Add student</a>
     </div>
-    <p class="CourseDescription text-white" style="width:60%"> @course.CDescription</p>
+    <p class="CourseDescription text-white" style="width:60%"> @course.description</p>
     
     <div class="d-flex align-items-start">
-        <a href="#" class="EditeCourseButton text-white">Edite</a>
-        <a href="#" class="DeleteCourseButton text-white">Delete</a>
+        <a class="EditCourseButton text-white" asp-area="" asp-controller="ManageCourses" asp-action="EditCourse">Edit</a>
+        <a class="DeleteCourseButton text-white" asp-area="" asp-controller="ManageCourses" asp-action="DeleteCourse">Delete</a>
     </div>
 </div>
         }
@@ -32,4 +33,5 @@
     
     
 </div>
+
 
