@@ -1,5 +1,6 @@
+@model LNU_Test_Portal.Models.Course;
 @{
-    ViewData["Title"] = "Create Courses";
+    ViewData["Title"] = "Create";
     Layout = "_Layout";
 
 }
@@ -10,30 +11,25 @@
             <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                 <div class="CreateCourseForm card"  style="border-radius: 15px;">
                     <div class="card-body p-5">
-                        <h2 class="text-uppercase text-center text-white mb-4">Edit course</h2>
+                        <h2 class="text-uppercase text-center text-white mb-4">Create course</h2>
 
-                        <form>
-
+                        <form method="post" asp-controller="Course" asp-action="Create">
+                            @Html.AntiForgeryToken()
                             <div class="form-outline mb-4">
                                 <label class="form-label text-white" for="form3Example1cg">Course Name</label>
-                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="name" />
 
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label text-white" for="exampleFormControlTextarea1">Description</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" asp-for="description"></textarea>
                             </div>
-
-                            
 
                             <div class="d-flex justify-content-end">
-                                <a class="CancelButton text-white" style="width:20%" asp-area="" asp-controller="ManageCourses" asp-action="Index">Cancel</a>
-                                <a class="SaveCourseButton text-white" asp-area="" asp-controller="ManageCourses" asp-action="SaveCourse" style="width:20%">Save</a>
-                                
+                                <a class="CancelButton text-white" asp-area="" asp-controller="Course" asp-action="Index">Cancel</a>
+                                <input type="submit" class="SaveCourseButton btn" name="save" value="Save" />
                             </div>
-
-
                         </form>
 
                     </div>

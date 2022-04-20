@@ -60,7 +60,7 @@ namespace LNU_Test_Portal
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=ManageCourses}/{action=Index}/{id?}");
+                    pattern: "{controller=Course}/{action=Index}/{id?}");
             });
         }
     }

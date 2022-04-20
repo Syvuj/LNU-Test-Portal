@@ -22,8 +22,8 @@
     <p class="CourseDescription text-white" style="width:60%"> @course.description</p>
     
     <div class="d-flex align-items-start">
-        <a class="EditCourseButton text-white" asp-area="" asp-controller="Course" asp-action="EditCourse">Edit</a>
-        <a class="DeleteCourseButton text-white" asp-area="" asp-controller="Course" asp-action="DeleteCourse">Delete</a>
+        <a class="EditCourseButton text-white" asp-controller="Course" asp-action="Edit" asp-route-id="@course.id">Edit</a>
+        <a class="DeleteCourseButton text-white" asp-controller="Course" asp-action="Delete" asp-route-id="@course.id">Delete</a>
     </div>
 </div>
         }

@@ -55,6 +55,7 @@ namespace LNU_Test_Portal.Controllers
 
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             var model = new Course();
@@ -63,28 +64,101 @@ namespace LNU_Test_Portal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("name,description")] Course country)
+        public IActionResult Create([Bind("name,description")] Course course)
+        {
+            _courseDbContext.Add(course);
+            _courseDbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Edit(long Id)
         {
             try
             {
+                if (Id <= 0)
+                {
+                    return NotFound();
+                }
+                Course course = _courseDbContext.Course.FirstOrDefault(x => x.id == Id);
+                if (course == null)
+                {
+                    return NotFound();
+                }
+                return View(course);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(long id, [Bind("id,name,description")] Course course)
+        {
+            try
+            {
+                if (id != course.id)
+                    return NotFound();
+
                 if (ModelState.IsValid)
                 {
-                    _courseDbContext.Add(country);
+                    _courseDbContext.Update(course);
                     _courseDbContext.SaveChanges();
                     return RedirectToAction(nameof(Index));
                 }
             }
             catch (Exception)
             {
-                ModelState.AddModelError("", "Unable to create country.");
+                ModelState.AddModelError("", "Unable to create course.");
             }
 
-            return View(country);
+            return View(course);
         }
 
-        public IActionResult EditCourse()
+
+        
+
+        public IActionResult Delete(long Id)
         {
-            return View();
+            try
+            {
+                if (Id <= 0)
+                {
+                    return NotFound();
+                }
+                Course course = _courseDbContext.Course.FirstOrDefault(x => x.id == Id);
+                if (course == null)
+                {
+                    return NotFound();
+                }
+                return View(course);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(long Id)
+        {
+            try
+            {
+                if (Id <= 0)
+                {
+                    return NotFound();
+                }
+                Course course = new Course { id = (int)Id };
+                _courseDbContext.Entry(course).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+                _courseDbContext.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         public IActionResult Privacy()
