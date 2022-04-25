@@ -1,3 +1,5 @@
+using Business_Layer.Services;
+using Business_Layer.Services.Interfaces;
 using LNU_Test_Portal.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Data_Access_Layer.Repository;
+using Data_Access_Layer.Entities;
 
 namespace LNU_Test_Portal
 {
@@ -26,8 +30,15 @@ namespace LNU_Test_Portal
         {
             services.AddControllersWithViews();
             services.AddMvc();
-            services.AddDbContext<CourseDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<ICourseService, CourseService>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<DbContext, DataContext>();
+
+
+            services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddHttpClient();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,7 +54,7 @@ namespace LNU_Test_Portal
                 app.UseHsts();
             }
 
-            AddData.Initialize(app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider);
+            //AddData.Initialize(app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider);
 
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
@@ -57,7 +68,7 @@ namespace LNU_Test_Portal
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Course}/{action=Index}/{id?}");
+                    pattern: "{controller=Course}/{action=GetAllCourses}/{id?}");
             });
         }
     }

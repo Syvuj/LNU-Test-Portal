@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Data_Access_Layer.Entities.Course>
+@{
+    ViewData["Title"] = "Manage Courses";
+    Layout = "_Layout";
+
+}
+
+
+<div class="manage course content">
+    <a class="myButton text-white" asp-controller="Course" asp-action="Create">Create</a>
+    @{
+        int num = 0;
+        foreach(var course in Model)
+        {
+            num++;
+ 
+<div class="courseDetails flex-column justify-content-between" style="width:100%">
+    <div class="d-flex justify-content-between">
+        <h2 class="CourseName text-white">Course #@num: @course.name</h2>
+        <a href="#" class="AddStudentBtn text-white">Add student</a>
+    </div>
+    <p class="CourseDescription text-white" style="width:60%"> @course.description</p>
+    
+    <div class="d-flex align-items-start">
+        <a class="EditCourseButton text-white" asp-controller="Course" asp-action="Edit" asp-route-id="@course.id">Edit</a>
+        <a class="DeleteCourseButton text-white" asp-controller="Course" asp-action="Delete" asp-route-id="@course.id">Delete</a>
+    </div>
+</div>
+        }
+    }
+</div>

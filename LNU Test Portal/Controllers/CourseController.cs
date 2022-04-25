@@ -1,4 +1,4 @@
-﻿using LNU_Test_Portal.Models;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using LNU_Test_Portal.Data;
+using Business_Layer.Services;
+using Business_Layer.Services.Interfaces;
+using Data_Access_Layer.Entities;
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -16,20 +19,19 @@ namespace LNU_Test_Portal.Controllers
     {
         private readonly ILogger<CourseController> _logger;
         private readonly IConfiguration configuration;
-        private readonly CourseDbContext _courseDbContext;
+        private readonly ICourseService courseService;
 
-        public CourseController(ILogger<CourseController> logger,IConfiguration config, CourseDbContext context)
+        public CourseController(ILogger<CourseController> logger,IConfiguration config, ICourseService courseService)
         {
             _logger = logger;
             configuration = config;
-            _courseDbContext = context;
+            this.courseService = courseService;
         }
         
 
-        public IActionResult Index()
+        public IActionResult GetAllCourses()
         {
-            List<Course> courses = new List<Course>();
-            courses = _courseDbContext.Course.ToList();
+            var courses = courseService.GetAllCourses();
             return View(courses);
         }
 
@@ -44,108 +46,86 @@ namespace LNU_Test_Portal.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("name,description")] Course course)
         {
-            _courseDbContext.Add(course);
-            _courseDbContext.SaveChanges();
-            return RedirectToAction("Index");
+            courseService.AddNewCourse(course);
+            return RedirectToAction(nameof(GetAllCourses));
         }
 
-        [HttpGet]
-        public IActionResult Edit(int Id)
-        {
-            try
-            {
-                if (Id <= 0)
-                {
-                    return NotFound();
-                }
-                Course course = _courseDbContext.Course.FirstOrDefault(x => x.id == Id);
-                if (course == null)
-                {
-                    return NotFound();
-                }
-                return View(course);
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("Index");
-            }
-        }
+        //[HttpGet]
+        //public IActionResult Edit(int Id)
+        //{
+        //    try
+        //    {
+        //        Course course = courseService.GetCoursesById(Id).FirstOrDefault();
+        //        return View(course);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return RedirectToAction(nameof(GetAllCourses));
+        //    }
+        //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(long id, [Bind("id,name,description")] Course course)
-        {
-            try
-            {
-                if (id != course.id)
-                    return NotFound();
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Edit(int id, [Bind("id,name,description")] Course course)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            courseService.UpdateCourse(course);
+        //            return RedirectToAction(nameof(GetAllCourses));
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return RedirectToAction(nameof(GetAllCourses));
+        //    }
+        //    return View(course);
+        //}
 
-                if (ModelState.IsValid)
-                {
-                    _courseDbContext.Update(course);
-                    _courseDbContext.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("Index");
-            }
+        //public IActionResult Delete(long Id)
+        //{
+        //    try
+        //    {
+        //        Course course = _courseDbContext.Course.FirstOrDefault(x => x.id == Id);
+        //        if (course == null)
+        //        {
+        //            return NotFound();
+        //        }
+        //        return View(course);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return RedirectToAction(nameof(GetAllCourses));
+        //    }
+        //}
 
-            return View(course);
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult DeleteConfirmed(int Id)
+        //{
+        //    try
+        //    {
+        //        Course course = new Course { id = Id };
+        //        _courseDbContext.Entry(course).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+        //        _courseDbContext.SaveChanges();
+        //        return RedirectToAction(nameof(GetAllCourses));
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return RedirectToAction(nameof(GetAllCourses));
+        //    }
+        //}
 
-        public IActionResult Delete(long Id)
-        {
-            try
-            {
-                if (Id <= 0)
-                {
-                    return NotFound();
-                }
-                Course course = _courseDbContext.Course.FirstOrDefault(x => x.id == Id);
-                if (course == null)
-                {
-                    return NotFound();
-                }
-                return View(course);
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("Index");
-            }
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int Id)
-        {
-            try
-            {
-                if (Id <= 0)
-                {
-                    return NotFound();
-                }
-                Course course = new Course { id = Id };
-                _courseDbContext.Entry(course).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-                _courseDbContext.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("Index");
-            }
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }
