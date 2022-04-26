@@ -8,15 +8,13 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.Repository
 {
-    public interface IRepository <TEntity> where TEntity:BaseEntity
+    public interface IRepository <T> where T:BaseEntity
     {
-        void Insert(TEntity entity) { }
-        void Update(TEntity entity) { }
-        void Delete(TEntity entity) { }
-        public TEntity GetModel(TEntity entity);
-        IEnumerable<TEntity> SelectAll();
-        public TEntity SelectAllById(int id);
-        public IEnumerable<TEntity> SelectAll(Expression<Func<TEntity, bool>> selector);
-        public TEntity SelectOneById(int Id);
+        void Insert(T entity) { }
+        void Update(T entity) { }
+        void Delete(T entity) { }
+        public T GetModel(T entity);
+        IEnumerable<T> SelectAll();
+        public T SelectOneById(int Id);
     }
 }

@@ -11,7 +11,8 @@ namespace Business_Layer.Services.Interfaces
     {
         IEnumerable<Course> GetAllCourses();
         void AddNewCourse(Course course);
-        public IEnumerable<Course> GetCoursesById(int id);
-        public void UpdateCourse(Course course);
+        public Course GetCourseById(int Id);
+        void UpdateCourse(Course course);
+        void DeleteCourse(Course course);
     }
 }

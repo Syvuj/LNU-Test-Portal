@@ -11,33 +11,19 @@ namespace Business_Layer.Services
 {
     public class CourseService:ICourseService
     {
-        private readonly IRepository<Course> courseRepository;//error here
+        private readonly IRepository<Course> courseRepository;
         public CourseService(IRepository<Course> courseRepository)
         {
             this.courseRepository = courseRepository;
         }
         public IEnumerable<Course> GetAllCourses()
         {
-            return courseRepository.SelectAll().Select(x=> new Course { description=x.description,name=x.name});
+            return courseRepository.SelectAll()
+                .Select(x=> new Course {id=x.id, description=x.description,name=x.name});
         }
-        public void AddNewCourse(Course course)
-        {
-            courseRepository.Insert(course);
-        }
-        public IEnumerable<Course> GetCoursesById(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateCourse(int id)
-        {
-            //courseRepository.GetById(id);
-            
-        }
-
-        public void UpdateCourse(Course course)
-        {
-            throw new NotImplementedException();
-        }
+        public void AddNewCourse(Course course)=> courseRepository.Insert(course);
+        public Course GetCourseById(int Id)=> courseRepository.SelectOneById(Id);
+        public void UpdateCourse(Course course)=> courseRepository.Update(course);
+        public void DeleteCourse(Course course)=> courseRepository.Delete(course);
     }
 }
