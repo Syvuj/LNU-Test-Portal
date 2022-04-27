@@ -1,22 +1,17 @@
 using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data_Access_Layer.Entities
 {
-    public class Test
+    public class Test:BaseEntity
     {
-        public string id { get; set; }
-        public string TName { get; set; }
-        public string TDescription { get; set; }
-        public List<Question> Questions { get; set; }
-        public Test(string id, string TName, string TDescription, List<Question> Questions)
-        {
-            this.id = id;
-            this.TName = TName;
-            this.TDescription = TDescription;
-            
-            
-        }
+        public string name { get; set; }
+        public string description { get; set; }
+
+        [ForeignKey("Course")]
+        public int CourseId { get; set; }
+        public Course Course { get; set; }
     }
 }

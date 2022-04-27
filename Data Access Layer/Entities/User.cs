@@ -12,6 +12,5 @@ namespace Data_Access_Layer.Entities
         public string SurName { get; set; }
         public string LogInUserName { get; set; }
         public string LogInPwd { get; set; }
-   
     }
 }

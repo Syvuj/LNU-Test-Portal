@@ -8,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
-using LNU_Test_Portal.Data;
 using Business_Layer.Services;
 using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
@@ -109,9 +108,5 @@ namespace LNU_Test_Portal.Controllers
             }
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
     }
 }

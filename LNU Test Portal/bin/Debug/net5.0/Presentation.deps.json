@@ -764,6 +764,7 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
+      "popper.js/1.16.1": {},
       "runtime.native.System/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1666,8 +1667,10 @@
       },
       "Data Access Layer/1.0.0": {
         "dependencies": {
+          "EntityFramework": "6.4.4",
           "Microsoft.EntityFrameworkCore": "5.0.16",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16",
+          "popper.js": "1.16.1"
         },
         "runtime": {
           "Data Access Layer.dll": {}
@@ -3635,6 +3638,13 @@
       "sha512": "sha512-ebWzW9j2nwxQeBo59As2TYn7nYr9BHicqqCwHOD1Vdo+50HBtLPuqdiCYJcLdTRknpYis/DSEOQz5KmZxwrIAg==",
       "path": "newtonsoft.json/10.0.1",
       "hashPath": "newtonsoft.json.10.0.1.nupkg.sha512"
+    },
+    "popper.js/1.16.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6GiVZho0vwBnId7pK7NLTjMGq4F0/VE65I08CCeKlarVoUt1w8SGTtJmhNo/0pK38EGUP/xbT4+OkWB8UTMPBw==",
+      "path": "popper.js/1.16.1",
+      "hashPath": "popper.js.1.16.1.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",

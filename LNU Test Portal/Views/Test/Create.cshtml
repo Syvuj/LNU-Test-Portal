@@ -1,0 +1,61 @@
+@using Data_Access_Layer.Entities
+@model dynamic
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Layout";
+    string name = "";
+    string description = "";
+    int CourseId = 0;
+    
+}
+
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="CreateCourseForm card"  style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <h2 class="text-uppercase text-center text-white mb-4">Create test</h2>
+
+                        <form method="post" asp-controller="Test" asp-action="Create">
+                            @Html.AntiForgeryToken()
+                            <div class="form-outline mb-4">
+                               <label class="form-label text-white" for="form3Example1cg">Course Name</label>
+                            <div class="form-outline mb-4">
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>Choose Course...</option>
+                                    
+                                    @foreach(Course course in Model.coursesChoose)
+                                    { 
+                                        <option CourseId="@course.id" Course ="@course" >@course.name</option>
+                                        
+                                        
+                                    }
+                               </select>
+
+                            </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label text-white" for="form3Example1cg">Test Name</label>
+                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for"name" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label text-white" for="exampleFormControlTextarea1">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" asp-for"description"></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <a class="CancelButton text-white" asp-area="" asp-controller="Test" asp-action="GetAllTests">Cancel</a>
+                                <input type="submit" class="SaveCourseButton btn text-white" name="save" value="Save" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

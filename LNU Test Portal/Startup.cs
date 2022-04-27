@@ -1,6 +1,5 @@
 using Business_Layer.Services;
 using Business_Layer.Services.Interfaces;
-using LNU_Test_Portal.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data_Access_Layer.Repository;
 using Data_Access_Layer.Entities;
+using Data_Access_Layer;
 
 namespace LNU_Test_Portal
 {
@@ -31,6 +31,7 @@ namespace LNU_Test_Portal
             services.AddControllersWithViews();
             services.AddMvc();
             services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<ITestService, TestService>();
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<DbContext, DataContext>();

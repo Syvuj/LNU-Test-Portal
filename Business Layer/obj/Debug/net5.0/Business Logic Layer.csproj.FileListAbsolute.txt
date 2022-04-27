@@ -12,3 +12,6 @@ D:\My Visual Studio proj\LNU Test Portal\Business Layer\bin\Debug\net5.0\Data Ac
 D:\My Visual Studio proj\LNU Test Portal\Business Layer\obj\Debug\net5.0\Business Logic Layer.dll
 D:\My Visual Studio proj\LNU Test Portal\Business Layer\obj\Debug\net5.0\ref\Business Logic Layer.dll
 D:\My Visual Studio proj\LNU Test Portal\Business Layer\obj\Debug\net5.0\Business Logic Layer.pdb
+D:\My Visual Studio proj\LNU Test Portal\Business Layer\bin\Debug\net5.0\Business Logic Layer.runtimeconfig.json
+D:\My Visual Studio proj\LNU Test Portal\Business Layer\bin\Debug\net5.0\Business Logic Layer.runtimeconfig.dev.json
+D:\My Visual Studio proj\LNU Test Portal\Business Layer\obj\Debug\net5.0\Business Logic Layer.genruntimeconfig.cache
