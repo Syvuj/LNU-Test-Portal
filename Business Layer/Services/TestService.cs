@@ -54,7 +54,21 @@ namespace Business_Layer.Services
                      description = x.description,
                      CourseId = courseRepository.SelectOneById(x.CourseId).id,
                      Course = courseRepository.SelectOneById(x.CourseId)
-                 });
+        }) ;
+        
+        }
+
+        public IEnumerable<Test> GetAllTests(int CourseId)
+        {
+            return testRepository.SelectAll()
+                .Select(x => new Test
+                {
+                    id = x.id,
+                    name = x.name,
+                    description = x.description,
+                    CourseId = CourseId,
+                    Course = courseRepository.SelectOneById(CourseId)
+                });
         }
 
         public Course GetCourseById(int Id)

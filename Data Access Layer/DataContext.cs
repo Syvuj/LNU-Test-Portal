@@ -17,6 +17,7 @@ namespace Data_Access_Layer
             .HasOne<Course>(s => s.Course)
             .WithMany(g => g.Tests)
             .HasForeignKey(s => s.CourseId);
+
         }
     }
 }

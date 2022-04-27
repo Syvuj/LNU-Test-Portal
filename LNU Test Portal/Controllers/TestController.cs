@@ -38,23 +38,20 @@ namespace LNU_Test_Portal.Controllers
 
         public IActionResult Create()
         {
-            //var model = new Test();
-            //dynamic dy = new ExpandoObject();
-            //dy.courseList = getCourses();
-            dynamic mymodel = new ExpandoObject();
-            mymodel.test = new Test();
-            mymodel.coursesChoose = courseService.GetAllCourses().ToList();
-            //var courses = 
-            //var test = 
-            return View(mymodel);
+
+            var test = new Test();
+            // test.CourseId = CourseID;
+            //test.Course = courseService.GetCourseById(CourseID);
+            ViewData["AviableCourses"] = courseService.GetAllCourses();
+            return View(test);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("name,description,CourseId,Course")] Test test)
         {
-            //testService.AddNewTest(test);
-            Console.WriteLine("///////////" + test.name + test.description + test.CourseId + test.Course.name);
+            testService.AddNewTest(test);
+            //Console.WriteLine("///////////" + test.name + test.description + test.CourseId + test.Course.name);
             return RedirectToAction(nameof(GetAllTests));
             
         }

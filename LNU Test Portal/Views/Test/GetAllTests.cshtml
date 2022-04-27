@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Manage Courses";
     Layout = "_Layout";
+    
 
 }
 @using Data_Access_Layer.Entities
@@ -9,7 +10,7 @@
 
 
 <div class="manage course content">
-    <a class="myButton text-white" asp-controller="Test" asp-action="Create">Create</a>
+    <a class="myButton text-white" asp-controller="Test" asp-action="Create">Create Test</a>
     @{
 
         @foreach(var test in Model)

@@ -10,6 +10,7 @@ namespace Business_Layer.Services.Interfaces
     public interface ITestService
     {
         IEnumerable<Test> GetAllTests();
+        IEnumerable<Test> GetAllTests(int CourseId);
         void AddNewTest(Test test);
         public Course GetTestById(int Id);
         void UpdateTest(Test test);
