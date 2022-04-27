@@ -50,8 +50,8 @@ namespace LNU_Test_Portal.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("name,description,CourseId,Course")] Test test)
         {
+            test.Course = courseService.GetCourseById(test.CourseId);
             testService.AddNewTest(test);
-            //Console.WriteLine("///////////" + test.name + test.description + test.CourseId + test.Course.name);
             return RedirectToAction(nameof(GetAllTests));
             
         }

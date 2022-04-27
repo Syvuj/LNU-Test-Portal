@@ -22,11 +22,11 @@
                             <div class="form-outline mb-4">
                                <label class="form-label text-white" for="form3Example1cg">Course Name</label>
                                <div class="form-outline mb-4">
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" asp-for="CourseId">
                                     <option selected>Choose Course...</option>
                                     @foreach(Course course in coursesic)
                                     { 
-                                        <option value="@course.id" asp-for="CourseId">@course.name</option>
+                                        <option value="@course.id" asp-for="CourseId"> @course.name</option>
                                         
                                     }
                             </select>
@@ -38,13 +38,13 @@
                             </div>
                             <div class="form-outline mb-4">
                                 <label class="form-label text-white" for="form3Example1cg">Test Name</label>
-                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for"name"/>
+                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="name"/>
 
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label text-white" for="exampleFormControlTextarea1">Description</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" asp-for"description"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" asp-for="description"></textarea>
                             </div>
 
                             <div class="d-flex justify-content-end">
