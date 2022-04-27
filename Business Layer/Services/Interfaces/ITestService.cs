@@ -15,6 +15,5 @@ namespace Business_Layer.Services.Interfaces
         public Test GetTestById(int Id);
         void UpdateTest(Test test);
         void DeleteTest(Test test);
-
     }
 }

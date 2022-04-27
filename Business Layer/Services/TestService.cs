@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business_Layer.Services
 {
-    public class TestService : ITestService,ICourseService
+    public class TestService : ITestService
     {
         private readonly IRepository<Test> testRepository;
         private readonly IRepository<Course> courseRepository;
@@ -17,32 +17,9 @@ namespace Business_Layer.Services
         {
             this.testRepository = testRepository;
             this.courseRepository = courseRepository;
-    }
-
-        public void AddNewCourse(Course course)
-        {
-            throw new NotImplementedException();
         }
-
-        public void AddNewTest(Test test)
-        {
-            testRepository.Insert(test);
-        }
-
-        public void DeleteCourse(Course course)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteTest(Test test)
-        {
-            testRepository.Delete(test);
-        }
-
-        public IEnumerable<Course> GetAllCourses()
-        {
-            throw new NotImplementedException();
-        }
+        public void AddNewTest(Test test)=> testRepository.Insert(test);
+        public void DeleteTest(Test test)=> testRepository.Delete(test);
 
         public IEnumerable<Test> GetAllTests()
         {
@@ -54,8 +31,8 @@ namespace Business_Layer.Services
                      description = x.description,
                      CourseId = courseRepository.SelectOneById(x.CourseId).id,
                      Course = courseRepository.SelectOneById(x.CourseId)
-        }) ;
-        
+                 }
+                 ) ;
         }
 
         public IEnumerable<Test> GetAllTests(int CourseId)
@@ -71,24 +48,7 @@ namespace Business_Layer.Services
                 });
         }
 
-        public Course GetCourseById(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Test GetTestById(int Id)
-        {
-            return testRepository.SelectOneById(Id);
-        }
-
-        public void UpdateCourse(Course course)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateTest(Test test)
-        {
-            testRepository.Update(test);
-        }
+        public Test GetTestById(int Id)=> testRepository.SelectOneById(Id);
+        public void UpdateTest(Test test)=> testRepository.Update(test);
     }
 }

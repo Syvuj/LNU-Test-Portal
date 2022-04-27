@@ -17,12 +17,12 @@ namespace LNU_Test_Portal.Controllers
 {
     public class TestController : Controller
     {
-        private readonly ILogger<CourseController> logger;
+        private readonly ILogger<TestController> logger;
         private readonly IConfiguration configuration;
         private readonly ITestService testService;
         private readonly ICourseService  courseService;
 
-        public TestController(ILogger<CourseController> logger, IConfiguration configuration, ITestService testService, ICourseService courseService)
+        public TestController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, ICourseService courseService)
         {
             this.logger = logger;
             this.configuration = configuration;
