@@ -12,7 +12,7 @@ namespace Business_Layer.Services.Interfaces
         IEnumerable<Test> GetAllTests();
         IEnumerable<Test> GetAllTests(int CourseId);
         void AddNewTest(Test test);
-        public Course GetTestById(int Id);
+        public Test GetTestById(int Id);
         void UpdateTest(Test test);
         void DeleteTest(Test test);
 

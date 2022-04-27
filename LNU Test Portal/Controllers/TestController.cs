@@ -38,10 +38,7 @@ namespace LNU_Test_Portal.Controllers
 
         public IActionResult Create()
         {
-
             var test = new Test();
-            // test.CourseId = CourseID;
-            //test.Course = courseService.GetCourseById(CourseID);
             ViewData["AviableCourses"] = courseService.GetAllCourses();
             return View(test);
         }
@@ -52,70 +49,70 @@ namespace LNU_Test_Portal.Controllers
         {
             test.Course = courseService.GetCourseById(test.CourseId);
             testService.AddNewTest(test);
-            return RedirectToAction(nameof(GetAllTests));
-            
+            return RedirectToAction(nameof(GetAllTests)); 
         }
 
-        //public IActionResult Edit(int Id)
-        //{
-        //    try
-        //    {
-        //        Course course = courseService.GetCourseById(Id);
-        //        return View(course);
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction(nameof(GetAllCourses));
-        //    }
-        //}
+        public IActionResult Edit(int Id)
+        {
+            try
+            {
+                Test test = testService.GetTestById(Id);
+                ViewData["AviableCourses"] = courseService.GetAllCourses();
+                return View(test);
+            }
+            catch
+            {
+                return RedirectToAction(nameof(GetAllTests));
+            }
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Edit(int id, [Bind("id,name,description")] Course course)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            courseService.UpdateCourse(course);
-        //            return RedirectToAction(nameof(GetAllCourses));
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return RedirectToAction(nameof(GetAllCourses));
-        //    }
-        //    return View(course);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, [Bind("id,name,description,CourseId,Course")] Test test)
+        {
+            test.Course = courseService.GetCourseById(test.CourseId);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    testService.UpdateTest(test);
+                    return RedirectToAction(nameof(GetAllTests));
+                }
+            }
+            catch (Exception)
+            {
+                return RedirectToAction(nameof(GetAllTests));
+            }
+            return View(test);
+        }
 
-        //public IActionResult Delete(int Id)
-        //{
-        //    try
-        //    {
-        //        Course course = courseService.GetCourseById(Id);
-        //        return View(course);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return RedirectToAction(nameof(GetAllCourses));
-        //    }
-        //}
+        public IActionResult Delete(int Id)
+        {
+            try
+            {
+                Test test = testService.GetTestById(Id);
+                return View(test);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction(nameof(GetAllTests));
+            }
+        }
 
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult DeleteConfirmed(int Id)
-        //{
-        //    try
-        //    {
-        //        Course course = new Course { id = Id };
-        //        courseService.DeleteCourse(course);
-        //        return RedirectToAction(nameof(GetAllCourses));
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return RedirectToAction(nameof(GetAllCourses));
-        //    }
-        //}
-
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int Id)
+        {
+            try
+            {
+                Test test = new Test { id = Id };
+                testService.DeleteTest(test);
+                return RedirectToAction(nameof(GetAllTests));
+            }
+            catch (Exception)
+            {
+                return RedirectToAction(nameof(GetAllTests));
+            }
+        }
     }
 }

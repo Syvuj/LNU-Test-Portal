@@ -76,9 +76,9 @@ namespace Business_Layer.Services
             throw new NotImplementedException();
         }
 
-        public Course GetTestById(int Id)
+        public Test GetTestById(int Id)
         {
-            throw new NotImplementedException();
+            return testRepository.SelectOneById(Id);
         }
 
         public void UpdateCourse(Course course)
@@ -88,7 +88,7 @@ namespace Business_Layer.Services
 
         public void UpdateTest(Test test)
         {
-            throw new NotImplementedException();
+            testRepository.Update(test);
         }
     }
 }
