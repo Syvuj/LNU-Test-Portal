@@ -16,3 +16,21 @@ D:\My Visual Studio proj\LNU Test Portal\Business Layer\bin\Debug\net5.0\Busines
 D:\My Visual Studio proj\LNU Test Portal\Business Layer\bin\Debug\net5.0\Business Logic Layer.runtimeconfig.dev.json
 D:\My Visual Studio proj\LNU Test Portal\Business Layer\obj\Debug\net5.0\Business Logic Layer.genruntimeconfig.cache
 D:\My Visual Studio proj\LNU Test Portal\Business Layer\obj\Debug\net5.0\Business Logic Layer.csproj.CopyComplete
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\bin\Debug\net5.0\Business Logic Layer.deps.json
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\bin\Debug\net5.0\Business Logic Layer.runtimeconfig.json
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\bin\Debug\net5.0\Business Logic Layer.runtimeconfig.dev.json
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\bin\Debug\net5.0\Business Logic Layer.dll
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\bin\Debug\net5.0\Business Logic Layer.pdb
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\bin\Debug\net5.0\Data Access Layer.dll
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\bin\Debug\net5.0\Data Access Layer.pdb
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.csproj.AssemblyReference.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.AssemblyInfoInputs.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.AssemblyInfo.cs
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.csproj.CoreCompileInputs.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.csproj.CopyComplete
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.dll
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\refint\Business Logic Layer.dll
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.pdb
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.genruntimeconfig.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\ref\Business Logic Layer.dll

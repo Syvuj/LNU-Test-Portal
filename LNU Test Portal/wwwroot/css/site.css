@@ -51,6 +51,25 @@ for details on configuring this project to bundle and minify static web assets. 
     text-decoration: underline;
 }
 
+.LogInButton {
+    background-color: #79819e;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 75px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    margin-left: 12px;
+}
+
+    .LogInButton:hover {
+        text-decoration: underline;
+    }
+
 .CoursePageName {
     text-decoration: underline;
     text-underline-offset: 6px;
@@ -63,6 +82,13 @@ for details on configuring this project to bundle and minify static web assets. 
     background-color: #79819e;
 }
 
+.LogInForm {
+    background-color: #ffffff;
+}
+
+.LogInText {
+    color: #79819e;
+}
 
 .EditCourseButton {
     background-color: #4b4b4b;
@@ -191,7 +217,7 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
