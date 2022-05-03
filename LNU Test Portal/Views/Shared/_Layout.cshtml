@@ -1,4 +1,6 @@
-﻿
+﻿@using Data_Access_Layer.Entities
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> signInManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +32,13 @@
                         
                     </ul>
                     <div class="d-flex align-items-end flex-column bd-highlight mb-1">
-                        <a class="Usname text-white">Username</a>
-                        <a class="logout text-white" asp-area="" asp-controller="Course" asp-action="LogOut">Log out</a>
+                        <a class="Usname text-white">@User.Identity.Name</a>
+                        <form method="post" asp-controller="account" asp-action="logout">
+                    <button type="submit" style="width:auto"
+                            class="nav-link btn btn-link py-0 text-white" style="font-size:30px">
+                        Logout
+                    </button>
+                </form>
 
                     </div>
 
