@@ -30,6 +30,7 @@ namespace LNU_Test_Portal.Controllers
         public IActionResult GetAllCourses()
         {
             var courses = courseService.GetAllCourses();
+            logger.LogInformation("Show all courses");
             return View(courses);
         }
 
@@ -56,7 +57,9 @@ namespace LNU_Test_Portal.Controllers
             }
             catch
             {
+                logger.LogError("Error occured when trying to edit coure");
                 return RedirectToAction(nameof(GetAllCourses));
+                
             }
         }
 
@@ -72,8 +75,9 @@ namespace LNU_Test_Portal.Controllers
                     return RedirectToAction(nameof(GetAllCourses));
                 }
             }
-            catch (Exception)
+            catch 
             {
+                logger.LogError("Error occured when trying to edit coure");
                 return RedirectToAction(nameof(GetAllCourses));
             }
             return View(course);
@@ -86,8 +90,9 @@ namespace LNU_Test_Portal.Controllers
                 Course course = courseService.GetCourseById(Id);
                 return View(course);
             }
-            catch (Exception)
+            catch 
             {
+                logger.LogError("Error occured when trying to delete coure");
                 return RedirectToAction(nameof(GetAllCourses));
             }
         }
@@ -102,8 +107,9 @@ namespace LNU_Test_Portal.Controllers
                 courseService.DeleteCourse(course);
                 return RedirectToAction(nameof(GetAllCourses));
             }
-            catch (Exception)
+            catch
             {
+                logger.LogError("Error occured when trying to delete coure");
                 return RedirectToAction(nameof(GetAllCourses));
             }
         }

@@ -1,19 +1,23 @@
+using Business_Layer.Services.Interfaces;
+using Data_Access_Layer.Entities;
+using Data_Access_Layer.Repository;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace TestProject1
 {
     public class Tests
     {
-        [SetUp]
         public void Setup()
         {
-            // Method intentionally left empty.
+
         }
          
         [Test]
         public void Test1()
         {
-            Assert.Pass();
+
         }
     }
 }

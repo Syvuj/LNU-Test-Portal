@@ -38,17 +38,34 @@ namespace LNU_Test_Portal.Controllers
 
         public IActionResult Create()
         {
-            var test = new Test();
-            ViewData["AviableCourses"] = courseService.GetAllCourses();
-            return View(test);
+            try
+            {
+                var test = new Test();
+                ViewData["AviableCourses"] = courseService.GetAllCourses();
+                return View(test);
+            }
+            catch
+            {
+                logger.LogError("Error when trying to create test in post method");
+                return RedirectToAction(nameof(GetAllTests));
+            }
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("name,description,CourseId,Course")] Test test)
         {
-            test.Course = courseService.GetCourseById(test.CourseId);
-            testService.AddNewTest(test);
+            try
+            {
+                test.Course = courseService.GetCourseById(test.CourseId);
+                testService.AddNewTest(test);
+            }
+            catch
+            {
+                logger.LogError("Error when trying to create test in post method");
+            }
+            
             return RedirectToAction(nameof(GetAllTests)); 
         }
 
@@ -62,6 +79,7 @@ namespace LNU_Test_Portal.Controllers
             }
             catch
             {
+                logger.LogError("Error occured when trying to edit test in get method");
                 return RedirectToAction(nameof(GetAllTests));
             }
         }
@@ -79,8 +97,9 @@ namespace LNU_Test_Portal.Controllers
                     return RedirectToAction(nameof(GetAllTests));
                 }
             }
-            catch (Exception)
+            catch
             {
+                logger.LogError("Error occured when trying to edit test in post method");
                 return RedirectToAction(nameof(GetAllTests));
             }
             return View(test);
@@ -93,8 +112,9 @@ namespace LNU_Test_Portal.Controllers
                 Test test = testService.GetTestById(Id);
                 return View(test);
             }
-            catch (Exception)
+            catch 
             {
+                logger.LogError("Error occured when trying to delete test");
                 return RedirectToAction(nameof(GetAllTests));
             }
         }
@@ -109,8 +129,9 @@ namespace LNU_Test_Portal.Controllers
                 testService.DeleteTest(test);
                 return RedirectToAction(nameof(GetAllTests));
             }
-            catch (Exception)
+            catch 
             {
+                logger.LogError("Error occured when trying to delete test");
                 return RedirectToAction(nameof(GetAllTests));
             }
         }
