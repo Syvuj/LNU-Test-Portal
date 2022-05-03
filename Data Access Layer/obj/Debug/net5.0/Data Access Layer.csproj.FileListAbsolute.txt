@@ -13,3 +13,18 @@ D:\My Visual Studio proj\LNU Test Portal\Data Access Layer\obj\Debug\net5.0\Data
 D:\My Visual Studio proj\LNU Test Portal\Data Access Layer\obj\Debug\net5.0\ref\Data Access Layer.dll
 D:\My Visual Studio proj\LNU Test Portal\Data Access Layer\obj\Debug\net5.0\Data Access Layer.pdb
 D:\My Visual Studio proj\LNU Test Portal\Data Access Layer\obj\Debug\net5.0\Data Access Layer.genruntimeconfig.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\bin\Debug\net5.0\Data Access Layer.deps.json
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\bin\Debug\net5.0\Data Access Layer.runtimeconfig.json
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\bin\Debug\net5.0\Data Access Layer.runtimeconfig.dev.json
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\bin\Debug\net5.0\Data Access Layer.dll
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\bin\Debug\net5.0\Data Access Layer.pdb
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\Data Access Layer.csproj.AssemblyReference.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\Data Access Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\Data Access Layer.AssemblyInfoInputs.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\Data Access Layer.AssemblyInfo.cs
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\Data Access Layer.csproj.CoreCompileInputs.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\Data Access Layer.dll
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\refint\Data Access Layer.dll
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\Data Access Layer.pdb
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\Data Access Layer.genruntimeconfig.cache
+C:\Users\orest\Desktop\LNU-Test-Portal-master\Data Access Layer\obj\Debug\net5.0\ref\Data Access Layer.dll

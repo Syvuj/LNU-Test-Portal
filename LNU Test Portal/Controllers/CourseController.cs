@@ -34,6 +34,13 @@ namespace LNU_Test_Portal.Controllers
             return View(courses);
         }
 
+        public IActionResult LogIn()
+        {
+            //var courses = courseService.GetAllCourses();
+            //return View(courses);
+            return View();
+        }
+
         public IActionResult Create()
         {
             var model = new Course();
