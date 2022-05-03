@@ -11,7 +11,15 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Presen
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Presentation.Views.pdb
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\EntityFramework.SqlServer.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\EntityFramework.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\EntityFramework.SqlServerCompact.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Humanizer.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNet.Identity.Owin.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -20,13 +28,21 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Micros
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Owin.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Owin.Security.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Owin.Security.Cookies.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Owin.Security.OAuth.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Owin.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.AspNetCore.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
@@ -62,6 +78,10 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\runtim
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Business Logic Layer.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Data Access Layer.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Business Logic Layer.pdb
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Data Access Layer.pdb
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.csproj.AssemblyReference.cache
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.GeneratedMSBuildEditorConfig.editorconfig
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.AssemblyInfoInputs.cache
@@ -76,11 +96,20 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\scoped
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.TagHelpers.input.cache
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.TagHelpers.output.cache
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.RazorCoreGenerate.cache
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\Create.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\Delete.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\Edit.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\GetAllCourses.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_Layout-2.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_Layout-3.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Create.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Delete.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Edit.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\GetAllTests.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.RazorTargetAssemblyInfo.cache
@@ -91,140 +120,3 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\ref\Pr
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.pdb
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.genruntimeconfig.cache
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.csproj.CopyComplete
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\GetAllCourses.cshtml.g.cs
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Business Logic Layer.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Data Access Layer.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Business Logic Layer.pdb
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Data Access Layer.pdb
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Create.cshtml.g.cs
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Delete.cshtml.g.cs
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Edit.cshtml.g.cs
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\GetAllTests.cshtml.g.cs
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_Layout-2.cshtml.g.cs
-<<<<<<< HEAD
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\EntityFramework.SqlServerCompact.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNet.Identity.Owin.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\System.Net.Http.Formatting.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Owin.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Owin.Security.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Owin.Security.Cookies.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Owin.Security.OAuth.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Owin.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
-=======
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\appsettings.Development.json
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\appsettings.json
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.StaticWebAssets.xml
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.exe
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.deps.json
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.runtimeconfig.json
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.runtimeconfig.dev.json
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.Views.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Presentation.Views.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\EntityFramework.SqlServer.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\EntityFramework.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Humanizer.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.Identity.Client.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Newtonsoft.Json.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.AspNetCore.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.Console.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.File.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.PeriodicBatching.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.Seq.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\System.CodeDom.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\System.Data.SqlClient.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\System.Runtime.Caching.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Business Logic Layer.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Data Access Layer.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Business Logic Layer.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\bin\Debug\net5.0\Data Access Layer.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.csproj.AssemblyReference.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.AssemblyInfoInputs.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.AssemblyInfo.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.csproj.CoreCompileInputs.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.RazorAssemblyInfo.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.RazorAssemblyInfo.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\scopedcss\bundle\Presentation.styles.css
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\staticwebassets\Presentation.StaticWebAssets.Manifest.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.TagHelpers.input.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.TagHelpers.output.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.RazorCoreGenerate.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\Create.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\Delete.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\Edit.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\GetAllCourses.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_Layout-2.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Create.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Delete.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\Edit.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Test\GetAllTests.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.RazorTargetAssemblyInfo.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.RazorTargetAssemblyInfo.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.Views.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.csproj.CopyComplete
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\refint\Presentation.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.pdb
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Presentation.genruntimeconfig.cache
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\ref\Presentation.dll
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\LogIn.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\_Layout-3.cshtml.g.cs
-C:\Users\orest\Desktop\LNU-Test-Portal-master\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\Register.cshtml.g.cs
->>>>>>> d98224e268d41d3df40d91ab212937cb2e95a8fe
