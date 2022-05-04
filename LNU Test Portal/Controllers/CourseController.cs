@@ -11,9 +11,11 @@ using System.Data.SqlClient;
 using Business_Layer.Services;
 using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LNU_Test_Portal.Controllers
 {
+    [Authorize (Roles ="Teacher")]
     public class CourseController : Controller
     {
         private readonly ILogger<CourseController> logger;
@@ -27,18 +29,12 @@ namespace LNU_Test_Portal.Controllers
             this.courseService = courseService;
         }
         
+        [Authorize(Roles = "Student")]
         public IActionResult GetAllCourses()
         {
             var courses = courseService.GetAllCourses();
             logger.LogInformation("Show all courses");
             return View(courses);
-        }
-
-        public IActionResult LogIn()
-        {
-            //var courses = courseService.GetAllCourses();
-            //return View(courses);
-            return View();
         }
 
         public IActionResult Create()

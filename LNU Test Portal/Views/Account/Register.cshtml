@@ -30,11 +30,15 @@
                                 <input id="form3Example1cg" class="form-control form-control-lg" asp-for="ConfirmPassword" />
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" style="color: #79819e;" for="form3Example1cg" asp-for="City"></label>
+                                <input id="form3Example1cg" class="form-control form-control-lg" asp-for="City" />
+                            </div>
+
                   
                             
 
                             <div class="d-flex justify-content-center form-outline mb-4">
-                                @*<a class="CancelButton text-white" asp-area="" asp-controller="Course" asp-action="GetAllCourses">Cancel</a>*@
                                 <input type="submit" class="form-label LogInButton btn" style="background-color: #79819e; color: #ffffff;margin-top:10px" name="SignUp" value="Sign up" />
                             </div>
                         </form>

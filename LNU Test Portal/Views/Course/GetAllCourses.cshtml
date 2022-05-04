@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Data_Access_Layer.Entities.Course>
+﻿@using Data_Access_Layer.Entities
+@using Microsoft.AspNetCore.Identity
+
+@model IEnumerable<Data_Access_Layer.Entities.Course>
+@inject SignInManager<ApplicationUser> signInMahager;
 @{
     ViewData["Title"] = "Manage Courses";
     Layout = "_Layout";
@@ -7,7 +11,11 @@
 
 
 <div class="manage course content">
-    <a class="myButton text-white" asp-controller="Course" asp-action="Create">Create Course</a>
+    @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
+    {
+        <a class="myButton text-white" asp-controller="Course" asp-action="Create">Create Course</a>
+    }
+    
     @{
         int num = 0;
         foreach(var course in Model)
@@ -21,10 +29,14 @@
     </div>
     <p class="CourseDescription text-white" style="width:60%"> @course.description</p>
     
-    <div class="d-flex align-items-start">
+                @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
+                {
+                    <div class="d-flex align-items-start">
         <a class="EditCourseButton text-white" asp-controller="Course" asp-action="Edit" asp-route-id="@course.id">Edit</a>
         <a class="DeleteCourseButton text-white" asp-controller="Course" asp-action="Delete" asp-route-id="@course.id">Delete</a>
     </div>
+                }
+    
 </div>
         }
     }

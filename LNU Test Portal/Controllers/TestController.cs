@@ -12,9 +12,11 @@ using Business_Layer.Services;
 using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
 using System.Dynamic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LNU_Test_Portal.Controllers
 {
+    [Authorize(Roles ="Teacher")]
     public class TestController : Controller
     {
         private readonly ILogger<TestController> logger;
@@ -29,7 +31,8 @@ namespace LNU_Test_Portal.Controllers
             this.testService = testService;
             this.courseService = courseService;
         }
-        
+
+        [Authorize(Roles = "Student")]
         public IActionResult GetAllTests()
         {
             var tests = testService.GetAllTests();
