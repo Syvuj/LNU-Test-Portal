@@ -17,6 +17,8 @@ using Data_Access_Layer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 
 namespace LNU_Test_Portal
 {
@@ -32,7 +34,7 @@ namespace LNU_Test_Portal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMvc();
+            //services.AddMvc();
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
@@ -43,12 +45,23 @@ namespace LNU_Test_Portal
 
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ITestService, TestService>();
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<DataContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config=> {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+        .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
+
+            services.AddMailKit(config => config.UseMailKit(Configuration.GetSection("Email").Get<MailKitOptions>()));
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<DbContext, DataContext>();
 
+
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.Cookie.Name = "Identity.Cookie";
+                config.LoginPath = "/Account/Login";
+            }
+            );
 
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -83,7 +96,7 @@ namespace LNU_Test_Portal
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Course}/{action=GetAllCourses}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
 
             });
         }

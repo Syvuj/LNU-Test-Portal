@@ -11,12 +11,15 @@ namespace MyShelter.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
+
         }
 
         [HttpGet]
@@ -81,6 +84,17 @@ namespace MyShelter.Controllers
 
                 if (result.Succeeded)
                 {
+                    if (!roleManager.RoleExistsAsync("Student").Result)
+                    {
+                        await roleManager.CreateAsync(new IdentityRole("Student"));//create role
+
+                    }
+                    if (!roleManager.RoleExistsAsync("Teacher").Result)
+                    {
+                        await roleManager.CreateAsync(new IdentityRole("Teacher"));//create role
+
+                    }
+                    await userManager.AddToRoleAsync(user, "Student");  // add default role
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("GetAllCourses", "Course");
                 }
@@ -94,5 +108,7 @@ namespace MyShelter.Controllers
 
             return View(model);
         }
+
+
     }
 }

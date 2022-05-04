@@ -120,3 +120,9 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\ref\Pr
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.pdb
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.genruntimeconfig.cache
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Presentation.csproj.CopyComplete
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\MailKit.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\MimeKit.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\NETCore.MailKit.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\EmailVerification.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\VerifyEmail.cshtml.g.cs

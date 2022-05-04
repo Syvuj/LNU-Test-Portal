@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<Data_Access_Layer.Entities.Test>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> signInMahager;
 @{
     ViewData["Title"] = "Manage Tests";
     Layout = "_Layout-2";
@@ -10,7 +13,11 @@
 
 
 <div class="manage course content">
-    <a class="myButton text-white" asp-controller="Test" asp-action="Create">Create Test</a>
+    @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
+    {
+        <a class="myButton text-white" asp-controller="Test" asp-action="Create">Create Test</a>
+    }
+    
     @{
 
         @foreach(var test in Model)
@@ -23,10 +30,15 @@
     </div>
     <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
     
-    <div class="d-flex align-items-start">
+
+                @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
+                {
+                    <div class="d-flex align-items-start">
         <a class="EditCourseButton text-white" asp-controller="Test" asp-action="Edit" asp-route-id="@test.id">Edit</a>
         <a class="DeleteCourseButton text-white" asp-controller="Test" asp-action="Delete" asp-route-id="@test.id">Delete</a>
     </div>
+                }
+    
 </div>
           
  

@@ -16,7 +16,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LNU_Test_Portal.Controllers
 {
-    [Authorize(Roles ="Teacher")]
     public class TestController : Controller
     {
         private readonly ILogger<TestController> logger;
@@ -32,13 +31,13 @@ namespace LNU_Test_Portal.Controllers
             this.courseService = courseService;
         }
 
-        [Authorize(Roles = "Student")]
         public IActionResult GetAllTests()
         {
             var tests = testService.GetAllTests();
             return View(tests);
         }
 
+        [Authorize(Roles = "Teacher")]
         public IActionResult Create()
         {
             try
@@ -72,6 +71,7 @@ namespace LNU_Test_Portal.Controllers
             return RedirectToAction(nameof(GetAllTests)); 
         }
 
+        [Authorize(Roles = "Teacher")]
         public IActionResult Edit(int Id)
         {
             try
@@ -108,6 +108,7 @@ namespace LNU_Test_Portal.Controllers
             return View(test);
         }
 
+        [Authorize(Roles = "Teacher")]
         public IActionResult Delete(int Id)
         {
             try
