@@ -32,8 +32,8 @@
                         
                     </ul>
                     <div class="d-flex align-items-end flex-column bd-highlight mb-1">
-                        <a class="Usname text-white">Username</a>
-                        <a class="logout text-white" asp-area="" asp-controller="Course" asp-action="LogOut">Log out</a>
+                        <a class="Usname text-white">@User.Identity.Name</a>
+                        <a class="logout text-white" asp-area="" asp-controller="Account" asp-action="Logout">Log out</a>
 
                     </div>
 

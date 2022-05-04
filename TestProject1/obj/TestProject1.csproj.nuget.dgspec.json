@@ -79,6 +79,10 @@
             "NETCore.MailKit": {
               "target": "Package",
               "version": "[2.0.3, )"
+            },
+            "Serilog.Extensions.Logging.File": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             }
           },
           "imports": [
@@ -195,6 +199,10 @@
             "NETCore.MailKit": {
               "target": "Package",
               "version": "[2.0.3, )"
+            },
+            "Serilog.Extensions.Logging.File": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "popper.js": {
               "target": "Package",
@@ -329,6 +337,10 @@
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Serilog.Extensions.Logging.File": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "Serilog.Sinks.Console": {
               "target": "Package",

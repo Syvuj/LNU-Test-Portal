@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
+using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace LNU_Test_Portal
 {
@@ -46,14 +48,15 @@ namespace LNU_Test_Portal
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ITestService, TestService>();
             services.AddIdentity<ApplicationUser, IdentityRole>(config=> {
-                config.SignIn.RequireConfirmedEmail = true;
+                //config.SignIn.RequireConfirmedEmail = true;
             })
         .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
-            services.AddMailKit(config => config.UseMailKit(Configuration.GetSection("Email").Get<MailKitOptions>()));
+           // services.AddMailKit(config => config.UseMailKit(Configuration.GetSection("Email").Get<MailKitOptions>()));
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<DbContext, DataContext>();
+
 
 
             services.ConfigureApplicationCookie(config =>
@@ -68,8 +71,10 @@ namespace LNU_Test_Portal
             services.AddHttpClient();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            var path = Directory.GetCurrentDirectory();
+            loggerFactory.AddFile($"{path}\\Logs\\Log.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

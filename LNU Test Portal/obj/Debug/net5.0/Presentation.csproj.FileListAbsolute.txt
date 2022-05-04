@@ -126,3 +126,8 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\NETCor
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\EmailVerification.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\VerifyEmail.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Account\ForgotPasswordConfirmation.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.Extensions.Logging.File.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.Async.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Serilog.Sinks.RollingFile.dll
