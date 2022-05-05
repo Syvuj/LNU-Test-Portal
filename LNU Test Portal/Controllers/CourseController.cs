@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LNU_Test_Portal.Controllers
 {
-    
     public class CourseController : Controller
     {
         private readonly ILogger<CourseController> logger;
@@ -28,8 +26,8 @@ namespace LNU_Test_Portal.Controllers
             this.configuration = configuration;
             this.courseService = courseService;
         }
-        
-      
+
+        [Authorize]
         public IActionResult GetAllCourses()
         {
             var courses = courseService.GetAllCourses();
@@ -37,13 +35,14 @@ namespace LNU_Test_Portal.Controllers
             return View(courses);
         }
 
-        [Authorize(Roles ="Teacher")]
+        [Authorize(Roles = "Teacher")]
         public IActionResult Create()
         {
             var model = new Course();
             return View(model);
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("name,description")] Course course)
@@ -64,10 +63,11 @@ namespace LNU_Test_Portal.Controllers
             {
                 logger.LogError("Error occured when trying to edit coure");
                 return RedirectToAction(nameof(GetAllCourses));
-                
+
             }
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("id,name,description")] Course course)
@@ -80,7 +80,7 @@ namespace LNU_Test_Portal.Controllers
                     return RedirectToAction(nameof(GetAllCourses));
                 }
             }
-            catch 
+            catch
             {
                 logger.LogError("Error occured when trying to edit coure");
                 return RedirectToAction(nameof(GetAllCourses));
@@ -96,13 +96,14 @@ namespace LNU_Test_Portal.Controllers
                 Course course = courseService.GetCourseById(Id);
                 return View(course);
             }
-            catch 
+            catch
             {
                 logger.LogError("Error occured when trying to delete coure");
                 return RedirectToAction(nameof(GetAllCourses));
             }
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int Id)

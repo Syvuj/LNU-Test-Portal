@@ -23,7 +23,6 @@ namespace MyShelter.Controllers
             this.signInManager = signInManager;
             this.roleManager = roleManager;
             this.logger = logger;
-
         }
 
         [HttpGet]
@@ -53,7 +52,6 @@ namespace MyShelter.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
@@ -74,7 +72,6 @@ namespace MyShelter.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Copy data from RegisterViewModel to IdentityUser
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
@@ -82,21 +79,16 @@ namespace MyShelter.Controllers
                     City = model.City
                 };
 
-                // Store user data in AspNetUsers database table
                 var result = await userManager.CreateAsync(user, model.Password);
-
-
                 if (result.Succeeded)
                 {
                     if (!roleManager.RoleExistsAsync("Student").Result)
                     {
                         await roleManager.CreateAsync(new IdentityRole("Student"));//create role
-
                     }
                     if (!roleManager.RoleExistsAsync("Teacher").Result)
                     {
                         await roleManager.CreateAsync(new IdentityRole("Teacher"));//create role
-
                     }
                     await userManager.AddToRoleAsync(user, "Student");  // add default role
                     await signInManager.SignInAsync(user, isPersistent: false);
@@ -126,29 +118,20 @@ namespace MyShelter.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Find the user by email
                 var user = await userManager.FindByEmailAsync(model.Email);
-                // If the user is found AND Email is confirmed
                 if (user != null && await userManager.IsEmailConfirmedAsync(user))
                 {
-                    // Generate the reset password token
                     var token = await userManager.GeneratePasswordResetTokenAsync(user);
 
-                    // Build the password reset link
                     var passwordResetLink = Url.Action("ResetPassword", "Account",
                             new { email = model.Email, token = token }, Request.Scheme);
 
                     //ViewData["PwdResetLink"] = passwordResetLink;
 
-                    // Log the password reset link
-                     logger.Log(LogLevel.Warning, passwordResetLink);
 
-                    // Send the user to Forgot Password Confirmation view
                     return View("ForgotPasswordConfirmation");
                 }
 
-                // To avoid account enumeration and brute force attacks, don't
-                // reveal that the user does not exist or is not confirmed
                 return View("ForgotPasswordConfirmation");
             }
 
