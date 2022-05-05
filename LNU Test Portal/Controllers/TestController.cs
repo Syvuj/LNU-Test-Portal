@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LNU_Test_Portal.Controllers
 {
+    [Authorize]
     public class TestController : Controller
     {
         private readonly ILogger<TestController> logger;
@@ -54,6 +55,7 @@ namespace LNU_Test_Portal.Controllers
 
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("name,description,CourseId,Course")] Test test)
@@ -88,6 +90,7 @@ namespace LNU_Test_Portal.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("id,name,description,CourseId,Course")] Test test)
         {
@@ -123,6 +126,7 @@ namespace LNU_Test_Portal.Controllers
             }
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int Id)

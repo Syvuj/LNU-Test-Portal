@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LNU_Test_Portal.Controllers
 {
+    [Authorize]
     public class CourseController : Controller
     {
         private readonly ILogger<CourseController> logger;
@@ -27,7 +28,6 @@ namespace LNU_Test_Portal.Controllers
             this.courseService = courseService;
         }
 
-        [Authorize]
         public IActionResult GetAllCourses()
         {
             var courses = courseService.GetAllCourses();

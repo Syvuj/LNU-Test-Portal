@@ -45,17 +45,18 @@ namespace LNU_Test_Portal
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            services.AddScoped<ICourseService, CourseService>();
-            services.AddScoped<ITestService, TestService>();
-            services.AddIdentity<ApplicationUser, IdentityRole>(config=> {
-                //config.SignIn.RequireConfirmedEmail = true;
-            })
-        .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
-
-           // services.AddMailKit(config => config.UseMailKit(Configuration.GetSection("Email").Get<MailKitOptions>()));
-
+            //services.AddMvc();
+            //services.AddAuthentication().AddCookie();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<DbContext, DataContext>();
+
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<ITestService, TestService>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
+
+
+            
 
 
 
@@ -73,8 +74,6 @@ namespace LNU_Test_Portal
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-           // var path = Directory.GetCurrentDirectory();
-           // loggerFactory.AddFile($"{path}\\Logs\\Log.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -86,22 +85,22 @@ namespace LNU_Test_Portal
                 app.UseHsts();
             }
 
-            //AddData.Initialize(app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider);
-
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Course}/{action=GetAllCourses}/{id?}");
+                endpoints.MapRazorPages();
 
             });
         }
