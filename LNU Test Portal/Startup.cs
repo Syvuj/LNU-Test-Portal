@@ -52,7 +52,11 @@ namespace LNU_Test_Portal
 
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ITestService, TestService>();
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options=>
+            {
+                options.SignIn.RequireConfirmedEmail = true;
+
+            })
         .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
 

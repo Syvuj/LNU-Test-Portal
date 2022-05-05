@@ -80,6 +80,10 @@
               "target": "Package",
               "version": "[2.0.3, )"
             },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.27.0, )"
+            },
             "Serilog.Extensions.Logging.File": {
               "target": "Package",
               "version": "[2.0.0, )"
@@ -199,6 +203,10 @@
             "NETCore.MailKit": {
               "target": "Package",
               "version": "[2.0.3, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.27.0, )"
             },
             "Serilog.Extensions.Logging.File": {
               "target": "Package",
