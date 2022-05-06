@@ -46,6 +46,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.16",
           "NETCore.MailKit": "2.0.3",
+          "SendGrid": "9.27.0",
           "Serilog.AspNetCore": "5.0.0",
           "Serilog.Extensions.Logging.File": "2.0.0",
           "Serilog.Sinks.Console": "4.0.1",
@@ -1305,6 +1306,21 @@
           }
         }
       },
+      "SendGrid/9.27.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.1",
+          "starkbank-ecdsa": "1.3.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "assemblyVersion": "9.27.0.0",
+            "fileVersion": "9.27.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        }
+      },
       "Serilog/2.10.0": {
         "runtime": {
           "lib/netstandard2.1/Serilog.dll": {
@@ -1530,6 +1546,17 @@
         }
       },
       "SonarAnalyzer.CSharp/8.37.0.45539": {},
+      "starkbank-ecdsa/1.3.3": {
+        "runtime": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -2443,6 +2470,7 @@
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.16",
           "NETCore.MailKit": "2.0.3",
+          "SendGrid": "9.27.0",
           "Serilog.Extensions.Logging.File": "2.0.0"
         },
         "runtime": {
@@ -2466,6 +2494,7 @@
           "Microsoft.EntityFrameworkCore": "5.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16",
           "NETCore.MailKit": "2.0.3",
+          "SendGrid": "9.27.0",
           "Serilog.Extensions.Logging.File": "2.0.0",
           "popper.js": "1.16.1"
         },
@@ -4832,6 +4861,13 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
+    "SendGrid/9.27.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kMyXRQ8hmN2bG3tYZ7T31Ufl1kXkpuP5+WBh1BJ32WY31DTnBTCVGURoIqfbTo/tRuQfAYLxra6C8cQGN6kk+A==",
+      "path": "sendgrid/9.27.0",
+      "hashPath": "sendgrid.9.27.0.nupkg.sha512"
+    },
     "Serilog/2.10.0": {
       "type": "package",
       "serviceable": true,
@@ -4936,6 +4972,13 @@
       "sha512": "sha512-5bv2bM7PKrUi7+eoLQF8oXBjaPSGkSed2ahoeYfWlX8o2BSLZE6witne1CNbUNesLICtyCXk6AqtTJczGbJlCA==",
       "path": "sonaranalyzer.csharp/8.37.0.45539",
       "hashPath": "sonaranalyzer.csharp.8.37.0.45539.nupkg.sha512"
+    },
+    "starkbank-ecdsa/1.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OblOaKb1enXn+dSp7tsx9yjwV+/BEKM9jFhshIkZTwCk7LuTFTp+wSon6rFzuPiIiTGtvVWQNUw2slHjGktJog==",
+      "path": "starkbank-ecdsa/1.3.3",
+      "hashPath": "starkbank-ecdsa.1.3.3.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

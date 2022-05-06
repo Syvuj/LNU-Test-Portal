@@ -99,6 +99,11 @@ namespace MyShelter.Controllers
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var confirmationLink = Url.Action("ConfirmSuccess", "Account",
+                        new { userId = user.Id, token = token }, Request.Scheme);
+                    ViewData["EmailConfirmLink"] = confirmationLink;
+
                     if (!roleManager.RoleExistsAsync("Student").Result)
                     {
                         await roleManager.CreateAsync(new IdentityRole("Student"));//create role
@@ -107,9 +112,16 @@ namespace MyShelter.Controllers
                     {
                         await roleManager.CreateAsync(new IdentityRole("Teacher"));//create role
                     }
+                    if (signInManager.IsSignedIn(User))
+                    {
+                        return RedirectToAction("GetAllCourses", "Course");
+                    }
                     await userManager.AddToRoleAsync(user, "Student");  // add default role
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("GetAllCourses", "Course");
+
+                    ViewBag.ErrorTitle = "Registration successful";
+                    ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
+                            "email, by clicking on the confirmation link we have emailed you";
+                    return View("ConfirmEmail");
                 }
 
 
@@ -120,6 +132,31 @@ namespace MyShelter.Controllers
             }
 
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmSuccess(string userId, string token)
+        {
+            if (userId == null || token == null)
+            {
+                return RedirectToAction("GetAllCourses", "Course");
+            }
+
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"The User ID {userId} is invalid";
+                return View("NotFound");
+            }
+
+            var result = await userManager.ConfirmEmailAsync(user, token);
+            if (result.Succeeded)
+            {
+                return View();
+            }
+
+            ViewBag.ErrorTitle = "Email cannot be confirmed";
+            return View("Error");
         }
 
         [HttpGet]
