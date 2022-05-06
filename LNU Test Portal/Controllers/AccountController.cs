@@ -36,21 +36,16 @@ namespace MyShelter.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
-
             if (ModelState.IsValid)
             {
                 var user = await userManager.FindByEmailAsync(model.Email);
-
                 if (user != null && !user.EmailConfirmed &&
                             (await userManager.CheckPasswordAsync(user, model.Password)))
                 {
                     ModelState.AddModelError(string.Empty, "Email not confirmed yet");
                     return View(model);
                 }
-
-                var result = await signInManager.PasswordSignInAsync(model.Email,
-                                        model.Password, model.RememberMe, false);
-
+                var result = await signInManager.PasswordSignInAsync(model.Email,model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
                     if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
@@ -62,10 +57,8 @@ namespace MyShelter.Controllers
                         return RedirectToAction("GetAllCourses", "Course");
                     }
                 }
-
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
-
             return View(model);
         }
 
@@ -117,20 +110,14 @@ namespace MyShelter.Controllers
                         return RedirectToAction("GetAllCourses", "Course");
                     }
                     await userManager.AddToRoleAsync(user, "Student");  // add default role
-
-                    ViewBag.ErrorTitle = "Registration successful";
-                    ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
-                            "email, by clicking on the confirmation link we have emailed you";
+                    ViewBag.Title = "Registration successful.Before you login, please confirm your email";
                     return View("ConfirmEmail");
                 }
-
-
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
             return View(model);
         }
 
@@ -141,20 +128,17 @@ namespace MyShelter.Controllers
             {
                 return RedirectToAction("GetAllCourses", "Course");
             }
-
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"The User ID {userId} is invalid";
                 return View("NotFound");
             }
-
             var result = await userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
             {
                 return View();
             }
-
             ViewBag.ErrorTitle = "Email cannot be confirmed";
             return View("Error");
         }
@@ -179,7 +163,6 @@ namespace MyShelter.Controllers
                     var passwordResetLink = Url.Action("ResetPassword", "Account",
                             new { email = model.Email, token = token }, Request.Scheme);
                     ViewData["PwdResetLink"] = passwordResetLink;
-
                     return View("ForgotPasswordConfirmation");
                 }
                 return View("ForgotPasswordConfirmation");
@@ -206,7 +189,6 @@ namespace MyShelter.Controllers
             if (ModelState.IsValid)
             {
                 var user = await userManager.FindByEmailAsync(model.Email);
-
                 if (user != null)
                 {
                     var result = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
@@ -214,20 +196,15 @@ namespace MyShelter.Controllers
                     {
                         return View("ResetPasswordConfirmation");
                     }
-
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
                     }
                     return View(model);
                 }
-
-
                 return View("ResetPasswordConfirmation");
             }
             return View(model);
         }
-
-
     }
 }
