@@ -16,14 +16,15 @@ namespace Business_Layer.Services
         {
             this.courseRepository = courseRepository;
         }
-        public IEnumerable<Course> GetAllCourses()
+        public IEnumerable<Course> GetAllCourses(string TeacherId)
         {
-            return courseRepository.SelectAll()
+            return courseRepository.SelectAll(m =>m.TeacherId==TeacherId)
                 .Select(x=> new Course {id=x.id, description=x.description,name=x.name});
         }
         public void AddNewCourse(Course course)=> courseRepository.Insert(course);
         public Course GetCourseById(int Id)=> courseRepository.SelectOneById(Id);
         public void UpdateCourse(Course course)=> courseRepository.Update(course);
         public void DeleteCourse(Course course)=> courseRepository.Delete(course);
+
     }
 }

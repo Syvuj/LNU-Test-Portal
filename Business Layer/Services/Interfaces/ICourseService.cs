@@ -9,7 +9,7 @@ namespace Business_Layer.Services.Interfaces
 {
     public interface ICourseService
     {
-        IEnumerable<Course> GetAllCourses();
+        IEnumerable<Course> GetAllCourses(string TeacherId);
         void AddNewCourse(Course course);
         public Course GetCourseById(int Id);
         void UpdateCourse(Course course);

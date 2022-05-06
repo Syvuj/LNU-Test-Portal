@@ -11,6 +11,8 @@ using Business_Layer.Services;
 using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNet.Identity;
+
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -30,7 +32,7 @@ namespace LNU_Test_Portal.Controllers
 
         public IActionResult GetAllCourses()
         {
-            var courses = courseService.GetAllCourses();
+            var courses = courseService.GetAllCourses(User.Identity.GetUserId());
             logger.LogInformation("Show all courses");
             return View(courses);
         }
@@ -47,6 +49,7 @@ namespace LNU_Test_Portal.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("name,description")] Course course)
         {
+            course.TeacherId = User.Identity.GetUserId();
             courseService.AddNewCourse(course);
             return RedirectToAction(nameof(GetAllCourses));
         }

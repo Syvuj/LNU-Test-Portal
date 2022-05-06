@@ -16,5 +16,6 @@ namespace Data_Access_Layer.Repository
         public T GetModel(T entity);
         IEnumerable<T> SelectAll();
         public T SelectOneById(int Id);
+        IEnumerable<T> SelectAll(Expression<Func<T, bool>> selector, params Expression<Func<T, object>>[] includeProperties);
     }
 }

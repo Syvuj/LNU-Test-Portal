@@ -13,6 +13,7 @@ using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
 using System.Dynamic;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNet.Identity;
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -44,7 +45,7 @@ namespace LNU_Test_Portal.Controllers
             try
             {
                 var test = new Test();
-                ViewData["AviableCourses"] = courseService.GetAllCourses();
+                ViewData["AviableCourses"] = courseService.GetAllCourses(User.Identity.GetUserId());
                 return View(test);
             }
             catch
@@ -79,7 +80,7 @@ namespace LNU_Test_Portal.Controllers
             try
             {
                 Test test = testService.GetTestById(Id);
-                ViewData["AviableCourses"] = courseService.GetAllCourses();
+                ViewData["AviableCourses"] = courseService.GetAllCourses(User.Identity.GetUserId());
                 return View(test);
             }
             catch
