@@ -26,7 +26,7 @@
      <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
         <h2 class="CourseName text-white">@test.Course.name | @test.name</h2>
-        <a href="#" class="AddStudentBtn text-white">View Test</a>
+        <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions">View Test</a>
     </div>
     <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
     

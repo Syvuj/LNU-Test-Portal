@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Access_Layer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220506161924_myMigration1")]
-    partial class myMigration1
+    [Migration("20220508163426_myMigration")]
+    partial class myMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace Data_Access_Layer.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Courseid")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -78,6 +81,8 @@ namespace Data_Access_Layer.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Courseid");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -96,6 +101,9 @@ namespace Data_Access_Layer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("TeacherId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
@@ -105,6 +113,38 @@ namespace Data_Access_Layer.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Course");
+                });
+
+            modelBuilder.Entity("Data_Access_Layer.Entities.Question", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Options")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Scores")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudentAnswer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Testid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Testid");
+
+                    b.ToTable("Question");
                 });
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Test", b =>
@@ -261,6 +301,20 @@ namespace Data_Access_Layer.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Data_Access_Layer.Entities.ApplicationUser", b =>
+                {
+                    b.HasOne("Data_Access_Layer.Entities.Course", null)
+                        .WithMany("Students")
+                        .HasForeignKey("Courseid");
+                });
+
+            modelBuilder.Entity("Data_Access_Layer.Entities.Question", b =>
+                {
+                    b.HasOne("Data_Access_Layer.Entities.Test", null)
+                        .WithMany("Questions")
+                        .HasForeignKey("Testid");
+                });
+
             modelBuilder.Entity("Data_Access_Layer.Entities.Test", b =>
                 {
                     b.HasOne("Data_Access_Layer.Entities.Course", "Course")
@@ -325,7 +379,14 @@ namespace Data_Access_Layer.Migrations
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Course", b =>
                 {
+                    b.Navigation("Students");
+
                     b.Navigation("Tests");
+                });
+
+            modelBuilder.Entity("Data_Access_Layer.Entities.Test", b =>
+                {
+                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }

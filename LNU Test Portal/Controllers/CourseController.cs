@@ -12,7 +12,7 @@ using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNet.Identity;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -22,20 +22,28 @@ namespace LNU_Test_Portal.Controllers
         private readonly ILogger<CourseController> logger;
         private readonly IConfiguration configuration;
         private readonly ICourseService courseService;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public CourseController(ILogger<CourseController> logger, IConfiguration configuration, ICourseService courseService)
+        public CourseController(ILogger<CourseController> logger, IConfiguration configuration, ICourseService courseService, SignInManager<ApplicationUser> signInManager)
         {
             this.logger = logger;
             this.configuration = configuration;
             this.courseService = courseService;
+            this.signInManager = signInManager;
         }
 
+        [Authorize(Roles = "Teacher")]
         public IActionResult GetAllCourses()
         {
+
             var courses = courseService.GetAllCourses(User.Identity.GetUserId());
             logger.LogInformation("Show all courses");
+            
             return View(courses);
         }
+        
+      
+
 
         [Authorize(Roles = "Teacher")]
         public IActionResult Create()

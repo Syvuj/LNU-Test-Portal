@@ -109,7 +109,7 @@ namespace MyShelter.Controllers
                     {
                         return RedirectToAction("GetAllCourses", "Course");
                     }
-                    await userManager.AddToRoleAsync(user, "Student");  // add default role
+                    await userManager.AddToRoleAsync(user, "Teacher");  // add default role   сбюцю  дкъ опюб пна рср лю╙ асрх ярсдемр
                     ViewBag.Title = "Registration successful.Before you login, please confirm your email";
                     return View("ConfirmEmail");
                 }

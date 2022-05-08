@@ -32,7 +32,15 @@
                         
                     </ul>
                     <div class="d-flex align-items-end flex-column bd-highlight mb-1 justify-content-end">
-                        <a class="Usname text-white">@User.Identity.Name</a>
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Teacher"))
+                        {
+                            <a class="Usname text-white">Teacher: @User.Identity.Name</a>
+                        }
+                        else
+                        {
+                            <a class="Usname text-white">Student: @User.Identity.Name</a>
+                        }
+                       
                         <form method="post" asp-controller="account" asp-action="logout">
                     <button type="submit" style="width:auto; font-size:20px;"
                             class="nav-link btn btn-link py-0 text-white text-left">

@@ -52,6 +52,7 @@ namespace LNU_Test_Portal
 
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ITestService, TestService>();
+            services.AddScoped<IQuestionService, QuestionService>();
             services.AddIdentity<ApplicationUser, IdentityRole>(options=>
             {
                 options.SignIn.RequireConfirmedEmail = true;
