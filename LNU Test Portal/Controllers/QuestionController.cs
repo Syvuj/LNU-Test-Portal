@@ -124,6 +124,46 @@ namespace LNU_Test_Portal.Controllers
             return View(question);
         }
 
+
+
+
+
+        [Route("Question/Delete/{TestId:int}/{id}")]
+        [Authorize(Roles = "Teacher")]
+        public IActionResult Delete(int Id, int TestId)
+        {
+            try
+            {
+                Question question = questionService.GetQuestionById(Id);
+                ViewData["CurrentTest"] = testService.GetTestById(TestId);
+                return View(question);
+            }
+            catch
+            {
+                logger.LogError("Error occured when trying to edit test in get method");
+                return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
+            }
+        }
+
+        [Authorize(Roles = "Teacher")]
+        [Route("Question/Delete/{TestId:int}/{id}")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int Id,int TestId)
+        {
+            try
+            {
+                Question question = new Question { id = Id };
+                questionService.DeleteQuestion(question);
+                return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
+            }
+            catch
+            {
+                logger.LogError("Error occured when trying to delete test");
+                return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
+            }
+        }
+
         //[Authorize(Roles = "Teacher")]
         //public IActionResult Delete(int Id)
         //{
