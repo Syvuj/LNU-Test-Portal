@@ -81,43 +81,48 @@ namespace LNU_Test_Portal.Controllers
             return RedirectToAction(nameof(GetAllQuestions),new { TestId = TestId }); 
         }
 
-        //[Authorize(Roles = "Teacher")]
-        //public IActionResult Edit(int Id)
-        //{
-        //    try
-        //    {
-        //        Test test = testService.GetTestById(Id);
-        //        ViewData["AviableCourses"] = courseService.GetAllCourses(User.Identity.GetUserId());
-        //        return View(test);
-        //    }
-        //    catch
-        //    {
-        //        logger.LogError("Error occured when trying to edit test in get method");
-        //        return RedirectToAction(nameof(GetAllTests));
-        //    }
-        //}
 
-        //[HttpPost]
-        //[Authorize(Roles = "Teacher")]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Edit(int id, [Bind("id,name,description,CourseId,Course")] Test test)
-        //{
-        //    test.Course = courseService.GetCourseById(test.CourseId);
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            testService.UpdateTest(test);
-        //            return RedirectToAction(nameof(GetAllTests));
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        logger.LogError("Error occured when trying to edit test in post method");
-        //        return RedirectToAction(nameof(GetAllTests));
-        //    }
-        //    return View(test);
-        //}
+
+        [Route("Question/Edit/{TestId:int}/{id}")]
+        [Authorize(Roles = "Teacher")]
+        public IActionResult Edit(int Id, int TestId)
+        {
+            try
+            {
+                Question question = questionService.GetQuestionById(Id);
+                ViewData["CurrentTest"] = testService.GetTestById(TestId);
+                return View(question);
+            }
+            catch
+            {
+                logger.LogError("Error occured when trying to edit test in get method");
+                return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
+            }
+        }
+
+        [HttpPost]
+        [Route("Question/Edit/{TestId:int}/{id}")]
+        [Authorize(Roles = "Teacher")]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, [Bind("id,Title,Scores,Key,Options")] Question question, int TestId)
+        {
+            question.Test = (Test)ViewData["CurrentTest"];
+            question.TestId = testService.GetTestById(TestId).id;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    questionService.UpdateQuestion(question);
+                    return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
+                }
+            }
+            catch
+            {
+                logger.LogError("Error occured when trying to edit test in post method");
+                return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
+            }
+            return View(question);
+        }
 
         //[Authorize(Roles = "Teacher")]
         //public IActionResult Delete(int Id)
