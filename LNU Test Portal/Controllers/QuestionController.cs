@@ -33,24 +33,29 @@ namespace LNU_Test_Portal.Controllers
             this.questionService = questionService;
         }
 
+        [Route("Question/GetAllQuestions/{TestId:int}")]
         public IActionResult GetAllQuestions(int TestId)
         {
             var questions = questionService.GetAllQuestions(TestId);
+            TempData["TestIdData"] = TestId;
+            TempData["CurrentTest"] = testService.GetTestById(TestId);
             return View(questions);
         }
 
         [Authorize(Roles = "Teacher")]
-        public IActionResult Create()
+        [Route("Question/Create/{TestId:int}")]
+        public IActionResult Create(int TestId)
         {
             try
             {
                 var question = new Question();
+                ViewData["CurrentTest"] = testService.GetTestById((int)TempData["TestIdData"]);
                 return View(question);
             }
             catch
             {
                 logger.LogError("Error when trying to create question in post method");
-                return RedirectToAction(nameof(GetAllQuestions));
+                return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
             }
 
         }
@@ -58,11 +63,14 @@ namespace LNU_Test_Portal.Controllers
         [Authorize(Roles = "Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("")] Question question)
+        [Route("Question/Create/{TestId:int}")]
+        public IActionResult Create([Bind("Title,Scores,Key,Options")] Question question, int TestId)
         {
             try
             {
-                question.Test = testService.GetTestById(question.TestId);
+                
+                question.Test = testService.GetTestById(TestId);
+                question.TestId = TestId;
                 questionService.AddNewQuestion(question);
             }
             catch
@@ -70,7 +78,7 @@ namespace LNU_Test_Portal.Controllers
                 logger.LogError("Error when trying to create question in post method");
             }
             
-            return RedirectToAction(nameof(GetAllQuestions)); 
+            return RedirectToAction(nameof(GetAllQuestions),new { TestId = TestId }); 
         }
 
         //[Authorize(Roles = "Teacher")]

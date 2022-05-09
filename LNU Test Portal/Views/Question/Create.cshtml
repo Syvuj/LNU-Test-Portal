@@ -1,0 +1,58 @@
+@using Data_Access_Layer.Entities
+@model Data_Access_Layer.Entities.Question;
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Layout";
+    Test CurTest = (Test)ViewData["CurrentTest"];
+}
+
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="CreateCourseForm card"  style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <h2 class="text-uppercase text-center text-white mb-4">Create Question</h2>
+
+                        <form method="post" asp-controller="Question" asp-action="Create">
+                            @Html.AntiForgeryToken()
+                             <div class="form-group">
+                                <label class="form-label text-white" for="form3Example1cg">Test Name</label>
+                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" value="@CurTest.name" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label text-white" for="exampleFormControlTextarea1">Question</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" asp-for="Title"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label text-white" for="exampleFormControlTextarea1">Answers (separated by commas):</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" asp-for="Options"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label text-white" for="exampleFormControlTextarea1">Correct Answer:</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" asp-for="Key"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+
+                                <label class="form-label text-white" for="exampleFormControlTextarea1">Scores</label>
+                                <input type="number" id="qty_input" class="form-control form-control-sm" value="1" min="1" asp-for="Scores">
+                                <div class="input-group mb-3">
+                            </div>
+                            </div>
+
+
+
+                            <div class="d-flex justify-content-end">
+                                <a class="CancelButton text-white" asp-area="" asp-controller="Question" asp-action="GetAllQuestions">Cancel</a>
+                                <input type="submit" class="SaveCourseButton btn text-white" name="save" value="Save" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

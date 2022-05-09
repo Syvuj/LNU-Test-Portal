@@ -3,28 +3,26 @@
 
 @inject SignInManager<ApplicationUser> signInMahager;
 @{
-    ViewData["Title"] = "Manage Test";
+	ViewData["Title"] = "Manage Test";
     Layout = "_Layout-2";
-    
-
+	Test CurTest = (Test)TempData["CurrentTest"];
 }
 @using Data_Access_Layer.Entities
-
 
 
 <div class="manage course content">
     @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
     {
-        <a class="myButton text-white" asp-controller="Test" asp-action="Create">Create Question</a>
     }
-    
     
 
        
-            
-    <div class="questionDetails flex-column justify-content-between">
+	@if (Model.Count() !=0)
+	{
+		
+		<div class="questionDetails flex-column justify-content-between">
 	<div class="test_container_text ">
-		<h3>C++ | Test #1</h3>
+		<h3>@CurTest.name</h3>
 	</div>
 
 		@{
@@ -50,25 +48,32 @@
 					<div class="d-flex justify-content-start" style="margin-top:20px;">
 						<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px; margin-right:20px;">Edit</a>
 						<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;">Delete</a>
-					</div>
-					
+					</div>			
 		</div>
-
-		
 	</div>
 		}
-
-<div class="flex-column justify-content-between" style="width: 80%; background: #FFFFFF;margin: auto;padding-top: 25px;">
+		<div class="flex-column justify-content-between" style="width: 80%; background: #FFFFFF;margin: auto;padding-top: 25px;">
 <div class="d-flex justify-content-start" style="margin-top:20px;">
-        <a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px; margin:20px;">Add Question</a>
-		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;">Back</a>
+        <a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px; margin:20px; margin-left:20px;" asp-controller="Question" asp-action="Create" asp-route-id="@CurTest.id">Add Question</a>
+		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="GetAllTests">Back</a>
     </div>
 
 </div>
-
-		
-			
 		
 	
 </div>
+	}
+	else
+	{
+
+		
+		<h3 style="color:black;">@CurTest.name</h3>
+	
+		<div class="d-flex justify-content-start" style="margin-top:20px;">
+        <a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px; margin:20px; margin-left:0px;" asp-controller="Question" asp-action="Create" asp-route-id="@CurTest.id">Add Question</a>
+		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="GetAllTests">Back</a>
+    </div>
+	}
+            
+    
  </div>
