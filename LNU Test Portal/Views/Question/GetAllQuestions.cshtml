@@ -6,6 +6,12 @@
 	ViewData["Title"] = "Manage Test";
     Layout = "_Layout-2";
 	Test CurTest = (Test)TempData["CurrentTest"];
+	int SumScores = 0;
+	@foreach(var ques in Model)
+	{
+		SumScores += ques.Scores;
+	}
+	
 }
 @using Data_Access_Layer.Entities
 
@@ -23,6 +29,7 @@
 		<div class="questionDetails flex-column justify-content-between">
 	<div class="test_container_text ">
 		<h3>@CurTest.name</h3>
+		<h3>Scores:@SumScores</h3>
 	</div>
 
 		@{
@@ -34,12 +41,12 @@
 				<div class="flex-column justify-content-between" style="width: 95%;background: #FFFFFF;border: 1px solid #000000;border-radius: 5px; padding: 20px;margin: auto; ">
 					<h3 class="question_number">Question №@counter</h3>
 					<h3 class="question_number" style="text-decoration:none;">Scores:@ques.Scores</h3>
-					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;">
-						<p style="font-family: 'Montserrat', sans-serif; font-weight: 400;color: #000000;font-size: 24px;">@ques.Title</p>
+					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;margin: auto;">
+						<p style="font-family: 'Montserrat', sans-serif; font-weight: 400;color: #000000;font-size: 24px;padding:13px;">@ques.Title</p>
 					</div >
 					<h3 class="answers_test">Answers (separated by commas):</h3>
 					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;">
-						<p style="font-family: 'Montserrat', sans-serif; font-weight: 400;color: #000000;font-size: 24px;">@ques.Options</p>
+						<p style="font-family: 'Montserrat', sans-serif; font-weight: 400;color: #000000;font-size: 24px;padding:13px;">@ques.Options</p>
 					</div >
 					<h3 class="answers_test">Correct answer:</h3>
 					<div class="answers">
