@@ -132,7 +132,7 @@ namespace Data_Access_Layer.Migrations
                     b.Property<string>("StudentAnswer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Testid")
+                    b.Property<int>("TestId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -140,7 +140,7 @@ namespace Data_Access_Layer.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Testid");
+                    b.HasIndex("TestId");
 
                     b.ToTable("Question");
                 });
@@ -308,9 +308,13 @@ namespace Data_Access_Layer.Migrations
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Question", b =>
                 {
-                    b.HasOne("Data_Access_Layer.Entities.Test", null)
+                    b.HasOne("Data_Access_Layer.Entities.Test", "Test")
                         .WithMany("Questions")
-                        .HasForeignKey("Testid");
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Test");
                 });
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Test", b =>

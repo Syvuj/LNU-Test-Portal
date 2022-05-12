@@ -45,7 +45,7 @@ namespace LNU_Test_Portal.Controllers
             try
             {
                 var test = new Test();
-                ViewData["AviableCourses"] = courseService.GetAllCourses(User.Identity.GetUserId());
+                ViewData["AviableCourses"] = courseService.GetAllCoursesForTeacher(User.Identity.GetUserId());
                 return View(test);
             }
             catch
@@ -80,7 +80,7 @@ namespace LNU_Test_Portal.Controllers
             try
             {
                 Test test = testService.GetTestById(Id);
-                ViewData["AviableCourses"] = courseService.GetAllCourses(User.Identity.GetUserId());
+                ViewData["AviableCourses"] = courseService.GetAllCoursesForTeacher(User.Identity.GetUserId());
                 return View(test);
             }
             catch

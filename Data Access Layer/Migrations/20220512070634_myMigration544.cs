@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data_Access_Layer.Migrations
 {
-    public partial class myMigration : Migration
+    public partial class myMigration544 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -207,17 +207,17 @@ namespace Data_Access_Layer.Migrations
                     Key = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StudentAnswer = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Options = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Testid = table.Column<int>(type: "int", nullable: true)
+                    TestId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Question", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Question_Test_Testid",
-                        column: x => x.Testid,
+                        name: "FK_Question_Test_TestId",
+                        column: x => x.TestId,
                         principalTable: "Test",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -265,9 +265,9 @@ namespace Data_Access_Layer.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Question_Testid",
+                name: "IX_Question_TestId",
                 table: "Question",
-                column: "Testid");
+                column: "TestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Test_CourseId",

@@ -16,10 +16,12 @@ namespace Business_Layer.Services
         {
             this.courseRepository = courseRepository;
         }
-        public IEnumerable<Course> GetAllCourses(string TeacherId)
+        public IEnumerable<Course> GetAllCoursesForTeacher(string TeacherId)
         {
             return courseRepository.SelectAll(m =>m.TeacherId==TeacherId)
-                .Select(x=> new Course {id=x.id, description=x.description,name=x.name});
+                .Select(x=> new Course {id=x.id, description=x.description,name=x.name,
+                Students = x.Students, TeacherId = TeacherId, 
+                Tests = x.Tests});
         }
         public void AddNewCourse(Course course)=> courseRepository.Insert(course);
         public Course GetCourseById(int Id)=> courseRepository.SelectOneById(Id);

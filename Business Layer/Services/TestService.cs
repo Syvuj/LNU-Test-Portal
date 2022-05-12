@@ -30,7 +30,9 @@ namespace Business_Layer.Services
                      name = x.name,
                      description = x.description,
                      CourseId = courseRepository.SelectOneById(x.CourseId).id,
-                     Course = courseRepository.SelectOneById(x.CourseId)
+                     Course = courseRepository.SelectOneById(x.CourseId),
+                     Questions = x.Questions
+                     
                  }
                  ) ;
         }

@@ -13,6 +13,7 @@ namespace Data_Access_Layer
         public DataContext(DbContextOptions options) : base(options) { Database.EnsureCreated(); }
         public DbSet<Course> Course { get; set; }
         public DbSet<Test> Test { get; set; }
+        public DbSet<Question> Question { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -20,6 +21,12 @@ namespace Data_Access_Layer
             .HasOne<Course>(s => s.Course)
             .WithMany(g => g.Tests)
             .HasForeignKey(s => s.CourseId);
+
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Question>()
+            .HasOne<Test>(s => s.Test)
+            .WithMany(g => g.Questions)
+            .HasForeignKey(s => s.TestId);
         }
     }
 }

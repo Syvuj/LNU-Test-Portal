@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity;
 
+
 namespace LNU_Test_Portal.Controllers
 {
     [Authorize]
@@ -32,11 +33,16 @@ namespace LNU_Test_Portal.Controllers
             this.signInManager = signInManager;
         }
 
-        [Authorize(Roles = "Teacher")]
+        [Authorize]
         public IActionResult GetAllCourses()
         {
+            var courses = courseService.GetAllCoursesForTeacher(User.Identity.GetUserId());
+            if (signInManager.IsSignedIn(User) && User.IsInRole("Student"))
+            {
+                logger.LogInformation("Show all courses");///
+            }
 
-            var courses = courseService.GetAllCourses(User.Identity.GetUserId());
+            
             logger.LogInformation("Show all courses");
             
             return View(courses);
