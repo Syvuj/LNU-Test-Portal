@@ -48,14 +48,21 @@ namespace LNU_Test_Portal
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            //services.AddMvc();
-            //services.AddAuthentication().AddCookie();
+
+            var mailService = Configuration
+                .GetSection("MailService")
+                .Get<MailService>();
+            services.AddSingleton(mailService);
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<DbContext, DataContext>();
 
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<IQuestionService, QuestionService>();
+
+
+            services.AddScoped<IMailService, MailService>();
             services.AddIdentity<ApplicationUser, IdentityRole>(options=>
             {
                 options.SignIn.RequireConfirmedEmail = true;

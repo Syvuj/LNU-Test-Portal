@@ -8,6 +8,7 @@ using System.IO;
 using Microsoft.Extensions.Logging;
 using System.Net.Mail;
 using System.Net;
+using Business_Layer.Services;
 
 namespace MyShelter.Controllers
 {
@@ -17,14 +18,17 @@ namespace MyShelter.Controllers
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly ILogger<AccountController> logger;
+        private readonly MailService mailService;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, ILogger<AccountController> logger)
+            SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, ILogger<AccountController> logger
+            , MailService mailService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
             this.logger = logger;
+            this.mailService = mailService;
         }
 
         [HttpGet]
@@ -98,33 +102,10 @@ namespace MyShelter.Controllers
                     var confirmationLink = Url.Action("ConfirmSuccess", "Account",
                         new { userId = user.Id, token = token }, Request.Scheme);
 
-
-
-                    MailMessage mm = new MailMessage("mylnu.service@gmail.com", "mylnu.service@gmail.com");
-                    mm.Subject = "Email Confirmation";
-                    mm.Body = "<!DOCTYPE html>" +
-                        "<link rel=\"stylesheet\" href=\"~/lib/bootstrap/dist/css/bootstrap.min.css\"/>" +
- "<body>" +
-                    "<h3>" +
-                    "Hi, " + model.Email +" . It is LNU Test Portal Team.Please conform your email by clicking button. "+
-                    "</h3>"+
-            "<a href = "+ confirmationLink + " class=\"LogInButton btn btn-primary\" style=\"background-color: #79819e; color: #ffffff;margin-top:10px\"> Confirm Your Email</a>"+
-            "</div>"+
-"</body>"+
-"</html>";
-                    mm.IsBodyHtml = true;
-
-                    SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-
-                    NetworkCredential nc = new NetworkCredential("mylnu.service@gmail.com", "Qwerty_123456");
-                    smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = nc;
-                    smtp.Send(mm);
-
-
+                    string To = user.Email;
+                    string Subject = "Email Confirmation";
+                    string PartObBody = " Please conform your email by clicking button.";
+                    mailService.SendEmail(To, confirmationLink, Subject,PartObBody );
 
                     if (!roleManager.RoleExistsAsync("Student").Result)
                     {
@@ -192,7 +173,14 @@ namespace MyShelter.Controllers
                     var token = await userManager.GeneratePasswordResetTokenAsync(user);
                     var passwordResetLink = Url.Action("ResetPassword", "Account",
                             new { email = model.Email, token = token }, Request.Scheme);
-                    ViewData["PwdResetLink"] = passwordResetLink;
+
+
+                    string To = user.Email;
+                    string Subject = "Reset Password";
+                    string PartObBody = " To Reset your password, please click button.";
+                    mailService.SendEmail(To, passwordResetLink, Subject, PartObBody);
+
+                    
                     return View("ForgotPasswordConfirmation");
                 }
                 return View("ForgotPasswordConfirmation");
