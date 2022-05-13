@@ -98,28 +98,18 @@ namespace MyShelter.Controllers
                     var confirmationLink = Url.Action("ConfirmSuccess", "Account",
                         new { userId = user.Id, token = token }, Request.Scheme);
 
-                    ViewBag.Title= "Registration successful.We sent confirmation link to your email.Before you login, please confirm your email";
 
 
                     MailMessage mm = new MailMessage("mylnu.service@gmail.com", "mylnu.service@gmail.com");
                     mm.Subject = "Email Confirmation";
-                    mm.Body = "<!DOCTYPE html>"+
- "<body>"+
-   "<div class=\"mask d-flex align-items-center h-100 gradient-custom-3\">"+
-   "<div class=\"container h-100\">"+
-        "<div class=\"row d-flex justify-content-center align-items-center h-100\">"+
-            "<div class=\"col-12 col-md-9 col-lg-7 col-xl-6\">"+
-                "<div class=\"LogInForm card\"  style=\"border-radius: 15px;\">"+
-                    "<div class=\"card-body p-5\">"+
-                    "</div>"+
-                    "<div class=\"d-flex justify-content-center form-outline mb-4\">"+
+                    mm.Body = "<!DOCTYPE html>" +
+                        "<link rel=\"stylesheet\" href=\"~/lib/bootstrap/dist/css/bootstrap.min.css\"/>" +
+ "<body>" +
+                    "<h3>" +
+                    "Hi, " + model.Email +" . It is LNU Test Portal Team.Please conform your email by clicking button. "+
+                    "</h3>"+
             "<a href = "+ confirmationLink + " class=\"LogInButton btn btn-primary\" style=\"background-color: #79819e; color: #ffffff;margin-top:10px\"> Confirm Your Email</a>"+
             "</div>"+
-            "    </div>"+
-            "</div>"+
-       " </div>"+
-    "</div>"+
-"</div>"+
 "</body>"+
 "</html>";
                     mm.IsBodyHtml = true;
