@@ -10,7 +10,7 @@ using System.Net.Mail;
 using System.Net;
 using Business_Layer.Services;
 
-namespace MyShelter.Controllers
+namespace LNU_Test_Portal.Controllers
 {
     public class AccountController : Controller
     {
@@ -102,7 +102,7 @@ namespace MyShelter.Controllers
                     var confirmationLink = Url.Action("ConfirmSuccess", "Account",
                         new { userId = user.Id, token = token }, Request.Scheme);
 
-                    string To = user.Email;
+                    string To = "mylnu.service@gmail.com";//!!!!
                     string Subject = "Email Confirmation";
                     string PartObBody = " Please conform your email by clicking button.";
                     mailService.SendEmail(To, confirmationLink, Subject,PartObBody );

@@ -30,7 +30,7 @@ namespace Business_Layer.Services
             "Hi, " + To + " . It is LNU Test Portal Team.<br> " + PartOfBody +
             "</h3>" +
             "<div style=\"height:90px; \">"+
-    "<a href = " + ConfirmLink + "class=\"btn btn-primary\" style=\"background-color: #79819e; color: white; border: none;padding: 15px 32px; text-align: center;text-decoration: none;font-size: 16px;margin: 30px 2px;border-radius:10px;\">Please,Click Here</a>" +
+    "<a href =\"" + ConfirmLink + "\" class=\"btn btn-primary\" style=\"background-color: #79819e; color: white; border: none;padding: 15px 32px; text-align: center;text-decoration: none;font-size: 16px;margin: 30px 2px;border-radius:10px;\">Please,Click Here</a>" +
 "</div>" +
 "</body>" +
 "</html>";
