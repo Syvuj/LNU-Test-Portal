@@ -14,6 +14,7 @@ using Data_Access_Layer.Entities;
 using System.Dynamic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -24,18 +25,22 @@ namespace LNU_Test_Portal.Controllers
         private readonly IConfiguration configuration;
         private readonly ITestService testService;
         private readonly ICourseService  courseService;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public TestController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, ICourseService courseService)
+        public TestController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, ICourseService courseService,
+            SignInManager<ApplicationUser> signInManager)
         {
             this.logger = logger;
             this.configuration = configuration;
             this.testService = testService;
             this.courseService = courseService;
+            this.signInManager = signInManager;
         }
-
+        [Authorize]
         public IActionResult GetAllTests()
         {
-            var tests = testService.GetAllTests();
+            
+            var tests = testService.GetAllTestsForTeacher(User.Identity.GetUserId());
             return View(tests);
         }
 

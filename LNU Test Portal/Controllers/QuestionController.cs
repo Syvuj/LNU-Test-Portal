@@ -163,38 +163,5 @@ namespace LNU_Test_Portal.Controllers
                 return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
             }
         }
-
-        //[Authorize(Roles = "Teacher")]
-        //public IActionResult Delete(int Id)
-        //{
-        //    try
-        //    {
-        //        Test test = testService.GetTestById(Id);
-        //        return View(test);
-        //    }
-        //    catch 
-        //    {
-        //        logger.LogError("Error occured when trying to delete test");
-        //        return RedirectToAction(nameof(GetAllTests));
-        //    }
-        //}
-
-        //[Authorize(Roles = "Teacher")]
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult DeleteConfirmed(int Id)
-        //{
-        //    try
-        //    {
-        //        Test test = new Test { id = Id };
-        //        testService.DeleteTest(test);
-        //        return RedirectToAction(nameof(GetAllTests));
-        //    }
-        //    catch 
-        //    {
-        //        logger.LogError("Error occured when trying to delete test");
-        //        return RedirectToAction(nameof(GetAllTests));
-        //    }
-        //}
     }
 }

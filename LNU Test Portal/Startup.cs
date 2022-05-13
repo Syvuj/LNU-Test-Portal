@@ -26,9 +26,12 @@ namespace LNU_Test_Portal
 {
     public class Startup
     {
+       
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+           
+
         }
 
         public IConfiguration Configuration { get; }
@@ -61,9 +64,9 @@ namespace LNU_Test_Portal
         .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
 
+
+
             
-
-
 
             services.ConfigureApplicationCookie(config =>
             {

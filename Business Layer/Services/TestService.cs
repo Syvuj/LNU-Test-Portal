@@ -21,15 +21,15 @@ namespace Business_Layer.Services
         public void AddNewTest(Test test)=> testRepository.Insert(test);
         public void DeleteTest(Test test)=> testRepository.Delete(test);
 
-        public IEnumerable<Test> GetAllTests()
+        public IEnumerable<Test> GetAllTestsForTeacher(string TeacherId)
         {
-            return testRepository.SelectAll()
+            return testRepository.SelectAll(p=>p.Course.TeacherId == TeacherId)
                  .Select(x => new Test
                  {
                      id = x.id,
                      name = x.name,
                      description = x.description,
-                     CourseId = courseRepository.SelectOneById(x.CourseId).id,
+                     CourseId = x.CourseId,
                      Course = courseRepository.SelectOneById(x.CourseId),
                      Questions = x.Questions
                      
@@ -37,18 +37,18 @@ namespace Business_Layer.Services
                  ) ;
         }
 
-        public IEnumerable<Test> GetAllTests(int CourseId)
-        {
-            return testRepository.SelectAll()
-                .Select(x => new Test
-                {
-                    id = x.id,
-                    name = x.name,
-                    description = x.description,
-                    CourseId = CourseId,
-                    Course = courseRepository.SelectOneById(CourseId)
-                });
-        }
+        //public IEnumerable<Test> GetAllTests(int CourseId)
+        //{
+        //    return testRepository.SelectAll()
+        //        .Select(x => new Test
+        //        {
+        //            id = x.id,
+        //            name = x.name,
+        //            description = x.description,
+        //            CourseId = CourseId,
+        //            Course = courseRepository.SelectOneById(CourseId)
+        //        });
+        //}
 
         public Test GetTestById(int Id)=> testRepository.SelectOneById(Id);
         public void UpdateTest(Test test)=> testRepository.Update(test);

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.Extensions.Logging;
+using System.Net.Mail;
+using System.Net;
 
 namespace MyShelter.Controllers
 {
@@ -95,7 +97,44 @@ namespace MyShelter.Controllers
                     var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                     var confirmationLink = Url.Action("ConfirmSuccess", "Account",
                         new { userId = user.Id, token = token }, Request.Scheme);
-                    ViewData["EmailConfirmLink"] = confirmationLink;
+
+                    ViewBag.Title= "Registration successful.We sent confirmation link to your email.Before you login, please confirm your email";
+
+
+                    MailMessage mm = new MailMessage("mylnu.service@gmail.com", "mylnu.service@gmail.com");
+                    mm.Subject = "Email Confirmation";
+                    mm.Body = "<!DOCTYPE html>"+
+ "<body>"+
+   "<div class=\"mask d-flex align-items-center h-100 gradient-custom-3\">"+
+   "<div class=\"container h-100\">"+
+        "<div class=\"row d-flex justify-content-center align-items-center h-100\">"+
+            "<div class=\"col-12 col-md-9 col-lg-7 col-xl-6\">"+
+                "<div class=\"LogInForm card\"  style=\"border-radius: 15px;\">"+
+                    "<div class=\"card-body p-5\">"+
+                    "</div>"+
+                    "<div class=\"d-flex justify-content-center form-outline mb-4\">"+
+            "<a href = "+ confirmationLink + " class=\"LogInButton btn btn-primary\" style=\"background-color: #79819e; color: #ffffff;margin-top:10px\"> Confirm Your Email</a>"+
+            "</div>"+
+            "    </div>"+
+            "</div>"+
+       " </div>"+
+    "</div>"+
+"</div>"+
+"</body>"+
+"</html>";
+                    mm.IsBodyHtml = true;
+
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+
+                    NetworkCredential nc = new NetworkCredential("mylnu.service@gmail.com", "Qwerty_123456");
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = nc;
+                    smtp.Send(mm);
+
+
 
                     if (!roleManager.RoleExistsAsync("Student").Result)
                     {
@@ -105,12 +144,13 @@ namespace MyShelter.Controllers
                     {
                         await roleManager.CreateAsync(new IdentityRole("Teacher"));//create role
                     }
+
                     if (signInManager.IsSignedIn(User))
                     {
                         return RedirectToAction("GetAllCourses", "Course");
                     }
                     await userManager.AddToRoleAsync(user, "Teacher");  // add default role   сбюцю  дкъ опюб пна рср лю╙ асрх ярсдемр
-                    ViewBag.Title = "Registration successful.Before you login, please confirm your email";
+                    ViewBag.Title = "Registration successful.We send you email ";
                     return View("ConfirmEmail");
                 }
                 foreach (var error in result.Errors)

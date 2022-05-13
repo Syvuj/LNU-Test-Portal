@@ -27,5 +27,10 @@ namespace LNU_Test_Portal.ViewModels
             ErrorMessage = "Password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
         public string City { get; set; }
+
+        public string To { get; set; }
+        public string From { get; set; }
+        public string Subject { get; set; }
+        public string Body { get; set; }
     }
 }
