@@ -1,4 +1,5 @@
-@model Data_Access_Layer.Entities.Course;
+@using LNU_Test_Portal.ViewModels
+@model CourseStudentViewModel;
 @{
     ViewData["Title"] = "Create";
     Layout = "_Layout";
@@ -25,6 +26,21 @@
                                 <label class="form-label text-white" for="exampleFormControlTextarea1">Description</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" asp-for="description"></textarea>
                             </div>
+
+                             <div class="form-group">
+                                <label class="form-label text-white" for="exampleFormControlTextarea1">Students</label>
+                                @for(int i=0;i<Model.AvailableStudents.Count();i++)
+                                {
+                                    <div>
+                                    @Html.HiddenFor(x=>Model.AvailableStudents[i].Id)
+                                    @Html.CheckBoxFor(x=>Model.AvailableStudents[i].IsCheked)
+                                    @Html.DisplayFor(x=>Model.AvailableStudents[i].Title)
+                                    </div>
+                                }
+                            </div>
+
+
+
 
                             <div class="d-flex justify-content-end">
                                 <a class="CancelButton text-white" asp-area="" asp-controller="Course" asp-action="GetAllCourses">Cancel</a>

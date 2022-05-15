@@ -19,6 +19,21 @@ namespace Data_Access_Layer.Migrations
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ApplicationUserCourse", b =>
+                {
+                    b.Property<int>("Coursesid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudentsId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Coursesid", "StudentsId");
+
+                    b.HasIndex("StudentsId");
+
+                    b.ToTable("ApplicationUserCourse");
+                });
+
             modelBuilder.Entity("Data_Access_Layer.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -33,9 +48,6 @@ namespace Data_Access_Layer.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Courseid")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -78,8 +90,6 @@ namespace Data_Access_Layer.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Courseid");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -299,11 +309,19 @@ namespace Data_Access_Layer.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Data_Access_Layer.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("ApplicationUserCourse", b =>
                 {
                     b.HasOne("Data_Access_Layer.Entities.Course", null)
-                        .WithMany("Students")
-                        .HasForeignKey("Courseid");
+                        .WithMany()
+                        .HasForeignKey("Coursesid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Data_Access_Layer.Entities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("StudentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Question", b =>
@@ -381,8 +399,6 @@ namespace Data_Access_Layer.Migrations
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Course", b =>
                 {
-                    b.Navigation("Students");
-
                     b.Navigation("Tests");
                 });
 

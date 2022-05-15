@@ -23,10 +23,22 @@ namespace Business_Layer.Services
                 Students = x.Students, TeacherId = TeacherId, 
                 Tests = x.Tests});
         }
+       
         public void AddNewCourse(Course course)=> courseRepository.Insert(course);
         public Course GetCourseById(int Id)=> courseRepository.SelectOneById(Id);
         public void UpdateCourse(Course course)=> courseRepository.Update(course);
         public void DeleteCourse(Course course)=> courseRepository.Delete(course);
+
+        public void ChangeStudents(Course course, IEnumerable<ApplicationUser> students)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public void ChangeStudents(Course course , IEnumerable<ApplicationUser> students)
+        //{
+        //    course.Students = students;
+        //}
+        
 
     }
 }

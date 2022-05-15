@@ -142,3 +142,10 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Question\Edit.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Question\Delete.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Shared\EmailConfirmView.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Logging.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\AddStudents.cshtml.g.cs

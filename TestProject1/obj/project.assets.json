@@ -3032,6 +3032,7 @@
           "Microsoft.AspNet.WebApi.Client": "5.2.8",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.16",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.16",
           "NETCore.MailKit": "2.0.3",
           "SendGrid": "9.27.0",
           "Serilog.Extensions.Logging.File": "2.0.0"
@@ -3057,6 +3058,7 @@
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.16",
           "Microsoft.EntityFrameworkCore": "5.0.16",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16",
           "NETCore.MailKit": "2.0.3",
           "SendGrid": "9.27.0",
@@ -10115,6 +10117,7 @@
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.16",
       "Microsoft.EntityFrameworkCore >= 5.0.16",
+      "Microsoft.EntityFrameworkCore.Relational >= 5.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.16",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.16",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
@@ -10211,6 +10214,10 @@
             "version": "[5.0.16, )"
           },
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.16, )"
+          },
+          "Microsoft.EntityFrameworkCore.Relational": {
             "target": "Package",
             "version": "[5.0.16, )"
           },

@@ -122,6 +122,7 @@ namespace LNU_Test_Portal.Controllers
                     }
                     await userManager.AddToRoleAsync(user, "Teacher");  // add default role   сбюцю  дкъ опюб пна рср лю╙ асрх ярсдемр
                     ViewBag.Title = "Registration successful.We send you email ";
+                    
                     return View("ConfirmEmail");
                 }
                 foreach (var error in result.Errors)
