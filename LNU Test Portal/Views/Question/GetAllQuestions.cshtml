@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<Data_Access_Layer.Entities.Question>
 @using Microsoft.AspNetCore.Identity
+@using System;
 
-@inject SignInManager<ApplicationUser> signInMahager;
+@inject SignInManager<ApplicationUser> signInManager;
 @{
 	ViewData["Title"] = "Manage Test";
     Layout = "_Layout-2";
@@ -11,18 +12,22 @@
 	{
 		SumScores += ques.Scores;
 	}
+
+
+
+
+	//List<string> optionSt = Model.Select(p=>p.Options).ToString().Split(",").ToList();
+	//string tttyyy = optionSt.FirstOrDefault();
+	
 	
 }
 @using Data_Access_Layer.Entities
 
 
-<div class="manage course content">
-    @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
-    {
-    }
+@if (signInManager.IsSignedIn(User) && User.IsInRole("Teacher"))
+{
+	<div class="manage course content">
     
-
-       
 	@if (Model.Count() !=0)
 	{
 		
@@ -31,7 +36,6 @@
 		<h3>@CurTest.name</h3>
 		<h3>Scores:@SumScores</h3>
 	</div>
-
 		@{
 			int counter = 0;}
 		@foreach(var ques in Model)
@@ -64,23 +68,99 @@
         <a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px; margin:20px; margin-left:20px;" asp-controller="Question" asp-action="Create" asp-route-id="@CurTest.id">Add Question</a>
 		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="GetAllTests">Back</a>
     </div>
-
-</div>
-		
-	
+</div>	
 </div>
 	}
 	else
 	{
 
-		
 		<h3 style="color:black;">@CurTest.name</h3>
-	
 		<div class="d-flex justify-content-start" style="margin-top:20px;">
         <a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px; margin:20px; margin-left:0px;" asp-controller="Question" asp-action="Create" asp-route-id="@CurTest.id">Add Question</a>
 		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="GetAllTests">Back</a>
     </div>
-	}
-            
-    
+	}  
  </div>
+}
+
+
+@*for student
+*@
+
+
+else
+{
+	<div class="manage course content">
+    
+	@if (Model.Count() !=0)
+	{
+		
+		<div class="questionDetails flex-column justify-content-between">
+	<div class="test_container_text ">
+		<h3>@CurTest.name</h3>
+		<h3>Scores:@SumScores</h3>
+	
+	</div>
+		@{
+			int counter = 0;}
+		@foreach(var ques in Model)
+		{
+			counter++;
+			<div class="flex-column justify-content-between" style="width: 80%; background: #FFFFFF;margin: auto;padding-top: 25px;">
+				<div class="flex-column justify-content-between" style="width: 95%;background: #FFFFFF;border: 1px solid #000000;border-radius: 5px; padding: 20px;margin: auto; ">
+					<h3 class="question_number">Question №@counter</h3>
+					<h3 class="question_number" style="text-decoration:none;">Scores:@ques.Scores</h3>
+					
+					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;margin: auto;">
+						<p style="font-family: 'Montserrat', sans-serif; font-weight: 400;color: #000000;font-size: 24px;padding:13px;">@ques.Title</p>
+					</div >
+					<h3 class="answers_test">Choose Correct Answer:</h3>
+
+					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;">
+
+
+						@{
+							List<string> optionSt = ques.Options.Split(',').ToList();
+						}
+								@foreach(var item in optionSt)
+								{
+									<div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <label class="form-check-label" for="flexRadioDefault1">
+    @item
+  </label>
+</div>
+						}
+								
+					</div >
+								
+		</div>
+	</div>
+		}
+		<div class="flex-column justify-content-between" style="width: 80%; background: #FFFFFF;margin: auto;padding-top: 25px;">
+<div class="d-flex justify-content-start" style="margin-top:20px;">
+		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="GetAllTests">Back</a>
+    </div>
+</div>	
+</div>
+	}
+	else
+	{
+
+		<h3 style="color:black;">@CurTest.name</h3>
+		<div class="d-flex justify-content-start" style="margin-top:20px;">
+		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="GetAllTests">Back</a>
+    </div>
+	}  
+ </div>
+}
+    
+
+
+
+
+
+
+
+
+

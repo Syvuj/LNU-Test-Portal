@@ -16,5 +16,6 @@ namespace Business_Layer.Services.Interfaces
         void DeleteCourse(Course course);
 
         void ChangeStudents(Course course, IEnumerable<ApplicationUser> students);
+        IEnumerable<Course> GetAllCoursesForStudent(ApplicationUser Student);
     }
 }

@@ -41,12 +41,14 @@ namespace LNU_Test_Portal.Controllers
         [Authorize]
         public IActionResult GetAllCourses()
         {
-            var user = userManager.GetUserId(User);
-            var courses = courseService.GetAllCoursesForTeacher(user);
+            var userId = userManager.GetUserId(User);
+            var courses = courseService.GetAllCoursesForTeacher(userId);
             if (signInManager.IsSignedIn(User) && User.IsInRole("Student"))
             {
-                logger.LogInformation("Show all courses");///
+                ApplicationUser student = userManager.Users.FirstOrDefault(p => p.Id == userId);
+                courses = courseService.GetAllCoursesForStudent(student);
             }
+          
 
             
             logger.LogInformation("Show all courses");
@@ -139,7 +141,7 @@ namespace LNU_Test_Portal.Controllers
         [Authorize(Roles = "Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(CourseStudentViewModel CSVM, Course course, ApplicationUserCourse ac)
+        public IActionResult Edit(CourseStudentViewModel CSVM, Course course)
         {
             if (ModelState.IsValid)
             {
@@ -147,10 +149,24 @@ namespace LNU_Test_Portal.Controllers
 
                 course.description = CSVM.description;
                 course.name = CSVM.name;
+                course.Students = new List<ApplicationUser>();
+                List<ApplicationUser> stc = new List<ApplicationUser>();
+                foreach (var item in CSVM.AvailableStudents)
+                {
+                    if (item.IsCheked)
+                    {
+                        ApplicationUser us = userManager.FindByIdAsync(item.Id).Result;
+                        stc.Add(us);
 
-                string pty = course.Students.ToList().First().UserName;
+                    }
+                }
 
-                course.Students.Clear();
+                course.Students = stc;
+
+                var pty = course.Students.Select(p=>p.Email).ToList();
+                //int count = course.Students.Count();
+
+                
 
 
                 // courseService.UpdateCourse(course);

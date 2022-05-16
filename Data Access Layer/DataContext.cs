@@ -14,6 +14,7 @@ namespace Data_Access_Layer
         public DbSet<Course> Course { get; set; }
         public DbSet<Test> Test { get; set; }
         public DbSet<Question> Question { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

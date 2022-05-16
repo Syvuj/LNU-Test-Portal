@@ -13,7 +13,7 @@ using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
 using System.Dynamic;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNet.Identity;
+//using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace LNU_Test_Portal.Controllers
@@ -26,21 +26,29 @@ namespace LNU_Test_Portal.Controllers
         private readonly ITestService testService;
         private readonly ICourseService  courseService;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public TestController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, ICourseService courseService,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             this.logger = logger;
             this.configuration = configuration;
             this.testService = testService;
             this.courseService = courseService;
             this.signInManager = signInManager;
+            this.userManager = userManager;
         }
         [Authorize]
         public IActionResult GetAllTests()
         {
+            var userId = userManager.GetUserId(User);
+            var tests = testService.GetAllTestsForTeacher(userId);
+            if (signInManager.IsSignedIn(User) && User.IsInRole("Student"))
+            {
+                ApplicationUser student = userManager.Users.FirstOrDefault(p => p.Id == userId);
+                tests = testService.GetAllTestsForStudent(student);
+            }
             
-            var tests = testService.GetAllTestsForTeacher(User.Identity.GetUserId());
             return View(tests);
         }
 
@@ -50,7 +58,7 @@ namespace LNU_Test_Portal.Controllers
             try
             {
                 var test = new Test();
-                ViewData["AviableCourses"] = courseService.GetAllCoursesForTeacher(User.Identity.GetUserId());
+                ViewData["AviableCourses"] = courseService.GetAllCoursesForTeacher(userManager.GetUserId(User));
                 return View(test);
             }
             catch
@@ -85,7 +93,7 @@ namespace LNU_Test_Portal.Controllers
             try
             {
                 Test test = testService.GetTestById(Id);
-                ViewData["AviableCourses"] = courseService.GetAllCoursesForTeacher(User.Identity.GetUserId());
+                ViewData["AviableCourses"] = courseService.GetAllCoursesForTeacher(userManager.GetUserId(User));
                 return View(test);
             }
             catch

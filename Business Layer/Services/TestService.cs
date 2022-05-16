@@ -37,6 +37,22 @@ namespace Business_Layer.Services
                  ) ;
         }
 
+        public IEnumerable<Test> GetAllTestsForStudent(ApplicationUser Student)
+        {
+            return testRepository.SelectAll(p => p.Course.Students.Contains(Student))
+                 .Select(x => new Test
+                 {
+                     id = x.id,
+                     name = x.name,
+                     description = x.description,
+                     CourseId = x.CourseId,
+                     Course = courseRepository.SelectOneById(x.CourseId),
+                     Questions = x.Questions
+
+                 }
+                 );
+        }
+
         //public IEnumerable<Test> GetAllTests(int CourseId)
         //{
         //    return testRepository.SelectAll()

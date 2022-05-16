@@ -23,7 +23,23 @@ namespace Business_Layer.Services
                 Students = x.Students, TeacherId = TeacherId, 
                 Tests = x.Tests});
         }
-       
+
+        public IEnumerable<Course> GetAllCoursesForStudent(ApplicationUser Student)
+        {
+            return courseRepository.SelectAll(m => m.Students.Contains(Student))
+                .Select(x => new Course
+                {
+                    id = x.id,
+                    description = x.description,
+                    name = x.name,
+                    Students = x.Students,
+                    TeacherId = x.TeacherId,
+                    Tests = x.Tests
+                });
+        }
+
+
+
         public void AddNewCourse(Course course)=> courseRepository.Insert(course);
         public Course GetCourseById(int Id)=> courseRepository.SelectOneById(Id);
         public void UpdateCourse(Course course)=> courseRepository.Update(course);
