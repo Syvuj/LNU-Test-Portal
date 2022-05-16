@@ -75,29 +75,28 @@ namespace LNU_Test_Portal.Controllers
         [Authorize(Roles = "Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("name,description,AvailableStudents")] CourseStudentViewModel CSVM,  Course course)
+        public IActionResult Create(CourseStudentViewModel CSVM,  Course course)
         {
             course.description = CSVM.description;
             course.name = CSVM.name;
 
-
+            course.Students = new List<ApplicationUser>();
+            List<ApplicationUser> students = new List<ApplicationUser>();
             foreach (var item in CSVM.AvailableStudents)
             {
                 if (item.IsCheked)
                 {
-                    string id = item.Title;
+                    string id = item.Title;//not needed
                     ApplicationUser us = userManager.FindByIdAsync(item.Id).Result;
                     us.Courses = new List<Course>();
                     us.Courses.Add(course);
-                    course.Students = new List<ApplicationUser>();
-                    course.Students.Add(us);
-                   // appus.Add(us.Result);
+
+                    students.Add(us);
+                   
                 }
             }
+            course.Students = students;
             
-
-
-
 
             course.TeacherId =  userManager.GetUserId(User);
             courseService.AddNewCourse(course);
@@ -106,11 +105,28 @@ namespace LNU_Test_Portal.Controllers
 
         [Authorize(Roles = "Teacher")]
         public IActionResult Edit(int Id)
-        {
+        {  
+
             try
             {
                 Course course = courseService.GetCourseById(Id);
-                return View(course);
+                CourseStudentViewModel CSVM = new CourseStudentViewModel();
+
+                var std = userManager.Users;
+               
+                var allstudents = std.Select(vm => new CheckBoxItem()
+                {
+                    Id = vm.Id,
+                    Title = vm.UserName,
+                    IsCheked = vm.Courses.Any(x=>x.id==course.id) ?true:false
+                }).ToList();
+
+                CSVM.description = course.description;
+                CSVM.name = course.name;
+                CSVM.id = course.id;
+                CSVM.AvailableStudents = allstudents;
+
+                return View(CSVM);
             }
             catch
             {
@@ -123,22 +139,40 @@ namespace LNU_Test_Portal.Controllers
         [Authorize(Roles = "Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("id,name,description")] Course course)
+        public IActionResult Edit(CourseStudentViewModel CSVM, Course course, ApplicationUserCourse ac)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    courseService.UpdateCourse(course);
-                    return RedirectToAction(nameof(GetAllCourses));
-                }
-            }
-            catch
-            {
-                logger.LogError("Error occured when trying to edit coure");
+                //Course course = courseService.GetCourseById(Id);
+
+                course.description = CSVM.description;
+                course.name = CSVM.name;
+
+                string pty = course.Students.ToList().First().UserName;
+
+                course.Students.Clear();
+
+
+                // courseService.UpdateCourse(course);
+
+                int courseId = course.id;
+                //course.Students.Clear();
+                //course.Students = new List<ApplicationUser>();
+                //foreach (var item in CSVM.AvailableStudents)
+                //{
+                //    if (item.IsCheked)
+                //    {
+                //        ApplicationUser us = userManager.FindByIdAsync(item.Id).Result;
+                //        course.Students.Add(us);
+
+                //    }
+                //}
+
+                courseService.UpdateCourse(course);
                 return RedirectToAction(nameof(GetAllCourses));
             }
-            return View(course);
+
+                return View(course);
         }
 
         [Authorize(Roles = "Teacher")]

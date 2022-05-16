@@ -12,10 +12,10 @@ namespace Data_Access_Layer.Repository
 {
     public class Repository<T> :IRepository<T> where T :BaseEntity
     {
-        private readonly IdentityDbContext<ApplicationUser> dataBaseContext;
+        private readonly DataContext dataBaseContext;
         private readonly DbSet<T> entitiesDataSet;
 
-        public Repository(IdentityDbContext<ApplicationUser> context)
+        public Repository(DataContext context)
         {
             dataBaseContext = context;
             entitiesDataSet = context.Set<T>();

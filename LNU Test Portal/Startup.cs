@@ -56,7 +56,7 @@ namespace LNU_Test_Portal
             services.AddSingleton(mailService);
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IdentityDbContext<ApplicationUser>, DataContext>();
+            services.AddScoped<DbContext,IdentityDbContext<ApplicationUser>>(); //тут поміняв
 
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ITestService, TestService>();
