@@ -33,3 +33,4 @@ C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\re
 C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.pdb
 C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\Business Logic Layer.genruntimeconfig.cache
 C:\Users\orest\Desktop\LNU-Test-Portal-master\Business Layer\obj\Debug\net5.0\ref\Business Logic Layer.dll
+D:\My Visual Studio proj\LNU Test Portal\Business Layer\obj\Debug\net5.0\Business Logic Layer.csproj.CopyComplete

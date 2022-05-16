@@ -120,7 +120,7 @@ namespace LNU_Test_Portal.Controllers
                     {
                         return RedirectToAction("GetAllCourses", "Course");
                     }
-                    await userManager.AddToRoleAsync(user, "Teacher");  // add default role   сбюцю  дкъ опюб пна рср лю╙ асрх ярсдемр
+                    await userManager.AddToRoleAsync(user, "Student");  // add default role   сбюцю  дкъ опюб пна рср лю╙ асрх ярсдемр
                     ViewBag.Title = "Registration successful.We send you email ";
                     
                     return View("ConfirmEmail");

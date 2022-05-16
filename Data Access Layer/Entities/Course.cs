@@ -12,6 +12,7 @@ namespace Data_Access_Layer.Entities
         public string description { get; set; }
         public virtual IEnumerable<Test> Tests { get; set; }
         public string TeacherId { get; set; }
+        public List<ApplicationUserCourse> ApplicationUserCourses { get; set; }
         public virtual List<ApplicationUser> Students { get; set; }
     }
 }

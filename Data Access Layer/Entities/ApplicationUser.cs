@@ -11,6 +11,7 @@ namespace Data_Access_Layer.Entities
     public class ApplicationUser: IdentityUser
     {
         public string City { get; set; }
-        public virtual List<Course> Courses { get; set; }
+        public  List<Course> Courses { get; set; }
+        public List<ApplicationUserCourse> ApplicationUserCourses { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Access_Layer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220515213053_myMigration478")]
-    partial class myMigration478
+    [Migration("20220516164851_myMigration")]
+    partial class myMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,21 +20,6 @@ namespace Data_Access_Layer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("ApplicationUserCourse", b =>
-                {
-                    b.Property<int>("Coursesid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StudentsId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Coursesid", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("ApplicationUserCourse");
-                });
 
             modelBuilder.Entity("Data_Access_Layer.Entities.ApplicationUser", b =>
                 {
@@ -102,6 +87,21 @@ namespace Data_Access_Layer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Data_Access_Layer.Entities.ApplicationUserCourse", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("CourseId", "StudentId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("ApplicationUserCourse");
                 });
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Course", b =>
@@ -311,19 +311,23 @@ namespace Data_Access_Layer.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ApplicationUserCourse", b =>
+            modelBuilder.Entity("Data_Access_Layer.Entities.ApplicationUserCourse", b =>
                 {
-                    b.HasOne("Data_Access_Layer.Entities.Course", null)
-                        .WithMany()
-                        .HasForeignKey("Coursesid")
+                    b.HasOne("Data_Access_Layer.Entities.Course", "Course")
+                        .WithMany("ApplicationUserCourses")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data_Access_Layer.Entities.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
+                    b.HasOne("Data_Access_Layer.Entities.ApplicationUser", "Student")
+                        .WithMany("ApplicationUserCourses")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Question", b =>
@@ -399,8 +403,15 @@ namespace Data_Access_Layer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Data_Access_Layer.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("ApplicationUserCourses");
+                });
+
             modelBuilder.Entity("Data_Access_Layer.Entities.Course", b =>
                 {
+                    b.Navigation("ApplicationUserCourses");
+
                     b.Navigation("Tests");
                 });
 

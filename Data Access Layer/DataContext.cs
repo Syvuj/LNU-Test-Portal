@@ -30,9 +30,27 @@ namespace Data_Access_Layer
             .HasForeignKey(s => s.TestId);
 
 
+
+
             modelBuilder.Entity<ApplicationUser>()
-                .HasMany<Course>(s => s.Courses)
-                .WithMany(c => c.Students);
+            .HasMany(p => p.Courses)
+            .WithMany(p => p.Students)
+            .UsingEntity<ApplicationUserCourse>(
+                j => j
+                    .HasOne(pt => pt.Course)
+                    .WithMany(t => t.ApplicationUserCourses)
+                    .HasForeignKey(pt => pt.CourseId),
+                j => j
+                    .HasOne(pt => pt.Student)
+                    .WithMany(p => p.ApplicationUserCourses)
+                    .HasForeignKey(pt => pt.StudentId),
+                j =>
+                {
+                    j.HasKey(t => new { t.CourseId, t.StudentId });
+                });
+
+
+
         }
     }
 }

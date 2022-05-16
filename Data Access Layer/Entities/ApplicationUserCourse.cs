@@ -11,6 +11,8 @@ namespace Data_Access_Layer.Entities
     public class ApplicationUserCourse
     {
         public int CourseId { get; set; }
-        public string StudentsId { get; set; }
+        public Course Course { get; set; }
+        public string StudentId { get; set; }
+        public ApplicationUser Student { get; set; }
     }
 }

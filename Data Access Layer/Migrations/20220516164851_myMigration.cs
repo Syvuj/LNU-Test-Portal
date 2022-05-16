@@ -172,21 +172,21 @@ namespace Data_Access_Layer.Migrations
                 name: "ApplicationUserCourse",
                 columns: table => new
                 {
-                    Coursesid = table.Column<int>(type: "int", nullable: false),
-                    StudentsId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    StudentId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplicationUserCourse", x => new { x.Coursesid, x.StudentsId });
+                    table.PrimaryKey("PK_ApplicationUserCourse", x => new { x.CourseId, x.StudentId });
                     table.ForeignKey(
-                        name: "FK_ApplicationUserCourse_AspNetUsers_StudentsId",
-                        column: x => x.StudentsId,
+                        name: "FK_ApplicationUserCourse_AspNetUsers_StudentId",
+                        column: x => x.StudentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ApplicationUserCourse_Course_Coursesid",
-                        column: x => x.Coursesid,
+                        name: "FK_ApplicationUserCourse_Course_CourseId",
+                        column: x => x.CourseId,
                         principalTable: "Course",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -238,9 +238,9 @@ namespace Data_Access_Layer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApplicationUserCourse_StudentsId",
+                name: "IX_ApplicationUserCourse_StudentId",
                 table: "ApplicationUserCourse",
-                column: "StudentsId");
+                column: "StudentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

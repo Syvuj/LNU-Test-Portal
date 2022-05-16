@@ -26,16 +26,18 @@ namespace LNU_Test_Portal.Controllers
         private readonly ICourseService courseService;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IManyService manyService;
 
 
         public CourseController(ILogger<CourseController> logger, IConfiguration configuration, ICourseService courseService, SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager, IManyService manyService)
         {
             this.logger = logger;
             this.configuration = configuration;
             this.courseService = courseService;
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.manyService = manyService;
         }
 
         [Authorize]
@@ -141,50 +143,50 @@ namespace LNU_Test_Portal.Controllers
         [Authorize(Roles = "Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(CourseStudentViewModel CSVM, Course course)
+        public IActionResult Edit(CourseStudentViewModel CSVM, Course course, ApplicationUserCourse auC)
         {
             if (ModelState.IsValid)
             {
-                //Course course = courseService.GetCourseById(Id);
+                List<ApplicationUserCourse> stc = new List<ApplicationUserCourse>();
 
                 course.description = CSVM.description;
                 course.name = CSVM.name;
-                course.Students = new List<ApplicationUser>();
-                List<ApplicationUser> stc = new List<ApplicationUser>();
+                course.TeacherId = userManager.GetUserId(User);
+                courseService.UpdateCourse(course);
+
+                int courseid = course.id;
+
                 foreach (var item in CSVM.AvailableStudents)
                 {
                     if (item.IsCheked)
                     {
-                        ApplicationUser us = userManager.FindByIdAsync(item.Id).Result;
-                        stc.Add(us);
+                        stc.Add(new ApplicationUserCourse { CourseId = courseid, StudentId = item.Id});
 
                     }
                 }
 
-                course.Students = stc;
-
-                var pty = course.Students.Select(p=>p.Email).ToList();
-                //int count = course.Students.Count();
-
-                
 
 
-                // courseService.UpdateCourse(course);
+                var databasetable = manyService.GetAllUserCourse().Where(a => a.CourseId == courseid).ToList();
+                var resultlist = databasetable.Except(stc).ToList();
 
-                int courseId = course.id;
-                //course.Students.Clear();
-                //course.Students = new List<ApplicationUser>();
-                //foreach (var item in CSVM.AvailableStudents)
-                //{
-                //    if (item.IsCheked)
-                //    {
-                //        ApplicationUser us = userManager.FindByIdAsync(item.Id).Result;
-                //        course.Students.Add(us);
+                foreach(var item in resultlist)
+                {
+                    manyService.DeleteUserCourse(item);
+                }
 
-                //    }
-                //}
 
-                courseService.UpdateCourse(course);
+
+                var getstudentid = manyService.GetAllUserCourse().Where(a => a.CourseId == courseid).ToList();
+
+               foreach(var item in stc)
+                {
+                    if (!getstudentid.Contains(item))
+                    {
+                        manyService.AddNewUserCourse(item);
+                    }
+                }
+
                 return RedirectToAction(nameof(GetAllCourses));
             }
 
