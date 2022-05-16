@@ -21,6 +21,7 @@ using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
 using System.IO;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace LNU_Test_Portal
 {
@@ -55,7 +56,7 @@ namespace LNU_Test_Portal
             services.AddSingleton(mailService);
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<DbContext, DataContext>();
+            services.AddScoped<IdentityDbContext<ApplicationUser>, DataContext>();
 
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ITestService, TestService>();
