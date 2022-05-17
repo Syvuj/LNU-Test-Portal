@@ -189,10 +189,16 @@ namespace LNU_Test_Portal.Controllers
         {
 
             var questions1 = questionService.GetAllQuestions(TestId).ToList();
+            int StudentScores = 0;
+
 
             for(int i = 0; i < questions.Count(); i++)
             {
                 questions1[i].StudentAnswer = questions[i].StudentAnswer;
+                if(questions1[i].StudentAnswer== questions1[i].Key)
+                {
+                    
+                }
             }
 
             return RedirectToAction("GetAllTests","Test");

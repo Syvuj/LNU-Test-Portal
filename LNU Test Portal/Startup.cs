@@ -63,6 +63,8 @@ namespace LNU_Test_Portal
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<IManyService, ManyService>();
             services.AddScoped<IQuestionService, QuestionService>();
+            services.AddScoped<IQaAnResultsService, IQaAnResultsService >();
+            services.AddScoped<ITestResultsService, TestResultsService>();
 
 
             services.AddScoped<IMailService, MailService>();
