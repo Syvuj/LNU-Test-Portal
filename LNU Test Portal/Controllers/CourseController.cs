@@ -90,7 +90,6 @@ namespace LNU_Test_Portal.Controllers
             {
                 if (item.IsCheked)
                 {
-                    string id = item.Title;//not needed
                     ApplicationUser us = userManager.FindByIdAsync(item.Id).Result;
                     us.Courses = new List<Course>();
                     us.Courses.Add(course);
@@ -227,67 +226,6 @@ namespace LNU_Test_Portal.Controllers
         }
 
 
-
-        //[Authorize(Roles = "Teacher")]
-        //[Route("Course/AddStudents/{id:int}")]
-        //public IActionResult AddStudents(int id)
-        //{
-
-          
-
-        //    CourseStudentViewModel CSVM = new CourseStudentViewModel();
-        //    var course = courseService.GetCourseById(id);
-        //    var students = userManager.Users;
-
-        //    var allStudents = students.Select(vm => new CheckBoxItem()
-        //    {
-        //        Id = vm.Id,
-        //        Title = vm.UserName,
-        //        IsCheked = vm.Courses.Any(x => x.id == course.id) ? true : false
-
-        //    }) ;
-
-        //    CSVM.AvailableStudents = allStudents;
-
-
-
-        //    CourseStudentViewModel CSVM2 = new CourseStudentViewModel();
-
-        //    //CourseStudentViewModel m1 = new CourseStudentViewModel();
-        //    //m1.AvailableStudents = students.Select(p => new CheckBoxItem()
-        //    //{
-        //    //    Id = p.Id,
-        //    //    Title = p.UserName,
-        //    //    IsCheked = course.Students.Any(x => x.Id == m1.AvailableStudents.Select(p => p.Id).FirstOrDefault()) ? true : false
-
-        //    //}) ;
-        //    return View(CSVM2);
-        //}
-
-        //[Authorize(Roles = "Teacher")]
-        //[HttpPost]
-        //[Route("Course/AddStudents/{id:int}")]
-        //public IActionResult AddStudents(int id, CourseStudentViewModel CSVM)
-        //{
-
-           
-        //    Course course = courseService.GetCourseById(id);
-        //    List<ApplicationUser> sts = new List<ApplicationUser>();
-
-        //    foreach(var item in CSVM.AvailableStudents)
-        //    {
-        //        if (item.IsCheked == true)
-        //        {
-        //            ApplicationUser usEr = userManager.FindByIdAsync(item.Id).Result;
-        //            sts.Add(usEr);
-        //        }
-        //    }
-        //    course.Students = sts;
-        //    courseService.UpdateCourse(course);
-
-        //    //courseService.ChangeStudents(course,students);
-        //    return RedirectToAction(nameof(GetAllCourses));
-        //}
 
     }
 }

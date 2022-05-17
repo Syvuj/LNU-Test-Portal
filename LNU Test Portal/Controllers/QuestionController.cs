@@ -172,10 +172,30 @@ namespace LNU_Test_Portal.Controllers
 
 
         [Authorize(Roles = "Student")]
-        [HttpPost, ActionName("GetAllQuestions")]
-        public IActionResult FinishTest()
+        [Route("Question/StartTest/{TestId:int}")]
+        public IActionResult StartTest(int TestId)
         {
-            return View();
+            var questions = questionService.GetAllQuestions(TestId).ToList();
+           // TempData["TestIdData"] = TestId;
+           // TempData["CurrentTest"] = testService.GetTestById(TestId);
+            
+            return View(questions);
+        }
+
+        [Authorize(Roles = "Student")]
+        [Route("Question/StartTest/{TestId:int}")]
+        [HttpPost]
+        public IActionResult StartTest(int TestId,List<Question> questions)
+        {
+
+            var questions1 = questionService.GetAllQuestions(TestId).ToList();
+
+            for(int i = 0; i < questions.Count(); i++)
+            {
+                questions1[i].StudentAnswer = questions[i].StudentAnswer;
+            }
+
+            return RedirectToAction("GetAllTests","Test");
         }
 
 

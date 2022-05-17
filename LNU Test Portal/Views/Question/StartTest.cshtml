@@ -1,0 +1,91 @@
+﻿@model List<Data_Access_Layer.Entities.Question>
+@using System;
+
+@{
+	ViewData["Title"] = "Start Test";
+    Layout = "_Layout-2";
+	//Test CurTest = (Test)TempData["CurrentTest"];
+	int SumScores = 0;
+	@foreach(var ques in Model)
+	{
+		SumScores += ques.Scores;
+	}
+
+
+	
+}
+@using Data_Access_Layer.Entities
+
+
+
+
+
+
+<h1>StartTest</h1>
+<div class="manage course content">
+
+
+
+		<form method="post" asp-asp-controller="Question" asp-action="StartTest">
+			@Html.AntiForgeryToken()
+			
+    
+	@if (Model.Count() !=0)
+	{
+		
+		<div class="questionDetails flex-column justify-content-between">
+	<div class="test_container_text ">
+@*		<h3>@CurTest.name</h3>
+*@		<h3>Scores:@SumScores</h3>
+	
+	</div>
+		@{
+			int counter = 0;}
+		@for(int i=0;i<Model.Count();i++)
+		{
+			
+			@Html.HiddenFor(m=>Model[i].id)
+			counter++;
+			<div class="flex-column justify-content-between" style="width: 80%; background: #FFFFFF;margin: auto;padding-top: 25px;">
+				<div class="flex-column justify-content-between" style="width: 95%;background: #FFFFFF;border: 1px solid #000000;border-radius: 5px; padding: 20px;margin: auto; ">
+					<h3 class="question_number">Question №@counter</h3>
+					<h3 class="question_number" style="text-decoration:none;">Scores:@Model[i].Scores</h3>
+					
+					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;margin: auto;">
+						<p style="font-family: 'Montserrat', sans-serif; font-weight: 400;color: #000000;font-size: 24px;padding:13px;">@Model[i].Title</p>
+					</div >
+					<h3 class="answers_test">Choose Correct Answer:</h3>
+
+					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;">
+
+
+						@{
+							List<string> optionSt = Model[i].Options.Split(',').ToList();
+							string ttt = counter.ToString(); 
+						}
+					
+
+								@for(int j=0;j<optionSt.Count();j++)
+								{
+										
+									
+									@Html.RadioButtonFor(p=>Model[i].StudentAnswer,optionSt[j]) @Html.LabelFor(p=>Model[i].StudentAnswer,optionSt[j])<br>
+								}
+								
+					</div >
+								
+		</div>
+	</div>
+		}
+		<div class="flex-column justify-content-between" style="width: 80%; background: #FFFFFF;margin: auto;padding-top: 25px;">
+<div class="d-flex justify-content-start" style="margin-top:20px;">
+		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="GetAllTests">Back</a>
+		<input type="submit" class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px; margin:20px; margin-left:0px;"  value="Finish Test">
+    </div>
+</div>	
+</div>
+	} 
+
+	</form>
+ </div>
+
