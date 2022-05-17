@@ -121,12 +121,18 @@ else
 
 						@{
 							List<string> optionSt = ques.Options.Split(',').ToList();
+							string ttt = counter.ToString(); 
 						}
+					
+
 								@foreach(var item in optionSt)
 								{
+									
 									<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
+  <input class="form-check-input" type="radio" name=@ttt id=@ttt>
+
+
+  <label class="form-check-label" for=@ttt>
     @item
   </label>
 </div>
@@ -150,6 +156,7 @@ else
 		<h3 style="color:black;">@CurTest.name</h3>
 		<div class="d-flex justify-content-start" style="margin-top:20px;">
 		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="GetAllTests">Back</a>
+		<a class="btn" role="button" style="background: #79819E;font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: 700;color: #FFFFFF;padding: 5px;margin:20px;" asp-controller="Test" asp-action="Finish">Finish Test</a>
     </div>
 	}  
  </div>

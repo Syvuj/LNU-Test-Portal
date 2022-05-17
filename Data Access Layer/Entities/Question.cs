@@ -17,5 +17,7 @@ namespace Data_Access_Layer.Entities
         [ForeignKey("Test")]
         public int TestId { get; set; }
         public Test Test { get; set; }
+
+
     }
 }

@@ -11,9 +11,11 @@ namespace Data_Access_Layer.Entities
         public string name { get; set; }
         public string description { get; set; }
 
+
         [ForeignKey("Course")]
         public int CourseId { get; set; }
         public Course Course { get; set; }
         public virtual IEnumerable<Question> Questions { get; set; }
+
     }
 }

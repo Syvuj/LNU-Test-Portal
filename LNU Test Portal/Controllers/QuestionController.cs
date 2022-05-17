@@ -14,6 +14,7 @@ using Data_Access_Layer.Entities;
 using System.Dynamic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -24,13 +25,17 @@ namespace LNU_Test_Portal.Controllers
         private readonly IConfiguration configuration;
         private readonly ITestService testService;
         private readonly IQuestionService  questionService;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public QuestionController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, IQuestionService questionService)
+
+        public QuestionController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, IQuestionService questionService,
+           SignInManager<ApplicationUser> signInManager)
         {
             this.logger = logger;
             this.configuration = configuration;
             this.testService = testService;
             this.questionService = questionService;
+            this.signInManager = signInManager;
         }
 
         [Route("Question/GetAllQuestions/{TestId:int}")]
@@ -163,5 +168,16 @@ namespace LNU_Test_Portal.Controllers
                 return RedirectToAction(nameof(GetAllQuestions), new { TestId = TestId });
             }
         }
+
+
+
+        [Authorize(Roles = "Student")]
+        [HttpPost, ActionName("GetAllQuestions")]
+        public IActionResult FinishTest()
+        {
+            return View();
+        }
+
+
     }
 }

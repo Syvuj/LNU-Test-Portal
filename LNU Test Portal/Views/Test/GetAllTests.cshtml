@@ -26,7 +26,17 @@
      <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
         <h2 class="CourseName text-white">@test.Course.name | @test.name</h2>
-        <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@test.id">View Test</a>
+                    @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
+                    {
+                                <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@test.id">View Test</a>
+
+                }
+                    else
+                    {
+                            <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@test.id">Start Test</a>
+
+                    }
+
     </div>
     <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
     
