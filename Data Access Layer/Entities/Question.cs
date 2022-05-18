@@ -11,13 +11,12 @@ namespace Data_Access_Layer.Entities
         public int Scores { get; set; }
         public string Title { get; set; }
         public string Key { get; set; }
-        public string StudentAnswer { get; set; }
         public string Options { get; set; }
 
         [ForeignKey("Test")]
         public int TestId { get; set; }
         public Test Test { get; set; }
 
-
+        
     }
 }

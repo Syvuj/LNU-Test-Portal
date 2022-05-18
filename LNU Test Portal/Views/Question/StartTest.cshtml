@@ -1,10 +1,10 @@
-﻿@model List<Data_Access_Layer.Entities.Question>
+﻿@model List<QaAnViewModel>
 @using System;
 
 @{
 	ViewData["Title"] = "Start Test";
     Layout = "_Layout-2";
-	//Test CurTest = (Test)TempData["CurrentTest"];
+	Test CurTest = (Test)TempData["CurrentTest"];
 	int SumScores = 0;
 	@foreach(var ques in Model)
 	{
@@ -15,13 +15,13 @@
 	
 }
 @using Data_Access_Layer.Entities
+@using LNU_Test_Portal.ViewModels
 
 
 
 
 
 
-<h1>StartTest</h1>
 <div class="manage course content">
 
 
@@ -35,8 +35,8 @@
 		
 		<div class="questionDetails flex-column justify-content-between">
 	<div class="test_container_text ">
-@*		<h3>@CurTest.name</h3>
-*@		<h3>Scores:@SumScores</h3>
+		<h3>@CurTest.name</h3>
+		<h3>Scores:@SumScores</h3>
 	
 	</div>
 		@{
@@ -45,6 +45,10 @@
 		{
 			
 			@Html.HiddenFor(m=>Model[i].id)
+			@Html.HiddenFor(m=>Model[i].Key)
+			@Html.HiddenFor(m=>Model[i].TestId)
+			@Html.HiddenFor(m=>Model[i].Scores)
+			
 			counter++;
 			<div class="flex-column justify-content-between" style="width: 80%; background: #FFFFFF;margin: auto;padding-top: 25px;">
 				<div class="flex-column justify-content-between" style="width: 95%;background: #FFFFFF;border: 1px solid #000000;border-radius: 5px; padding: 20px;margin: auto; ">
@@ -69,7 +73,7 @@
 								{
 										
 									
-									@Html.RadioButtonFor(p=>Model[i].StudentAnswer,optionSt[j]) @Html.LabelFor(p=>Model[i].StudentAnswer,optionSt[j])<br>
+									@Html.RadioButtonFor(p=>Model[i].NewStudentAnswer,optionSt[j]) @Html.LabelFor(p=>Model[i].NewStudentAnswer,optionSt[j])<br>
 								}
 								
 					</div >

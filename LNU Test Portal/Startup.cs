@@ -56,6 +56,7 @@ namespace LNU_Test_Portal
             services.AddSingleton(mailService);
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IQaAnResultsRepository<>), typeof(QaAnResultsRepository<>));
             services.AddScoped(typeof(IManyRepository<>), typeof(ManyRepository<>));
             services.AddScoped<DbContext,IdentityDbContext<ApplicationUser>>(); //тут поміняв
 
@@ -63,8 +64,9 @@ namespace LNU_Test_Portal
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<IManyService, ManyService>();
             services.AddScoped<IQuestionService, QuestionService>();
-            services.AddScoped<IQaAnResultsService, IQaAnResultsService >();
+            services.AddScoped<IQaAnResultsService, QaAnResultsService >();
             services.AddScoped<ITestResultsService, TestResultsService>();
+           
 
 
             services.AddScoped<IMailService, MailService>();

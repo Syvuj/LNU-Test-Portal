@@ -14,7 +14,7 @@ namespace Data_Access_Layer.Entities
         [ForeignKey("Test")]
         public int TestId { get; set; }
         public Test Test { get; set; }
-        public List<QnAnResults> QnAnResultsList { get; set; }
+        public List<Question> SolvedQuestions { get; set; }
         public string TotalStScore { get; set; }
 
     }

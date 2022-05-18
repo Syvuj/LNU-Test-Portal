@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business_Layer.Services.Interfaces
 {
-    public interface ITestResults
+    public interface ITestResultsService
     {
         IEnumerable<TestResults> GetTRes(string StudentId);
         void AddNewTRes(TestResults TestResults);

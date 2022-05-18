@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Business_Layer.Services
 {
-    public class QaAnResultsService: IQaAnResults
+    public class QaAnResultsService: IQaAnResultsService
     {
-        private readonly IRepository<QaAnResults> repository;
-        public QaAnResultsService(IRepository<QaAnResults> repository)
+        private readonly IQaAnResultsRepository<QaAnResults> repository;
+        public QaAnResultsService(IQaAnResultsRepository<QaAnResults> repository)
         {
             this.repository = repository;
         }
@@ -29,18 +29,25 @@ namespace Business_Layer.Services
 
         public IEnumerable<QaAnResults> GetAllQnAnForStudent(ApplicationUser Student)
         {
-            return repository.SelectAll(p => p.Student ==Student)
-                 .Select(x => new QaAnResults
-                 {
-                     id = x.id,
-                     Student = x.Student,
-                     StudentId = x.StudentId,
-                     QuestionAnswer = x.QuestionAnswer,
-                     QuestionId = x.QuestionId,
-                     StudentAnswScore = x.StudentAnswScore
-                 }
-                 );
+            throw new NotImplementedException();
         }
+
+        //public IEnumerable<QaAnResults> GetAllQnAnForStudent(ApplicationUser Student)
+        //{
+        //    return repository.SelectAll()
+        //         .Select(x => new QaAnResults
+        //         {
+        //             id = x.id,
+        //             Student = x.Student,
+        //             StudentId = x.StudentId,
+        //             QuestionAnswer = x.QuestionAnswer,
+        //             QuestionId = x.QuestionId,
+        //             StudentAnswScore = x.StudentAnswScore,
+        //             StudAnsw = x.StudAnsw
+
+        //         }
+        //         );
+        //}
 
         public IEnumerable<QaAnResults> GetQnAn(string StudentId)
         {

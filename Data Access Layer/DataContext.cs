@@ -17,7 +17,7 @@ namespace Data_Access_Layer
 
         public DbSet<QaAnResults> QaAnResults { get; set; }
         public DbSet<TestResults> TestResults { get; set; }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -51,6 +51,18 @@ namespace Data_Access_Layer
                 {
                     j.HasKey(t => new { t.CourseId, t.StudentId });
                 });
+
+
+
+            //modelBuilder.Entity<TestResults>().HasOne(p => p.Student)
+            //    .WithMany(t => t.TestResults).HasForeignKey(q => q.StudentId);
+
+            
+
+
+
+
+
 
 
 

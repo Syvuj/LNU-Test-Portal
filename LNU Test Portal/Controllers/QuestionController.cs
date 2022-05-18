@@ -15,6 +15,7 @@ using System.Dynamic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity;
+using LNU_Test_Portal.ViewModels;
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -26,16 +27,20 @@ namespace LNU_Test_Portal.Controllers
         private readonly ITestService testService;
         private readonly IQuestionService  questionService;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly IQaAnResultsService qaAnResultService;
+        private readonly ITestResultsService testResultsService;
 
 
         public QuestionController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, IQuestionService questionService,
-           SignInManager<ApplicationUser> signInManager)
+           SignInManager<ApplicationUser> signInManager, IQaAnResultsService qaAnResultService, ITestResultsService testResultsService)
         {
             this.logger = logger;
             this.configuration = configuration;
             this.testService = testService;
             this.questionService = questionService;
             this.signInManager = signInManager;
+            this.qaAnResultService = qaAnResultService;
+            this.testResultsService = testResultsService;
         }
 
         [Route("Question/GetAllQuestions/{TestId:int}")]
@@ -175,31 +180,79 @@ namespace LNU_Test_Portal.Controllers
         [Route("Question/StartTest/{TestId:int}")]
         public IActionResult StartTest(int TestId)
         {
-            var questions = questionService.GetAllQuestions(TestId).ToList();
-           // TempData["TestIdData"] = TestId;
-           // TempData["CurrentTest"] = testService.GetTestById(TestId);
-            
-            return View(questions);
+            var questions = questionService.GetAllQuestions(TestId).ToArray();
+
+            QaAnViewModel [] qaAnViewModel = new QaAnViewModel[questions.Count()];
+            for(int i = 0; i < questions.Count(); i++)
+            {
+                qaAnViewModel[i] = new QaAnViewModel();
+                qaAnViewModel[i].id = questions[i].id;
+                qaAnViewModel[i].Key = questions[i].Key;
+                qaAnViewModel[i].Options = questions[i].Options;
+                qaAnViewModel[i].Scores = questions[i].Scores;
+                qaAnViewModel[i].TestId = questions[i].TestId;
+                qaAnViewModel[i].Test = questions[i].Test;
+                qaAnViewModel[i].Title = questions[i].Title;
+            }
+
+            List<QaAnViewModel> qNvm = qaAnViewModel.ToList();
+
+
+
+            TempData["TestIdData"] = TestId;
+            TempData["CurrentTest"] = testService.GetTestById(TestId);
+
+            return View(qNvm);
         }
 
         [Authorize(Roles = "Student")]
         [Route("Question/StartTest/{TestId:int}")]
         [HttpPost]
-        public IActionResult StartTest(int TestId,List<Question> questions)
+        public IActionResult StartTest(int TestId,List<QaAnViewModel> questions)
         {
 
-            var questions1 = questionService.GetAllQuestions(TestId).ToList();
-            int StudentScores = 0;
-
-
-            for(int i = 0; i < questions.Count(); i++)
+            for (int i = 0; i < questions.Count(); i++)
             {
-                questions1[i].StudentAnswer = questions[i].StudentAnswer;
-                if(questions1[i].StudentAnswer== questions1[i].Key)
+                QaAnResults qaAnResults = new QaAnResults();
+
+                
+                qaAnResults.QuestionId = questions[i].id;
+                
+                qaAnResults.StudentId = User.Identity.GetUserId();
+                qaAnResults.StudAnsw = questions[i].NewStudentAnswer;
+                qaAnResults.CorectAnswer = questions[i].Key;
+
+
+
+
+
+
+
+
+                if (questions[i].NewStudentAnswer == questions[i].Key)
                 {
-                    
+                    qaAnResults.StudentAnswScore = questions[i].Scores;
                 }
+                else
+                {
+                    qaAnResults.StudentAnswScore = 0;
+                }
+
+
+                
+                //string t2 = qaAnResults.QuestionAnswer.Options;
+                int t3 = qaAnResults.QuestionId;
+                string t4 = qaAnResults.StudAnsw;
+                string t5 = qaAnResults.StudentId;
+
+
+
+
+                qaAnResultService.AddNewQnAn(qaAnResults);
+
             }
+
+
 
             return RedirectToAction("GetAllTests","Test");
         }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Access_Layer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220517090101_myMigration2")]
+    [Migration("20220518174835_myMigration2")]
     partial class myMigration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,6 +125,33 @@ namespace Data_Access_Layer.Migrations
                     b.ToTable("Course");
                 });
 
+            modelBuilder.Entity("Data_Access_Layer.Entities.QaAnResults", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CorectAnswer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudAnsw")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StudentAnswScore")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("QaAnResults");
+                });
+
             modelBuilder.Entity("Data_Access_Layer.Entities.Question", b =>
                 {
                     b.Property<int>("id")
@@ -140,9 +167,6 @@ namespace Data_Access_Layer.Migrations
 
                     b.Property<int>("Scores")
                         .HasColumnType("int");
-
-                    b.Property<string>("StudentAnswer")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TestId")
                         .HasColumnType("int");
@@ -172,9 +196,6 @@ namespace Data_Access_Layer.Migrations
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaxScore")
-                        .HasColumnType("int");
-
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
@@ -195,18 +216,18 @@ namespace Data_Access_Layer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StudentId1")
+                    b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("TestId")
                         .HasColumnType("int");
 
+                    b.Property<string>("TotalStScore")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("id");
 
-                    b.HasIndex("StudentId1");
+                    b.HasIndex("StudentId");
 
                     b.HasIndex("TestId");
 
@@ -371,13 +392,11 @@ namespace Data_Access_Layer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data_Access_Layer.Entities.TestResults", "TestResults")
-                        .WithMany()
+                    b.HasOne("Data_Access_Layer.Entities.TestResults", null)
+                        .WithMany("SolvedQuestions")
                         .HasForeignKey("TestResultsid");
 
                     b.Navigation("Test");
-
-                    b.Navigation("TestResults");
                 });
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Test", b =>
@@ -395,10 +414,10 @@ namespace Data_Access_Layer.Migrations
                 {
                     b.HasOne("Data_Access_Layer.Entities.ApplicationUser", "Student")
                         .WithMany("TestResults")
-                        .HasForeignKey("StudentId1");
+                        .HasForeignKey("StudentId");
 
                     b.HasOne("Data_Access_Layer.Entities.Test", "Test")
-                        .WithMany("TestResults")
+                        .WithMany()
                         .HasForeignKey("TestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -476,8 +495,11 @@ namespace Data_Access_Layer.Migrations
             modelBuilder.Entity("Data_Access_Layer.Entities.Test", b =>
                 {
                     b.Navigation("Questions");
+                });
 
-                    b.Navigation("TestResults");
+            modelBuilder.Entity("Data_Access_Layer.Entities.TestResults", b =>
+                {
+                    b.Navigation("SolvedQuestions");
                 });
 #pragma warning restore 612, 618
         }

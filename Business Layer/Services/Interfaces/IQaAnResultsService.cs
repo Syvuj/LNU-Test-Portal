@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business_Layer.Services.Interfaces
 {
-    public interface IQaAnResults
+    public interface IQaAnResultsService
     {
         IEnumerable<QaAnResults> GetQnAn(string StudentId);
         void AddNewQnAn(QaAnResults qaAnResults);

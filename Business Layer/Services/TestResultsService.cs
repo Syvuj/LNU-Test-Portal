@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business_Layer.Services
 {
-    public class TestResultsService: ITestResults
+    public class TestResultsService: ITestResultsService
     {
         private readonly IRepository<TestResults> repository;
         public TestResultsService(IRepository<TestResults> repository)
@@ -35,10 +35,10 @@ namespace Business_Layer.Services
                      id = x.id,
                      Student = x.Student,
                      StudentId = x.StudentId,
-                     QaAnResultsList = x.QaAnResultsList,
                      Test = x.Test,
                      TestId = x.TestId,
-                     TotalStScore = x.TotalStScore 
+                     TotalStScore = x.TotalStScore ,
+                     SolvedQuestions = x.SolvedQuestions
                  }
                  );
         }

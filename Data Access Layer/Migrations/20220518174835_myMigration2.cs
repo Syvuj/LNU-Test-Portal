@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data_Access_Layer.Migrations
 {
-    public partial class myMigration : Migration
+    public partial class myMigration2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,23 @@ namespace Data_Access_Layer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Course", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "QaAnResults",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StudentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    QuestionId = table.Column<int>(type: "int", nullable: false),
+                    StudentAnswScore = table.Column<int>(type: "int", nullable: false),
+                    StudAnsw = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CorectAnswer = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_QaAnResults", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,6 +231,33 @@ namespace Data_Access_Layer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TestResults",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StudentId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    TestId = table.Column<int>(type: "int", nullable: false),
+                    TotalStScore = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TestResults", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_TestResults_AspNetUsers_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_TestResults_Test_TestId",
+                        column: x => x.TestId,
+                        principalTable: "Test",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Question",
                 columns: table => new
                 {
@@ -222,9 +266,9 @@ namespace Data_Access_Layer.Migrations
                     Scores = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Key = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StudentAnswer = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Options = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TestId = table.Column<int>(type: "int", nullable: false)
+                    TestId = table.Column<int>(type: "int", nullable: false),
+                    TestResultsid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -235,6 +279,12 @@ namespace Data_Access_Layer.Migrations
                         principalTable: "Test",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Question_TestResults_TestResultsid",
+                        column: x => x.TestResultsid,
+                        principalTable: "TestResults",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -287,9 +337,24 @@ namespace Data_Access_Layer.Migrations
                 column: "TestId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Question_TestResultsid",
+                table: "Question",
+                column: "TestResultsid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Test_CourseId",
                 table: "Test",
                 column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TestResults_StudentId",
+                table: "TestResults",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TestResults_TestId",
+                table: "TestResults",
+                column: "TestId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -313,10 +378,16 @@ namespace Data_Access_Layer.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "QaAnResults");
+
+            migrationBuilder.DropTable(
                 name: "Question");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "TestResults");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

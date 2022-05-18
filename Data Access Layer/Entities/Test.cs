@@ -17,5 +17,7 @@ namespace Data_Access_Layer.Entities
         public Course Course { get; set; }
         public virtual IEnumerable<Question> Questions { get; set; }
 
+        //public List<QaAnResults> QaAnResults { get; set; }
+
     }
 }
