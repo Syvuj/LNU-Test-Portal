@@ -14,19 +14,9 @@
                     <div class="card-body p-5">
                         <h2 class="text-uppercase text-center text-white mb-4">Create course</h2>
 
-                        <form method="post" asp-controller="Course" asp-action="Edit">
+                        <form method="post" asp-controller="Course" asp-action="EditStudents">
                             @Html.AntiForgeryToken()
-                            <input asp-for="id" hidden>
-                            <div class="form-outline mb-4">
-                                <label class="form-label text-white" for="form3Example1cg">Course Name</label>
-                                <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="name" />
-
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label text-white" for="exampleFormControlTextarea1">Description</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" asp-for="description"></textarea>
-                            </div>
+                            <input asp-for="id" hidden />
 
                              <div class="form-group">
                                 <label class="form-label text-white" for="exampleFormControlTextarea1">Students</label>
@@ -34,14 +24,11 @@
                                 {
                                     <div>
                                     @Html.HiddenFor(x=>Model.AvailableStudents[i].Id)
-                                    @Html.CheckBoxFor(x=>Model.AvailableStudents[i].IsCheked, new { style="width:18px;height:18px;vertical-align: middle;" })
-                                    <label class="form-label text-white" for="exampleFormControlTextarea1">@Model.AvailableStudents[i].Title</label>
+                                    @Html.CheckBoxFor(x=>Model.AvailableStudents[i].IsCheked)
+                                    @Html.DisplayFor(x=>Model.AvailableStudents[i].Title)
                                     </div>
                                 }
                             </div>
-
-
-
 
                             <div class="d-flex justify-content-end">
                                 <a class="CancelButton text-white" asp-area="" asp-controller="Course" asp-action="GetAllCourses">Cancel</a>

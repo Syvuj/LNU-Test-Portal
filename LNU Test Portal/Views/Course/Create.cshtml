@@ -33,8 +33,8 @@
                                 {
                                     <div>
                                     @Html.HiddenFor(x=>Model.AvailableStudents[i].Id)
-                                    @Html.CheckBoxFor(x=>Model.AvailableStudents[i].IsCheked)
-                                    @Html.DisplayFor(x=>Model.AvailableStudents[i].Title)
+                                    @Html.CheckBoxFor(x=>Model.AvailableStudents[i].IsCheked, new { style="width:18px;height:18px;vertical-align: middle;" })
+                                    <label class="form-label text-white" for="exampleFormControlTextarea1">@Model.AvailableStudents[i].Title</label>
                                     </div>
                                 }
                             </div>

@@ -196,9 +196,6 @@ namespace LNU_Test_Portal.Controllers
             }
 
             List<QaAnViewModel> qNvm = qaAnViewModel.ToList();
-
-
-
             TempData["TestIdData"] = TestId;
             TempData["CurrentTest"] = testService.GetTestById(TestId);
 
@@ -210,24 +207,14 @@ namespace LNU_Test_Portal.Controllers
         [HttpPost]
         public IActionResult StartTest(int TestId,List<QaAnViewModel> questions)
         {
-
             for (int i = 0; i < questions.Count(); i++)
             {
                 QaAnResults qaAnResults = new QaAnResults();
-
-                
                 qaAnResults.QuestionId = questions[i].id;
-                
                 qaAnResults.StudentId = User.Identity.GetUserId();
                 qaAnResults.StudAnsw = questions[i].NewStudentAnswer;
                 qaAnResults.CorectAnswer = questions[i].Key;
-
-
-
-
-
-
-
+                
 
                 if (questions[i].NewStudentAnswer == questions[i].Key)
                 {
@@ -237,17 +224,6 @@ namespace LNU_Test_Portal.Controllers
                 {
                     qaAnResults.StudentAnswScore = 0;
                 }
-
-
-                
-                //string t2 = qaAnResults.QuestionAnswer.Options;
-                int t3 = qaAnResults.QuestionId;
-                string t4 = qaAnResults.StudAnsw;
-                string t5 = qaAnResults.StudentId;
-
-
-
-
                 qaAnResultService.AddNewQnAn(qaAnResults);
 
             }

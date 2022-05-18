@@ -36,11 +36,11 @@
 		<div class="questionDetails flex-column justify-content-between">
 	<div class="test_container_text ">
 		<h3>@CurTest.name</h3>
-		<h3>Scores:@SumScores</h3>
+		<h3>Available Points:@SumScores</h3>
 	
 	</div>
 		@{
-			int counter = 0;}
+			int counter1 = 0;}
 		@for(int i=0;i<Model.Count();i++)
 		{
 			
@@ -49,32 +49,28 @@
 			@Html.HiddenFor(m=>Model[i].TestId)
 			@Html.HiddenFor(m=>Model[i].Scores)
 			
-			counter++;
+			counter1++;
 			<div class="flex-column justify-content-between" style="width: 80%; background: #FFFFFF;margin: auto;padding-top: 25px;">
 				<div class="flex-column justify-content-between" style="width: 95%;background: #FFFFFF;border: 1px solid #000000;border-radius: 5px; padding: 20px;margin: auto; ">
-					<h3 class="question_number">Question №@counter</h3>
-					<h3 class="question_number" style="text-decoration:none;">Scores:@Model[i].Scores</h3>
-					
-					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;margin: auto;">
-						<p style="font-family: 'Montserrat', sans-serif; font-weight: 400;color: #000000;font-size: 24px;padding:13px;">@Model[i].Title</p>
-					</div >
-					<h3 class="answers_test">Choose Correct Answer:</h3>
+				<h3 class="question_number" style="text-decoration:none;">Question №@counter1 (@Model[i].Scores points)</h3>
+		        <h3 class="question_number" style="text-decoration:none;font-weight: normal;">@Model[i].Title</h3>
 
-					<div class="flex-column justify-content-between" style="background-color:#f3f3f3;">
+					
+					<div class="flex-column justify-content-between">
 
 
 						@{
 							List<string> optionSt = Model[i].Options.Split(',').ToList();
-							string ttt = counter.ToString(); 
+							string ttt = counter1.ToString(); 
 						}
 					
 
 								@for(int j=0;j<optionSt.Count();j++)
 								{
-										
-									
-									@Html.RadioButtonFor(p=>Model[i].NewStudentAnswer,optionSt[j]) @Html.LabelFor(p=>Model[i].NewStudentAnswer,optionSt[j])<br>
-								}
+
+
+									@Html.RadioButtonFor(p=>Model[i].NewStudentAnswer,optionSt[j], new {style="height:18px;width:18px; margin:4px;vertical-align: middle;"}) @Html.LabelFor(p=>Model[i].NewStudentAnswer,optionSt[j],new {style="font-size:18px;margin-left:4px;"})<br>
+						}
 								
 					</div >
 								

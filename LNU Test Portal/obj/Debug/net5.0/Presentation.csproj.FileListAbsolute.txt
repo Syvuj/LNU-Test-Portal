@@ -224,3 +224,4 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\zh-Han
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Question\StartTest.cshtml.g.cs
+D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\EditStudents.cshtml.g.cs

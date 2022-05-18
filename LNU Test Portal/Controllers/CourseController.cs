@@ -50,9 +50,8 @@ namespace LNU_Test_Portal.Controllers
                 ApplicationUser student = userManager.Users.FirstOrDefault(p => p.Id == userId);
                 courses = courseService.GetAllCoursesForStudent(student);
             }
-          
 
-            
+
             logger.LogInformation("Show all courses");
             
             return View(courses);
@@ -93,7 +92,6 @@ namespace LNU_Test_Portal.Controllers
                     ApplicationUser us = userManager.FindByIdAsync(item.Id).Result;
                     us.Courses = new List<Course>();
                     us.Courses.Add(course);
-
                     students.Add(us);
                    
                 }
@@ -164,8 +162,6 @@ namespace LNU_Test_Portal.Controllers
                     }
                 }
 
-
-
                 var databasetable = manyService.GetAllUserCourse().Where(a => a.CourseId == courseid).ToList();
                 var resultlist = databasetable.Except(stc).ToList();
 
@@ -173,8 +169,6 @@ namespace LNU_Test_Portal.Controllers
                 {
                     manyService.DeleteUserCourse(item);
                 }
-
-
 
                 var getstudentid = manyService.GetAllUserCourse().Where(a => a.CourseId == courseid).ToList();
 
@@ -224,8 +218,6 @@ namespace LNU_Test_Portal.Controllers
                 return RedirectToAction(nameof(GetAllCourses));
             }
         }
-
-
 
     }
 }
