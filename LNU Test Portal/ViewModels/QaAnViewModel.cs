@@ -11,5 +11,6 @@ namespace LNU_Test_Portal.ViewModels
     public class QaAnViewModel:Question
     {
         public string NewStudentAnswer { get; set; }
+        public int StudentScorecByQues { get; set; }
     }
 }

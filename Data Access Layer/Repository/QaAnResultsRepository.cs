@@ -45,7 +45,15 @@ namespace Data_Access_Layer.Repository
 
         public IEnumerable<T> SelectAll(Expression<Func<T, bool>> selector, params Expression<Func<T, object>>[] includeProperties)
         {
-            throw new NotImplementedException();
+            return GetValueWithInclude(includeProperties).Where(selector).ToList();
+        }
+
+        private IQueryable<T> GetValueWithInclude(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> querriedEntities = entitiesDataSet.AsNoTracking();
+
+            return includeProperties.Aggregate(querriedEntities, (current, includeProperty)
+                => current.Include(includeProperty));
         }
     }
 }

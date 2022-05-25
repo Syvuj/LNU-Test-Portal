@@ -44,9 +44,17 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Autofac.Extras.Moq": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
             "EntityFramework.SqlServerCompact": {
               "target": "Package",
               "version": "[6.4.4, )"
+            },
+            "FakeItEasy": {
+              "target": "Package",
+              "version": "[7.3.1, )"
             },
             "MailKit": {
               "target": "Package",
@@ -79,6 +87,10 @@
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[5.0.16, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.1, )"
             },
             "NETCore.MailKit": {
               "target": "Package",
@@ -148,6 +160,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Autofac.Extras.Moq": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
@@ -155,6 +171,10 @@
             "EntityFramework.SqlServerCompact": {
               "target": "Package",
               "version": "[6.4.4, )"
+            },
+            "FakeItEasy": {
+              "target": "Package",
+              "version": "[7.3.1, )"
             },
             "MailKit": {
               "target": "Package",
@@ -208,6 +228,10 @@
               "target": "Package",
               "version": "[5.0.16, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.1, )"
+            },
             "NETCore.MailKit": {
               "target": "Package",
               "version": "[2.0.3, )"
@@ -244,6 +268,192 @@
         }
       }
     },
+    "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal\\Presentation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal\\Presentation.csproj",
+        "projectName": "Presentation",
+        "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal\\Presentation.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\My Visual Studio proj\\LNU Test Portal\\Business Layer\\Business Logic Layer.csproj": {
+                "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\Business Layer\\Business Logic Layer.csproj"
+              },
+              "D:\\My Visual Studio proj\\LNU Test Portal\\Data Access Layer\\Data Access Layer.csproj": {
+                "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\Data Access Layer\\Data Access Layer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Autofac.Extras.Moq": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "EntityFramework.SqlServerCompact": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "FakeItEasy": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Microsoft.AspNet.Identity.Core": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.Identity.Owin": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.8, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.1, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.27.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Serilog.Enrichers.Process": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
+            "Serilog.Extensions.Logging.File": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Serilog.Settings.Configuration": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            },
+            "Serilog.Sinks.Seq": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
+            "SonarAnalyzer.CSharp": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.37.0.45539, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\My Visual Studio proj\\LNU Test Portal\\TestProject1\\TestProject1.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -270,6 +480,12 @@
             "projectReferences": {
               "D:\\My Visual Studio proj\\LNU Test Portal\\Business Layer\\Business Logic Layer.csproj": {
                 "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\Business Layer\\Business Logic Layer.csproj"
+              },
+              "D:\\My Visual Studio proj\\LNU Test Portal\\Data Access Layer\\Data Access Layer.csproj": {
+                "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\Data Access Layer\\Data Access Layer.csproj"
+              },
+              "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal\\Presentation.csproj": {
+                "projectPath": "D:\\My Visual Studio proj\\LNU Test Portal\\LNU Test Portal\\Presentation.csproj"
               }
             }
           }
@@ -284,6 +500,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Autofac.Extras.Moq": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
@@ -291,6 +511,10 @@
             "EntityFramework.SqlServerCompact": {
               "target": "Package",
               "version": "[6.4.4, )"
+            },
+            "FakeItEasy": {
+              "target": "Package",
+              "version": "[7.3.1, )"
             },
             "MailKit": {
               "target": "Package",
@@ -341,6 +565,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.9.4, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.1, )"
             },
             "NETCore.MailKit": {
               "target": "Package",

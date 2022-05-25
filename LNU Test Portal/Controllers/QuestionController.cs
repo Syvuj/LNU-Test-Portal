@@ -186,6 +186,7 @@ namespace LNU_Test_Portal.Controllers
             for(int i = 0; i < questions.Count(); i++)
             {
                 qaAnViewModel[i] = new QaAnViewModel();
+                
                 qaAnViewModel[i].id = questions[i].id;
                 qaAnViewModel[i].Key = questions[i].Key;
                 qaAnViewModel[i].Options = questions[i].Options;
@@ -193,6 +194,9 @@ namespace LNU_Test_Portal.Controllers
                 qaAnViewModel[i].TestId = questions[i].TestId;
                 qaAnViewModel[i].Test = questions[i].Test;
                 qaAnViewModel[i].Title = questions[i].Title;
+                
+
+
             }
 
             List<QaAnViewModel> qNvm = qaAnViewModel.ToList();
@@ -215,6 +219,7 @@ namespace LNU_Test_Portal.Controllers
                 qaAnResults.StudAnsw = questions[i].NewStudentAnswer;
                 qaAnResults.CorectAnswer = questions[i].Key;
                 
+                
 
                 if (questions[i].NewStudentAnswer == questions[i].Key)
                 {
@@ -228,9 +233,39 @@ namespace LNU_Test_Portal.Controllers
 
             }
 
+            return ReviewTest(TestId);
+        }
 
 
-            return RedirectToAction("GetAllTests","Test");
+        [Authorize(Roles = "Student")]
+        [Route("Question/ReviewTest/{TestId:int}")]
+        public IActionResult ReviewTest(int TestId)
+        {
+            var questions = questionService.GetAllQuestions(TestId).ToArray();
+
+            QaAnViewModel[] qaAnViewModel = new QaAnViewModel[questions.Count()];
+            for (int i = 0; i < questions.Count(); i++)
+            {
+                qaAnViewModel[i] = new QaAnViewModel();
+
+                qaAnViewModel[i].id = questions[i].id;
+                qaAnViewModel[i].Key = questions[i].Key;
+                qaAnViewModel[i].Options = questions[i].Options;
+                qaAnViewModel[i].Scores = questions[i].Scores;
+                qaAnViewModel[i].TestId = questions[i].TestId;
+                qaAnViewModel[i].Test = questions[i].Test;
+                qaAnViewModel[i].Title = questions[i].Title;
+                qaAnViewModel[i].NewStudentAnswer = qaAnResultService.GetQnAn(User.Identity.GetUserId()).Select(p=>p.StudAnsw).ToArray()[i];
+                qaAnViewModel[i].StudentScorecByQues = qaAnResultService.GetQnAn(User.Identity.GetUserId()).Select(p => p.StudentAnswScore).ToArray()[i];
+
+
+            }
+
+            List<QaAnViewModel> qNvm = qaAnViewModel.ToList();
+            TempData["TestIdData"] = TestId;
+            TempData["CurrentTest"] = testService.GetTestById(TestId);
+
+            return View(qNvm);
         }
 
 

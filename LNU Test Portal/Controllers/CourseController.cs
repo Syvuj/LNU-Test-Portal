@@ -40,6 +40,8 @@ namespace LNU_Test_Portal.Controllers
             this.manyService = manyService;
         }
 
+
+
         [Authorize]
         public IActionResult GetAllCourses()
         {
@@ -64,7 +66,8 @@ namespace LNU_Test_Portal.Controllers
         public IActionResult Create()
         {
             var model = new Course();
-            var std = userManager.Users;
+            var std = userManager.GetUsersInRoleAsync("Student").Result;//
+            //var std = userManager.Users;
             CourseStudentViewModel m1 = new CourseStudentViewModel();
             m1.AvailableStudents = std.Select(vm => new CheckBoxItem()
             {
@@ -93,12 +96,9 @@ namespace LNU_Test_Portal.Controllers
                     us.Courses = new List<Course>();
                     us.Courses.Add(course);
                     students.Add(us);
-                   
                 }
             }
             course.Students = students;
-            
-
             course.TeacherId =  userManager.GetUserId(User);
             courseService.AddNewCourse(course);
             return RedirectToAction(nameof(GetAllCourses));
@@ -106,35 +106,27 @@ namespace LNU_Test_Portal.Controllers
 
         [Authorize(Roles = "Teacher")]
         public IActionResult Edit(int Id)
-        {  
+        {
+            Course course = courseService.GetCourseById(Id);
+            CourseStudentViewModel CSVM = new CourseStudentViewModel();
 
-            try
+            //var std = userManager.GetUsersInRoleAsync("Student").Result;
+
+            var std = userManager.Users;
+            CSVM.AvailableStudents = std.Select(vm => new CheckBoxItem()
             {
-                Course course = courseService.GetCourseById(Id);
-                CourseStudentViewModel CSVM = new CourseStudentViewModel();
+                Id = vm.Id,
+                Title = vm.UserName,
+                IsCheked = vm.Courses.Any(x => x.id == course.id) ? true : false
+            }).ToList();
 
-                var std = userManager.Users;
-               
-                var allstudents = std.Select(vm => new CheckBoxItem()
-                {
-                    Id = vm.Id,
-                    Title = vm.UserName,
-                    IsCheked = vm.Courses.Any(x=>x.id==course.id) ?true:false
-                }).ToList();
+            CSVM.description = course.description;
+            CSVM.name = course.name;
+            CSVM.id = course.id;
+             
 
-                CSVM.description = course.description;
-                CSVM.name = course.name;
-                CSVM.id = course.id;
-                CSVM.AvailableStudents = allstudents;
-
-                return View(CSVM);
-            }
-            catch
-            {
-                logger.LogError("Error occured when trying to edit coure");
-                return RedirectToAction(nameof(GetAllCourses));
-
-            }
+            return View(CSVM);
+        
         }
 
         [Authorize(Roles = "Teacher")]

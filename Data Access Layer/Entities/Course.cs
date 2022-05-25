@@ -14,5 +14,7 @@ namespace Data_Access_Layer.Entities
         public string TeacherId { get; set; }
         public List<ApplicationUserCourse> ApplicationUserCourses { get; set; }
         public virtual List<ApplicationUser> Students { get; set; }
+
+      
     }
 }

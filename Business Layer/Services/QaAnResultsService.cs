@@ -51,7 +51,15 @@ namespace Business_Layer.Services
 
         public IEnumerable<QaAnResults> GetQnAn(string StudentId)
         {
-            throw new NotImplementedException();
+            return repository.SelectAll(x => x.StudentId == StudentId).Select(p=>new QaAnResults
+            {
+                id = p.id,
+                CorectAnswer = p.CorectAnswer,
+                QuestionId = p.QuestionId,
+                StudAnsw = p.StudAnsw,
+                StudentAnswScore = p.StudentAnswScore,
+                StudentId = StudentId
+            });
         }
 
         public QaAnResults GetQnAnById(int Id)

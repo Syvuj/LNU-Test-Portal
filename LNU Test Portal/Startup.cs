@@ -22,17 +22,15 @@ using NETCore.MailKit.Infrastructure.Internal;
 using System.IO;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Serilog;
 
 namespace LNU_Test_Portal
 {
     public class Startup
     {
-       
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-           
-
         }
 
         public IConfiguration Configuration { get; }
@@ -40,7 +38,6 @@ namespace LNU_Test_Portal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
@@ -48,7 +45,6 @@ namespace LNU_Test_Portal
                                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-
 
             var mailService = Configuration
                 .GetSection("MailService")
@@ -76,19 +72,12 @@ namespace LNU_Test_Portal
 
             })
         .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
-
-
-
-
-            
-
             services.ConfigureApplicationCookie(config =>
             {
                 config.Cookie.Name = "Identity.Cookie";
                 config.LoginPath = "/Account/Login";
             }
             );
-
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddHttpClient();
@@ -99,7 +88,6 @@ namespace LNU_Test_Portal
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
             }
             else
             {
@@ -111,12 +99,14 @@ namespace LNU_Test_Portal
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+
+            app.UseSerilogRequestLogging();
+
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
             
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

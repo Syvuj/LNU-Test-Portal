@@ -1,6 +1,7 @@
 ﻿using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
 using Data_Access_Layer.Repository;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,18 @@ namespace Business_Layer.Services
     public class CourseService:ICourseService
     {
         private readonly IRepository<Course> courseRepository;
+        private Mock<IRepository<Course>> repoMock;
+
         public CourseService(IRepository<Course> courseRepository)
         {
             this.courseRepository = courseRepository;
         }
+
+        public CourseService(Mock<IRepository<Course>> repoMock)
+        {
+            this.repoMock = repoMock;
+        }
+
         public IEnumerable<Course> GetAllCoursesForTeacher(string TeacherId)
         {
             return courseRepository.SelectAll(m =>m.TeacherId==TeacherId)

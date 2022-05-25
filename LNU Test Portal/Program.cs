@@ -8,38 +8,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using Serilog;
 using Serilog.Events;
+using Microsoft.Extensions.Logging.Configuration;
 
 namespace LNU_Test_Portal
 {
     public class Program
     {
-        public static int Main(string[] args)
+        public static void Main(string[] args)
         {
+            var configuration = new ConfigurationBuilder()
+               .AddJsonFile("appsettings.json").Build();
+
             Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .CreateLogger();
+                .ReadFrom.Configuration(configuration).CreateLogger();
 
             try
             {
-                Log.Information("Starting web host ---");
+                Log.Information("Application Starting up");
                 CreateHostBuilder(args).Build().Run();
-                Console.ReadKey(true);
-                return 0;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                Log.Fatal(ex, "Host terminated unexpectedly");
-                return 1;
+                Log.Fatal(ex ,"Aplication fail");
             }
             finally
             {
                 Log.CloseAndFlush();
             }
-            
         }
-        //CreateHostBuilder(args).Build().Run();
+        //
 
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -48,7 +45,7 @@ namespace LNU_Test_Portal
                 .ConfigureWebHostDefaults(webBuilder =>
 
                 {
-                    webBuilder.UseStartup<Startup>().UseSerilog();
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
