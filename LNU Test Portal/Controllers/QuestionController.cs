@@ -233,7 +233,7 @@ namespace LNU_Test_Portal.Controllers
 
             }
 
-            return ReviewTest(TestId);
+            return RedirectToAction("ReviewTest", new { TestId = TestId }) ;
         }
 
 
@@ -261,6 +261,9 @@ namespace LNU_Test_Portal.Controllers
 
             }
 
+
+            int ToTal = qaAnViewModel.Select(x => x.StudentScorecByQues).Sum();
+            TempData["TotalByTest"] = ToTal;
             List<QaAnViewModel> qNvm = qaAnViewModel.ToList();
             TempData["TestIdData"] = TestId;
             TempData["CurrentTest"] = testService.GetTestById(TestId);
