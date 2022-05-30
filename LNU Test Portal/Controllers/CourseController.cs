@@ -11,10 +11,9 @@ using Business_Layer.Services;
 using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
 using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity;
 using LNU_Test_Portal.ViewModels;
-//using Microsoft.AspNetCore.Mvc;
+using System.Data.Entity;
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -52,10 +51,7 @@ namespace LNU_Test_Portal.Controllers
                 ApplicationUser student = userManager.Users.FirstOrDefault(p => p.Id == userId);
                 courses = courseService.GetAllCoursesForStudent(student);
             }
-
-
-            logger.LogInformation("Show all courses");
-            
+            logger.LogInformation("User " + User.Identity.Name + " get all courses");
             return View(courses);
         }
         
@@ -66,8 +62,7 @@ namespace LNU_Test_Portal.Controllers
         public IActionResult Create()
         {
             var model = new Course();
-            var std = userManager.GetUsersInRoleAsync("Student").Result;//
-            //var std = userManager.Users;
+            var std = userManager.GetUsersInRoleAsync("Student").Result;
             CourseStudentViewModel m1 = new CourseStudentViewModel();
             m1.AvailableStudents = std.Select(vm => new CheckBoxItem()
             {
@@ -75,6 +70,7 @@ namespace LNU_Test_Portal.Controllers
                 Title = vm.UserName,
                 IsCheked = false
             }).ToList();
+            logger.LogInformation("User " + User.Identity.Name + " trying to create new Course");
             return View(m1);
         }
 
@@ -101,6 +97,7 @@ namespace LNU_Test_Portal.Controllers
             course.Students = students;
             course.TeacherId =  userManager.GetUserId(User);
             courseService.AddNewCourse(course);
+            logger.LogInformation("User " + User.Identity.Name + " created new course with id=" + course.id);
             return RedirectToAction(nameof(GetAllCourses));
         }
 
@@ -110,21 +107,25 @@ namespace LNU_Test_Portal.Controllers
             Course course = courseService.GetCourseById(Id);
             CourseStudentViewModel CSVM = new CourseStudentViewModel();
 
-            //var std = userManager.GetUsersInRoleAsync("Student").Result;
+            var std = userManager.GetUsersInRoleAsync("Student").Result;
 
-            var std = userManager.Users;
+            foreach(var item in std)
+            {
+                item.Courses = courseService.GetAllCoursesForStudent(item).ToList();
+            }
+
             CSVM.AvailableStudents = std.Select(vm => new CheckBoxItem()
             {
                 Id = vm.Id,
                 Title = vm.UserName,
-                IsCheked = vm.Courses.Any(x => x.id == course.id) ? true : false
+                IsCheked = vm.Courses.Any(x => x.id == course.id) ? true : false 
             }).ToList();
 
             CSVM.description = course.description;
             CSVM.name = course.name;
             CSVM.id = course.id;
-             
 
+            logger.LogInformation("User "+User.Identity.Name +" trying to edit Course with Id=" + Id);
             return View(CSVM);
         
         }
@@ -172,10 +173,12 @@ namespace LNU_Test_Portal.Controllers
                     }
                 }
 
+                logger.LogInformation("User edit Course successfully with Id=" + course.id);
                 return RedirectToAction(nameof(GetAllCourses));
             }
 
-                return View(course);
+            logger.LogError("Error occured when User" + User.Identity.Name + " called Edit post method for course");
+            return View(course);
         }
 
         [Authorize(Roles = "Teacher")]

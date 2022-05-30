@@ -148,7 +148,6 @@ D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Micros
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
-D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\obj\Debug\net5.0\Razor\Views\Course\AddStudents.cshtml.g.cs
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\My Visual Studio proj\LNU Test Portal\LNU Test Portal\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll

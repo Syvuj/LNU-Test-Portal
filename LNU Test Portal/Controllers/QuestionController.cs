@@ -78,7 +78,6 @@ namespace LNU_Test_Portal.Controllers
         {
             try
             {
-                
                 question.Test = testService.GetTestById(TestId);
                 question.TestId = TestId;
                 questionService.AddNewQuestion(question);

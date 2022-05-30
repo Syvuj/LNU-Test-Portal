@@ -103,5 +103,51 @@ namespace TestProject1
             Assert.AreEqual(expected, actual);
         }
 
+        [Test]
+       
+        public void AddCourseTest()
+        {
+
+            //Arrange
+            var courses = new List<Course>() { new Course { id = 1 }, new Course { id = 2 }, new Course { id = 3 } };
+            var FirstCourse = courses.First();
+            
+            //Act
+            courseRepo.Setup(x => x.Insert(FirstCourse));
+
+            //Assert
+            Assert.IsTrue(true);
+        }
+        [Test]
+        public void DeleteCourseTest()
+        {
+
+            //Arrange
+            var courses = new List<Course>() { new Course { id = 1 }, new Course { id = 2 }, new Course { id = 3 } };
+            var FirstCourse = courses.First();
+
+            //Act
+            courseRepo.Setup(x => x.Delete(FirstCourse));
+            courseService.DeleteCourse(FirstCourse);
+
+            //Assert
+            Assert.IsTrue(true);
+        }
+        [Test]
+        public void EditCourseTest()
+        {
+
+            //Arrange
+            var courses = new List<Course>() { new Course { id = 1 }, new Course { id = 2 }, new Course { id = 3 } };
+            var FirstCourse = courses.First();
+
+            //Act
+            courseRepo.Setup(x => x.Update(FirstCourse));
+            courseService.UpdateCourse(FirstCourse);
+
+            //Assert
+            Assert.IsTrue(true);
+        }
+
     }
 }
