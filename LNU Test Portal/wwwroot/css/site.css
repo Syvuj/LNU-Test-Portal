@@ -252,6 +252,41 @@ for details on configuring this project to bundle and minify static web assets. 
     margin-bottom:5px;
 }
 
+.AddStudent {
+    background-color: #4b4b4b;
+    border-radius: 10px;
+    display: inline-block;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    margin-right: 20px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.AddStudentText {
+    border-radius: 10px;
+    display: inline-block;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    margin-right: 20px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
 
 
 h2.CourseName {

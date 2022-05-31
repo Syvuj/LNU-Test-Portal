@@ -5,50 +5,42 @@
 @{
     ViewData["Title"] = "Manage Tests";
     Layout = "_Layout-2";
+
+    bool isFirstAttemp = true;
+    int SumByTest= 0;
+    if (User.IsInRole("Student"))
+    {
+        isFirstAttemp = (bool)TempData["isFirstAttemp"];
+        SumByTest = (int)TempData["SumByTest"];
+    }
     
 
+    
 }
 @using Data_Access_Layer.Entities
 
 
 
-<div class="manage course content">
-    @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
-    {
-        <a class="myButton text-white" asp-controller="Test" asp-action="Create">Create Test</a>
-    }
-    
-    @{
 
+@if (User.IsInRole("Teacher"))
+{
+    <div class="manage course content">
+    <a class="myButton text-white" asp-controller="Test" asp-action="Create">Create Test</a>
+    @{
         @foreach(var test in Model)
         {
             
      <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
         <h2 class="CourseName text-white">@test.Course.name | @test.name</h2>
-                    @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
-                    {
-                                <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@test.id">View Test</a>
-
-                }
-                    else
-                    {
-                            <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="StartTest" asp-route-id="@test.id">Start Test</a>
-
-                    }
-
+        <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@test.id">View Test</a>
     </div>
     <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
     
-
-                @if (signInMahager.IsSignedIn(User) && User.IsInRole("Teacher"))
-                {
-                    <div class="d-flex align-items-start">
+    <div class="d-flex align-items-start">
         <a class="EditCourseButton text-white" asp-controller="Test" asp-action="Edit" asp-route-id="@test.id">Edit</a>
         <a class="DeleteCourseButton text-white" asp-controller="Test" asp-action="Delete" asp-route-id="@test.id">Delete</a>
     </div>
-                }
-    
 </div>
           
  
@@ -56,3 +48,67 @@
         }
     }
 </div>
+}
+
+
+
+
+
+@if (User.IsInRole("Student"))
+{
+    <div class="manage course content">
+    @{
+        @foreach(var test in Model)
+        {
+
+                @if (isFirstAttemp == true)
+                {
+                    <div class="courseDetails flex-column justify-content-between" style="width:100%">
+    <div class="d-flex justify-content-between">
+        <h2 class="CourseName text-white">@test.Course.name | @test.name</h2>
+        <div class="d-flex justify-content-between">
+             <p class="AddStudent text-white">Available<p/>
+            </div>
+       
+    </div>
+    
+    
+    <div class="d-flex justify-content-between">
+        <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
+        <div class="d-flex justify-content-between">
+            <a class="AddStudentText text-white" asp-controller="Question" asp-action="StartTest" asp-route-id="@test.id" style="">Start</a>
+            <p class=" AddStudentText  text-white"> n/a </p>
+            </div>
+    </div>
+</div>
+        }
+                else
+                {
+                     <div class="courseDetails flex-column justify-content-between" style="width:100%">
+    <div class="d-flex justify-content-between">
+        <h2 class="CourseName text-white">@test.Course.name | @test.name</h2>
+        <div class="d-flex justify-content-between">
+             <p class="AddStudent text-white" style="background:#66B900;">Done<p/>
+            </div>
+       
+    </div>
+    
+    
+    <div class="d-flex justify-content-between">
+        <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
+        <div class="d-flex justify-content-between">
+            <a class="AddStudentText text-white" asp-controller="Question" asp-action="ReviewTest" asp-route-id="@test.id" style="">View</a>
+            <p class=" AddStudentText  text-white"> @SumByTest/a </p>
+            </div>
+    </div>
+</div>
+                }
+
+
+
+
+        }
+    }
+</div>
+}
+

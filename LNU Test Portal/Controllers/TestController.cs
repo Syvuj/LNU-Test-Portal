@@ -13,7 +13,6 @@ using Business_Layer.Services.Interfaces;
 using Data_Access_Layer.Entities;
 using System.Dynamic;
 using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace LNU_Test_Portal.Controllers
@@ -27,9 +26,12 @@ namespace LNU_Test_Portal.Controllers
         private readonly ICourseService  courseService;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IQaAnResultsService qaAnResultService;
+        private readonly IQuestionService questionService;
 
         public TestController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, ICourseService courseService,
-            SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+            SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IQaAnResultsService qaAnResultService,
+            IQuestionService questionService)
         {
             this.logger = logger;
             this.configuration = configuration;
@@ -37,16 +39,32 @@ namespace LNU_Test_Portal.Controllers
             this.courseService = courseService;
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.qaAnResultService = qaAnResultService;
+            this.questionService = questionService;
         }
         [Authorize]
         public IActionResult GetAllTests()
         {
             var userId = userManager.GetUserId(User);
             var tests = testService.GetAllTestsForTeacher(userId);
+            
             if (signInManager.IsSignedIn(User) && User.IsInRole("Student"))
             {
                 ApplicationUser student = userManager.Users.FirstOrDefault(p => p.Id == userId);
                 tests = testService.GetAllTestsForStudent(student);
+                bool isFirstAttemp = true;
+                
+                int CountAttemps = qaAnResultService.GetAllQnAnForStudent(student).ToList().Count();
+                if(CountAttemps > 0)
+                {
+                    isFirstAttemp = false;
+                    
+                    
+                }
+                TempData["isFirstAttemp"] = isFirstAttemp;
+
+                TempData["SumByTest"] = qaAnResultService.GetAllQnAnForStudent(student).Select(p => p.StudentAnswScore).Sum();
+                
             }
             
             return View(tests);

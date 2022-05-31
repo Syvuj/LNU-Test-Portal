@@ -29,25 +29,18 @@ namespace Business_Layer.Services
 
         public IEnumerable<QaAnResults> GetAllQnAnForStudent(ApplicationUser Student)
         {
-            throw new NotImplementedException();
+            return repository.SelectAll(p => p.StudentId == Student.Id).Select(t => new QaAnResults {
+            id = t.id,
+            CorectAnswer = t.CorectAnswer,
+            QuestionId = t.QuestionId,
+            StudAnsw = t.StudAnsw,
+            StudentAnswScore = t.StudentAnswScore,
+            StudentId = t.StudentId
+            
+            });
         }
 
-        //public IEnumerable<QaAnResults> GetAllQnAnForStudent(ApplicationUser Student)
-        //{
-        //    return repository.SelectAll()
-        //         .Select(x => new QaAnResults
-        //         {
-        //             id = x.id,
-        //             Student = x.Student,
-        //             StudentId = x.StudentId,
-        //             QuestionAnswer = x.QuestionAnswer,
-        //             QuestionId = x.QuestionId,
-        //             StudentAnswScore = x.StudentAnswScore,
-        //             StudAnsw = x.StudAnsw
-
-        //         }
-        //         );
-        //}
+    
 
         public IEnumerable<QaAnResults> GetQnAn(string StudentId)
         {
