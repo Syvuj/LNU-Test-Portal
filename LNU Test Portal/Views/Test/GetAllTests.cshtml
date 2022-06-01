@@ -27,10 +27,10 @@
             
      <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
-        <h2 class="CourseName text-white">@Model[i].Course.name | @Model[i].name</h2>
-        <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@Model[i].id">View Test</a>
+        <h2 class="CourseName text-white" style="width:65%;">@Model[i].Course.name | @Model[i].name</h2>
+        <a class="AddStudentBtn text-white text-center" style="width:125px;height:29px;" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@Model[i].id">View Test</a>
     </div>
-    <p class="CourseDescription text-white" style="width:60%"> @Model[i].description</p>
+    <p class="CourseDescription text-white" style="width:65%;"> @Model[i].description</p>
     
     <div class="d-flex align-items-start">
         <a class="EditCourseButton text-white" asp-controller="Test" asp-action="Edit" asp-route-id="@Model[i].id">Edit</a>
@@ -59,43 +59,45 @@
                 @if (test.isFirstAttemp == true)
                 {
                     <div class="courseDetails flex-column justify-content-between" style="width:100%">
-    <div class="d-flex justify-content-between">
-        <h2 class="CourseName text-white">@test.Course.name | @test.name</h2>
-        <div class="d-flex justify-content-between">
-             <p class="AddStudent text-white">Available<p/>
-            </div>
-       
-    </div>
-    
-    
-    <div class="d-flex justify-content-between">
-        <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
-        <div class="d-flex justify-content-between">
-            <a class="AddStudentText text-white" asp-controller="Question" asp-action="StartTest" asp-route-id="@test.id" style="">Start</a>
-            <p class=" AddStudentText  text-white"> n/a </p>
-            </div>
-    </div>
+                           <div class="d-flex flex-row">
+  <div class="d-flex flex-column " style="width:100%;">
+    <div class="p-0 " style="margin-right:20%"><h2 class="CourseName text-white ">@test.Course.name | @test.name</h2></div>
+    <div class="p-0 " style="margin-right:20%"><p class="CourseDescription text-white"> @test.description</p></div>
+  </div>
+   <div class="d-flex flex-column ">
+    <div class="p-0 ">
+    <p class="AddStudent text-white text-center" style="width:125px;height:29px;margin-right:20px;">Available</p>
+</div>
+    <div class="p-0 ">
+        <div class="d-flex flex-row justify-content-between">
+        <a class="AddStudentText text-white " style="margin-right:0px;padding:0px;" asp-controller="Question" asp-action="StartTest" asp-route-id="@test.id" style="">Start</a>
+    <p class=" AddStudentText  text-white" style="margin-right:20px;padding:0px;"> n/a </p>
+</div>
+</div>
+  </div>
+  </div>
 </div>
         }
                  @if (test.isFirstAttemp == false)
                 {
                      <div class="courseDetails flex-column justify-content-between" style="width:100%">
-    <div class="d-flex justify-content-between">
-        <h2 class="CourseName text-white">@test.Course.name | @test.name</h2>
-        <div class="d-flex justify-content-between">
-             <p class="AddStudent text-white" style="background:#66B900;">Done<p/>
-            </div>
-       
-    </div>
-    
-    
-    <div class="d-flex justify-content-between">
-        <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
-        <div class="d-flex justify-content-between">
-            <a class="AddStudentText text-white" asp-controller="Question" asp-action="ReviewTest" asp-route-id="@test.id" style="">View</a>
-            <p class=" AddStudentText  text-white"> @test.SumByTest/@test.TotalAvailablePoits </p>
-            </div>
-    </div>
+                           <div class="d-flex flex-row">
+  <div class="d-flex flex-column " style="width:100%;">
+    <div class="p-0 " style="margin-right:20%"><h2 class="CourseName text-white ">@test.Course.name | @test.name</h2></div>
+    <div class="p-0 " style="margin-right:20%"><p class="CourseDescription text-white"> @test.description</p></div>
+  </div>
+   <div class="d-flex flex-column ">
+    <div class="p-0 ">
+    <p class="AddStudent text-white text-center" style="background:#66B900;width:125px;height:29px;margin-right:20px;">Done</p>
+</div>
+    <div class="p-0 ">
+        <div class="d-flex flex-row justify-content-between">
+        <a class="AddStudentText text-white " style="margin-right:0px;padding:0px;" asp-controller="Question" asp-action="ReviewTest" asp-route-id="@test.id" style="">View</a>
+    <p class=" AddStudentText  text-white" style="margin-right:20px;padding:0px;"> @test.SumByTest/@test.TotalAvailablePoits </p>
+</div>
+</div>
+  </div>
+  </div>
 </div>
                 }
 
