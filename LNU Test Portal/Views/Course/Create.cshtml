@@ -31,9 +31,9 @@
                                 <label class="form-label text-white" for="exampleFormControlTextarea1">Students</label>
                                 @for(int i=0;i<Model.AvailableStudents.Count();i++)
                                 {
-                                    <div>
+                                     <div class="checkbox-container">
                                     @Html.HiddenFor(x=>Model.AvailableStudents[i].Id)
-                                    @Html.CheckBoxFor(x=>Model.AvailableStudents[i].IsCheked, new { style="width:18px;height:18px;vertical-align: middle;" })
+                                    @Html.CheckBoxFor(x=>Model.AvailableStudents[i].IsCheked, new { style="vertical-align: middle;" })
                                     <label class="form-label text-white" for="exampleFormControlTextarea1">@Model.AvailableStudents[i].Title</label>
                                     </div>
                                 }
