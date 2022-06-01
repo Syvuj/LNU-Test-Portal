@@ -14,6 +14,7 @@ using Data_Access_Layer.Entities;
 using System.Dynamic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using LNU_Test_Portal.ViewModels;
 
 namespace LNU_Test_Portal.Controllers
 {
@@ -45,29 +46,56 @@ namespace LNU_Test_Portal.Controllers
         [Authorize]
         public IActionResult GetAllTests()
         {
-            var userId = userManager.GetUserId(User);
-            var tests = testService.GetAllTestsForTeacher(userId);
-            
+            if (signInManager.IsSignedIn(User) && User.IsInRole("Teacher"))
+            {
+                var userId = userManager.GetUserId(User);
+                var tests = testService.GetAllTestsForTeacher(userId).ToArray();
+                TestViewModel[] testsView = new TestViewModel[tests.Count()];
+                for (int i = 0; i < tests.Count(); i++)
+                {
+                    testsView[i] = new TestViewModel();
+                    testsView[i].CourseId = tests[i].CourseId;
+                    testsView[i].Course = courseService.GetCourseById(testsView[i].CourseId);
+                    testsView[i].description = tests[i].description;
+                    testsView[i].id = tests[i].id;
+                    testsView[i].Questions = tests[i].Questions;
+                    testsView[i].name = tests[i].name;
+                }
+                return View(testsView.ToList());
+            }
+                
+
             if (signInManager.IsSignedIn(User) && User.IsInRole("Student"))
             {
+                var userId = userManager.GetUserId(User);
                 ApplicationUser student = userManager.Users.FirstOrDefault(p => p.Id == userId);
-                tests = testService.GetAllTestsForStudent(student);
-                bool isFirstAttemp = true;
+                var tests2 = testService.GetAllTestsForStudent(student).ToArray();
+                TestViewModel[] testsView = new TestViewModel[tests2.Count()];
+               
                 
-                int CountAttemps = qaAnResultService.GetAllQnAnForStudent(student).ToList().Count();
-                if(CountAttemps > 0)
+                for (int i = 0; i < tests2.Count(); i++)
                 {
-                    isFirstAttemp = false;
-                    
-                    
+                    bool isFirstAttemp = true;
+                    int CountAttemps = qaAnResultService.GetAllQnAnForStudentByTestId(student.Id,
+                        tests2[i].id).Select(p => p.TestId).Distinct().Count();
+                    if (CountAttemps > 0)
+                    {
+                        isFirstAttemp = false;
+                    }
+                    testsView[i] = new TestViewModel();
+                    testsView[i].CourseId = tests2[i].CourseId;
+                    testsView[i].Course = courseService.GetCourseById(testsView[i].CourseId);
+                    testsView[i].description = tests2[i].description;
+                    testsView[i].id = tests2[i].id;
+                    testsView[i].Questions = tests2[i].Questions;
+                    testsView[i].name = tests2[i].name;
+                    testsView[i].isFirstAttemp = isFirstAttemp;
+                    testsView[i].TotalAvailablePoits = questionService.GetAllQuestions(testsView[i].id).Select(p => p.Scores).Sum();
+                    testsView[i].SumByTest = qaAnResultService.GetAllQnAnForStudentByTestId(student.Id,testsView[i].id).Select(p => p.StudentAnswScore).Sum();
                 }
-                TempData["isFirstAttemp"] = isFirstAttemp;
-
-                TempData["SumByTest"] = qaAnResultService.GetAllQnAnForStudent(student).Select(p => p.StudentAnswScore).Sum();
-                
+                return View(testsView.ToList());
             }
-            
-            return View(tests);
+            return View();
         }
 
         [Authorize(Roles = "Teacher")]

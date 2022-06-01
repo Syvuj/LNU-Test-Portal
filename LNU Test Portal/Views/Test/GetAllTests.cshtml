@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Data_Access_Layer.Entities.Test>
+﻿@model IList<TestViewModel>
+@using LNU_Test_Portal.ViewModels
 @using Microsoft.AspNetCore.Identity
 
 @inject SignInManager<ApplicationUser> signInMahager;
@@ -6,13 +7,7 @@
     ViewData["Title"] = "Manage Tests";
     Layout = "_Layout-2";
 
-    bool isFirstAttemp = true;
-    int SumByTest= 0;
-    if (User.IsInRole("Student"))
-    {
-        isFirstAttemp = (bool)TempData["isFirstAttemp"];
-        SumByTest = (int)TempData["SumByTest"];
-    }
+   
     
 
     
@@ -27,19 +22,19 @@
     <div class="manage course content">
     <a class="myButton text-white" asp-controller="Test" asp-action="Create">Create Test</a>
     @{
-        @foreach(var test in Model)
+        @for(int i=0;i<Model.Count();i++)
         {
             
      <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
-        <h2 class="CourseName text-white">@test.Course.name | @test.name</h2>
-        <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@test.id">View Test</a>
+        <h2 class="CourseName text-white">@Model[i].Course.name | @Model[i].name</h2>
+        <a class="AddStudentBtn text-white" asp-controller="Question" asp-action="GetAllQuestions" asp-route-id="@Model[i].id">View Test</a>
     </div>
-    <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
+    <p class="CourseDescription text-white" style="width:60%"> @Model[i].description</p>
     
     <div class="d-flex align-items-start">
-        <a class="EditCourseButton text-white" asp-controller="Test" asp-action="Edit" asp-route-id="@test.id">Edit</a>
-        <a class="DeleteCourseButton text-white" asp-controller="Test" asp-action="Delete" asp-route-id="@test.id">Delete</a>
+        <a class="EditCourseButton text-white" asp-controller="Test" asp-action="Edit" asp-route-id="@Model[i].id">Edit</a>
+        <a class="DeleteCourseButton text-white" asp-controller="Test" asp-action="Delete" asp-route-id="@Model[i].id">Delete</a>
     </div>
 </div>
           
@@ -61,7 +56,7 @@
         @foreach(var test in Model)
         {
 
-                @if (isFirstAttemp == true)
+                @if (test.isFirstAttemp == true)
                 {
                     <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
@@ -82,7 +77,7 @@
     </div>
 </div>
         }
-                else
+                 @if (test.isFirstAttemp == false)
                 {
                      <div class="courseDetails flex-column justify-content-between" style="width:100%">
     <div class="d-flex justify-content-between">
@@ -98,7 +93,7 @@
         <p class="CourseDescription text-white" style="width:60%"> @test.description</p>
         <div class="d-flex justify-content-between">
             <a class="AddStudentText text-white" asp-controller="Question" asp-action="ReviewTest" asp-route-id="@test.id" style="">View</a>
-            <p class=" AddStudentText  text-white"> @SumByTest/a </p>
+            <p class=" AddStudentText  text-white"> @test.SumByTest/@test.TotalAvailablePoits </p>
             </div>
     </div>
 </div>

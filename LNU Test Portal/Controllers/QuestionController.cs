@@ -28,11 +28,10 @@ namespace LNU_Test_Portal.Controllers
         private readonly IQuestionService  questionService;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IQaAnResultsService qaAnResultService;
-        private readonly ITestResultsService testResultsService;
 
 
         public QuestionController(ILogger<TestController> logger, IConfiguration configuration, ITestService testService, IQuestionService questionService,
-           SignInManager<ApplicationUser> signInManager, IQaAnResultsService qaAnResultService, ITestResultsService testResultsService)
+           SignInManager<ApplicationUser> signInManager, IQaAnResultsService qaAnResultService)
         {
             this.logger = logger;
             this.configuration = configuration;
@@ -40,7 +39,7 @@ namespace LNU_Test_Portal.Controllers
             this.questionService = questionService;
             this.signInManager = signInManager;
             this.qaAnResultService = qaAnResultService;
-            this.testResultsService = testResultsService;
+           
         }
 
         [Route("Question/GetAllQuestions/{TestId:int}")]
@@ -193,9 +192,6 @@ namespace LNU_Test_Portal.Controllers
                 qaAnViewModel[i].TestId = questions[i].TestId;
                 qaAnViewModel[i].Test = questions[i].Test;
                 qaAnViewModel[i].Title = questions[i].Title;
-                
-
-
             }
 
             List<QaAnViewModel> qNvm = qaAnViewModel.ToList();
@@ -217,8 +213,10 @@ namespace LNU_Test_Portal.Controllers
                 qaAnResults.StudentId = User.Identity.GetUserId();
                 qaAnResults.StudAnsw = questions[i].NewStudentAnswer;
                 qaAnResults.CorectAnswer = questions[i].Key;
-                
-                
+                qaAnResults.TestId = TestId;
+
+
+
 
                 if (questions[i].NewStudentAnswer == questions[i].Key)
                 {
@@ -254,8 +252,10 @@ namespace LNU_Test_Portal.Controllers
                 qaAnViewModel[i].TestId = questions[i].TestId;
                 qaAnViewModel[i].Test = questions[i].Test;
                 qaAnViewModel[i].Title = questions[i].Title;
-                qaAnViewModel[i].NewStudentAnswer = qaAnResultService.GetQnAn(User.Identity.GetUserId()).Select(p=>p.StudAnsw).ToArray()[i];
-                qaAnViewModel[i].StudentScorecByQues = qaAnResultService.GetQnAn(User.Identity.GetUserId()).Select(p => p.StudentAnswScore).ToArray()[i];
+                qaAnViewModel[i].NewStudentAnswer = qaAnResultService.GetAllQnAnForStudentByTestId(User.Identity.GetUserId(),
+                    TestId).Select(p=>p.StudAnsw).ToArray()[i];
+                qaAnViewModel[i].StudentScorecByQues = qaAnResultService.GetAllQnAnForStudentByTestId(User.Identity.GetUserId(),
+                    TestId).Select(p => p.StudentAnswScore).ToArray()[i];
 
 
             }

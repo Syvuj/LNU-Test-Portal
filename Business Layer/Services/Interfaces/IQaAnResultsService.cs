@@ -14,6 +14,6 @@ namespace Business_Layer.Services.Interfaces
         public QaAnResults GetQnAnById(int Id);
         void UpdateQnAn(QaAnResults qaAnResults);
         void DeleteQnAn(QaAnResults qaAnResults);
-        IEnumerable<QaAnResults> GetAllQnAnForStudent(ApplicationUser Student);
+        IEnumerable<QaAnResults> GetAllQnAnForStudentByTestId(string StudentId, int TestId);
     }
 }

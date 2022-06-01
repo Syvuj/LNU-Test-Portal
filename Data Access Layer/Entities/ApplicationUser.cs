@@ -14,6 +14,6 @@ namespace Data_Access_Layer.Entities
         public  List<Course> Courses { get; set; }
         public List<ApplicationUserCourse> ApplicationUserCourses { get; set; }
 
-        public virtual List<TestResults> TestResults { get; set; }
+        
     }
 }

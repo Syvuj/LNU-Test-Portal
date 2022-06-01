@@ -11,6 +11,7 @@ namespace Data_Access_Layer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
+        public int TestId { get; set; }
         public string StudentId { get; set; }
         public int QuestionId { get; set; }
         public int StudentAnswScore { get; set; }

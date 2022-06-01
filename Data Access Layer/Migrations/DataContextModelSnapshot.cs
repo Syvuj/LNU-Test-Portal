@@ -145,6 +145,9 @@ namespace Data_Access_Layer.Migrations
                     b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
                     b.ToTable("QaAnResults");
@@ -169,17 +172,12 @@ namespace Data_Access_Layer.Migrations
                     b.Property<int>("TestId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TestResultsid")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
                     b.HasIndex("TestId");
-
-                    b.HasIndex("TestResultsid");
 
                     b.ToTable("Question");
                 });
@@ -205,31 +203,6 @@ namespace Data_Access_Layer.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("Test");
-                });
-
-            modelBuilder.Entity("Data_Access_Layer.Entities.TestResults", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("TestId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TotalStScore")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("TestId");
-
-                    b.ToTable("TestResults");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -390,10 +363,6 @@ namespace Data_Access_Layer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data_Access_Layer.Entities.TestResults", null)
-                        .WithMany("SolvedQuestions")
-                        .HasForeignKey("TestResultsid");
-
                     b.Navigation("Test");
                 });
 
@@ -406,23 +375,6 @@ namespace Data_Access_Layer.Migrations
                         .IsRequired();
 
                     b.Navigation("Course");
-                });
-
-            modelBuilder.Entity("Data_Access_Layer.Entities.TestResults", b =>
-                {
-                    b.HasOne("Data_Access_Layer.Entities.ApplicationUser", "Student")
-                        .WithMany("TestResults")
-                        .HasForeignKey("StudentId");
-
-                    b.HasOne("Data_Access_Layer.Entities.Test", "Test")
-                        .WithMany()
-                        .HasForeignKey("TestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Student");
-
-                    b.Navigation("Test");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -479,8 +431,6 @@ namespace Data_Access_Layer.Migrations
             modelBuilder.Entity("Data_Access_Layer.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("ApplicationUserCourses");
-
-                    b.Navigation("TestResults");
                 });
 
             modelBuilder.Entity("Data_Access_Layer.Entities.Course", b =>
@@ -493,11 +443,6 @@ namespace Data_Access_Layer.Migrations
             modelBuilder.Entity("Data_Access_Layer.Entities.Test", b =>
                 {
                     b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("Data_Access_Layer.Entities.TestResults", b =>
-                {
-                    b.Navigation("SolvedQuestions");
                 });
 #pragma warning restore 612, 618
         }

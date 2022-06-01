@@ -27,15 +27,16 @@ namespace Business_Layer.Services
             repository.Delete(qaAnResults);
         }
 
-        public IEnumerable<QaAnResults> GetAllQnAnForStudent(ApplicationUser Student)
+        public IEnumerable<QaAnResults> GetAllQnAnForStudentByTestId(string StudentId,int TestId)
         {
-            return repository.SelectAll(p => p.StudentId == Student.Id).Select(t => new QaAnResults {
+            return repository.SelectAll(p => p.StudentId == StudentId).Where(m=>m.TestId== TestId).Select(t => new QaAnResults {
             id = t.id,
             CorectAnswer = t.CorectAnswer,
             QuestionId = t.QuestionId,
             StudAnsw = t.StudAnsw,
             StudentAnswScore = t.StudentAnswScore,
-            StudentId = t.StudentId
+            StudentId = t.StudentId,
+            TestId = t.TestId
             
             });
         }
